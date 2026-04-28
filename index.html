@@ -7,61 +7,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #e8f0f5;
-        --bg-soft: #ffffff;
-        --panel: rgba(255, 255, 255, 0.95);
-        --panel-strong: rgba(255, 255, 255, 0.99);
-        --line: rgba(53, 97, 123, 0.18);
-        --text: #10212d;
-        --muted: #445866;
-        --primary: #2e7fa6;
-        --secondary: #76b6d6;
-        --accent: #d6e4eb;
-        --shadow: 0 24px 55px rgba(28, 60, 80, 0.14);
+        --bg: #06111f;
+        --bg-soft: #0d1d30;
+        --panel: rgba(63, 124, 180, 0.92);
+        --panel-strong: rgba(78, 145, 201, 0.96);
+        --line: rgba(232, 245, 255, 0.34);
+        --text: #ffffff;
+        --muted: #f4fbff;
+        --primary: #4b93d6;
+        --secondary: #76c4ff;
+        --accent: #255784;
+        --shadow: 0 24px 55px rgba(2, 7, 17, 0.3);
         --radius-xl: 32px;
         --radius-lg: 24px;
         --radius-md: 18px;
         --container: 1180px;
         --subrect-bg:
-          linear-gradient(180deg, rgba(16, 39, 59, 0.96), rgba(10, 26, 42, 0.94)),
-          linear-gradient(145deg, rgba(112, 172, 205, 0.14), rgba(46, 127, 166, 0.06));
-        --subrect-border: rgba(92, 157, 193, 0.22);
+          linear-gradient(180deg, rgba(89, 160, 220, 0.98), rgba(58, 118, 174, 0.98)),
+          linear-gradient(145deg, rgba(235, 248, 255, 0.34), rgba(146, 200, 246, 0.18));
+        --subrect-border: rgba(242, 249, 255, 0.46);
         --subrect-shadow:
-          0 18px 36px rgba(10, 28, 43, 0.16),
-          inset 0 1px 0 rgba(206, 236, 251, 0.06);
-        --subrect-title: #f2f8fd;
-        --subrect-copy: #bdd3e0;
-        --subrect-link: #d8f0fb;
+          0 18px 36px rgba(4, 15, 29, 0.16),
+          inset 0 1px 0 rgba(248, 252, 255, 0.22);
+        --subrect-title: #ffffff;
+        --subrect-copy: #f8fcff;
+        --subrect-link: #ffffff;
+        --deep-surface-bg:
+          linear-gradient(180deg, rgba(9, 20, 33, 0.98), rgba(6, 16, 28, 0.98)),
+          linear-gradient(145deg, rgba(53, 108, 165, 0.18), rgba(14, 31, 49, 0.08));
+        --deep-surface-border: rgba(116, 168, 212, 0.18);
+        --deep-surface-shadow:
+          0 22px 44px rgba(2, 7, 17, 0.34),
+          inset 0 1px 0 rgba(222, 239, 252, 0.06);
       }
 
-      body[data-theme="dark"] {
-        --bg: #07131d;
-        --bg-soft: #0f1f2c;
-        --panel: rgba(11, 27, 39, 0.92);
-        --panel-strong: rgba(9, 24, 36, 0.98);
-        --line: rgba(129, 184, 214, 0.24);
-        --text: #f2f8fc;
-        --muted: #bbccda;
-        --primary: #7fc1e2;
-        --secondary: #4d93ba;
-        --accent: #9dcde3;
-        --shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
-        --subrect-bg:
-          linear-gradient(180deg, rgba(112, 181, 216, 0.24), rgba(149, 212, 239, 0.17)),
-          linear-gradient(145deg, rgba(188, 231, 250, 0.1), rgba(103, 178, 214, 0.06));
-        --subrect-border: rgba(153, 216, 242, 0.22);
-        --subrect-shadow:
-          0 18px 36px rgba(0, 0, 0, 0.2),
-          inset 0 1px 0 rgba(236, 249, 255, 0.08);
-        --subrect-title: #eef8fd;
-        --subrect-copy: #d6eaf5;
-        --subrect-link: #f3fbff;
-      }
+
 
       * {
         box-sizing: border-box;
@@ -75,19 +64,15 @@
         margin: 0;
         color: var(--text);
         background:
-          radial-gradient(circle at top left, rgba(172, 207, 226, 0.42), transparent 28%),
-          radial-gradient(circle at 85% 15%, rgba(112, 172, 205, 0.28), transparent 24%),
-          linear-gradient(180deg, #f8fbfd 0%, #edf4f8 55%, #e6eef4 100%);
+          radial-gradient(circle at top left, rgba(81, 140, 205, 0.28), transparent 32%),
+          radial-gradient(circle at 85% 15%, rgba(45, 100, 162, 0.26), transparent 24%),
+          linear-gradient(180deg, #05101b 0%, #071523 52%, #0a1d31 100%);
         font-family: "Manrope", sans-serif;
         overflow-x: hidden;
+        text-align: start;
       }
 
-      body[data-theme="dark"] {
-        background:
-          radial-gradient(circle at top left, rgba(79, 144, 181, 0.22), transparent 28%),
-          radial-gradient(circle at 85% 15%, rgba(112, 172, 205, 0.16), transparent 24%),
-          linear-gradient(180deg, #07131d 0%, #0a1722 55%, #06111a 100%);
-      }
+
 
       body::before,
       body::after {
@@ -106,14 +91,14 @@
       body::before {
         top: -120px;
         left: -140px;
-        background: #accfe2;
+        background: #16456e;
         animation: floatBlob 14s ease-in-out infinite;
       }
 
       body::after {
         right: -120px;
         bottom: -160px;
-        background: #70accd;
+        background: #0f3459;
         animation: floatBlob 18s ease-in-out infinite reverse;
       }
 
@@ -152,9 +137,18 @@
         padding: 14px 18px;
         border: 1px solid var(--line);
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(6, 16, 29, 0.86);
         backdrop-filter: blur(18px);
         box-shadow: var(--shadow);
+      }
+
+      .topbar-menu {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
       }
 
       .brand {
@@ -172,8 +166,8 @@
         place-items: center;
         color: #ffffff;
         font: 800 0.95rem/1 "Syne", sans-serif;
-        background: linear-gradient(135deg, #70accd, #4f90b5);
-        box-shadow: 0 18px 30px rgba(112, 172, 205, 0.25);
+        background: linear-gradient(135deg, #5fb0ff, #2f6fd4);
+        box-shadow: 0 18px 30px rgba(37, 105, 188, 0.26);
       }
 
       .brand-copy strong,
@@ -202,6 +196,67 @@
         justify-content: center;
       }
 
+      .menu-toggle {
+        display: none;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(9, 20, 34, 0.92);
+        color: var(--text);
+        box-shadow: 0 14px 30px rgba(2, 7, 17, 0.24);
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background-color 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .menu-toggle:hover {
+        transform: translateY(-2px);
+      }
+
+      .menu-icon {
+        display: grid;
+        gap: 4px;
+      }
+
+      .menu-line {
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+        transition:
+          transform 180ms ease,
+          opacity 180ms ease;
+      }
+
+      .topbar-inner.menu-open .menu-line:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .topbar-inner.menu-open .menu-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .topbar-inner.menu-open .menu-line:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       .nav a {
         color: var(--muted);
         padding: 10px 14px;
@@ -212,7 +267,7 @@
       .nav a:hover,
       .nav a.active {
         color: var(--text);
-        background: rgba(112, 172, 205, 0.14);
+        background: rgba(95, 176, 255, 0.18);
       }
 
       .topbar-actions {
@@ -243,32 +298,51 @@
 
       .button {
         color: #ffffff;
-        background: linear-gradient(135deg, #70accd, #4f90b5);
-        box-shadow: 0 18px 32px rgba(112, 172, 205, 0.24);
+        background: linear-gradient(135deg, #5fb0ff, #2f6fd4);
+        box-shadow: 0 18px 32px rgba(37, 105, 188, 0.28);
       }
 
       .button-secondary {
-        color: #1f546f;
+        color: #d7ebff;
         border-color: var(--line);
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(11, 24, 40, 0.86);
       }
 
-      .theme-toggle,
       .video-trigger {
         color: var(--text);
         border-color: var(--line);
-        background: rgba(46, 127, 166, 0.12);
+        background: rgba(59, 119, 188, 0.2);
+      }
+
+      .translate-button {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        flex: 0 0 auto;
+        justify-self: start;
+        border-color: transparent;
+        border-radius: 50%;
+        color: #ffffff;
+        background: linear-gradient(135deg, #5fb0ff, #2f6fd4);
+        box-shadow: 0 14px 28px rgba(37, 105, 188, 0.26);
       }
 
       .button:hover,
       .button-secondary:hover,
-      .theme-toggle:hover,
+      .translate-button:hover,
       .video-trigger:hover {
         transform: translateY(-2px);
       }
 
-      .theme-toggle {
-        padding-inline: 16px;
+      .translate-symbol {
+        font-family: "Material Symbols Outlined";
+        font-size: 22px;
+        line-height: 1;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 500,
+          "GRAD" 0,
+          "opsz" 24;
       }
 
       .hero {
@@ -310,7 +384,7 @@
         inset: auto -40px -55px auto;
         width: 220px;
         height: 220px;
-        background: radial-gradient(circle, rgba(112, 172, 205, 0.22), transparent 65%);
+        background: radial-gradient(circle, rgba(95, 176, 255, 0.18), transparent 65%);
       }
 
       .eyebrow {
@@ -320,9 +394,9 @@
         padding: 8px 12px;
         border-radius: 999px;
         margin-bottom: 18px;
-        color: #3d6d87;
-        background: rgba(112, 172, 205, 0.1);
-        border: 1px solid rgba(112, 172, 205, 0.16);
+        color: #a8d7ff;
+        background: rgba(35, 79, 126, 0.28);
+        border: 1px solid rgba(102, 170, 226, 0.28);
         font-size: 0.82rem;
         text-transform: uppercase;
         letter-spacing: 0.14em;
@@ -403,9 +477,9 @@
         border-radius: 28px;
         overflow: hidden;
         background:
-          linear-gradient(145deg, rgba(172, 207, 226, 0.38), transparent 35%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 247, 250, 0.92)),
-          #f8fbfd;
+          linear-gradient(145deg, rgba(229, 247, 255, 0.28), transparent 42%),
+          linear-gradient(180deg, rgba(83, 150, 208, 0.97), rgba(55, 110, 166, 0.97)),
+          #4079b2;
       }
 
       .showcase-screen--compact {
@@ -417,7 +491,7 @@
         position: absolute;
         inset: 16px;
         border-radius: 22px;
-        border: 1px solid rgba(112, 172, 205, 0.12);
+        border: 1px solid rgba(192, 227, 255, 0.26);
       }
 
       .showcase-panel-heading {
@@ -430,10 +504,11 @@
 
       .showcase-panel-heading strong {
         font-size: 1.02rem;
+        color: var(--subrect-title);
       }
 
       .showcase-panel-heading span {
-        color: var(--muted);
+        color: var(--subrect-copy);
         font-size: 0.92rem;
       }
 
@@ -457,7 +532,7 @@
 
       .video-preview {
         border-radius: 18px;
-        border: 1px solid rgba(112, 172, 205, 0.16);
+        border: 1px solid rgba(112, 170, 222, 0.18);
       }
 
       .edit-top {
@@ -543,7 +618,7 @@
       .wave-card strong,
       .contact-row strong,
       .availability-card strong {
-        color: #405d6b;
+        color: var(--subrect-title);
       }
 
       .video-card span,
@@ -620,7 +695,7 @@
       }
 
       .tool-card span {
-        color: #3d4e5b;
+        color: var(--subrect-copy);
         font-size: 0.92rem;
       }
 
@@ -649,7 +724,7 @@
         position: relative;
         height: 18px;
         overflow: hidden;
-        background: rgba(172, 207, 226, 0.32);
+        background: rgba(54, 102, 151, 0.8);
       }
 
       .timeline-bar::before,
@@ -664,24 +739,24 @@
       .timeline-bar::before {
         left: 0;
         width: 72%;
-        background: linear-gradient(90deg, rgba(112, 172, 205, 0.96), rgba(172, 207, 226, 0.96));
+        background: linear-gradient(90deg, rgba(95, 176, 255, 0.95), rgba(45, 106, 176, 0.95));
       }
 
       .timeline-bar::after {
         right: 14%;
         width: 22%;
-        background: linear-gradient(90deg, rgba(199, 204, 206, 0.95), rgba(199, 204, 206, 0.4));
+        background: linear-gradient(90deg, rgba(144, 170, 194, 0.75), rgba(144, 170, 194, 0.2));
       }
 
       .timeline-bar.alt::before {
         width: 56%;
-        background: linear-gradient(90deg, rgba(172, 207, 226, 0.96), rgba(172, 207, 226, 0.4));
+        background: linear-gradient(90deg, rgba(118, 196, 255, 0.9), rgba(118, 196, 255, 0.22));
       }
 
       .timeline-bar.alt::after {
         right: 4%;
         width: 32%;
-        background: linear-gradient(90deg, rgba(112, 172, 205, 0.88), rgba(112, 172, 205, 0.38));
+        background: linear-gradient(90deg, rgba(63, 136, 214, 0.88), rgba(63, 136, 214, 0.24));
       }
 
       .edit-bottom {
@@ -717,8 +792,8 @@
         border: 1px solid var(--line);
         border-radius: 34px;
         background:
-          radial-gradient(circle at top right, rgba(118, 182, 214, 0.14), transparent 32%),
-          var(--panel-strong);
+          radial-gradient(circle at top right, rgba(221, 243, 255, 0.24), transparent 34%),
+          linear-gradient(180deg, rgba(74, 139, 196, 0.96), rgba(48, 100, 154, 0.98));
         box-shadow: var(--shadow);
       }
 
@@ -742,6 +817,15 @@
         margin: 0;
         color: var(--muted);
         line-height: 1.7;
+      }
+
+      .hero-copy h1,
+      .section-heading h2,
+      .timeline-card h3,
+      .highlight-card h3,
+      .contact-card h3,
+      .cta-panel h2 {
+        color: #ffffff;
       }
 
       .stats-grid {
@@ -888,7 +972,7 @@
       .contact-card p,
       .timeline-card p,
       .cta-panel p {
-        color: var(--muted);
+        color: rgba(250, 253, 255, 0.96);
       }
 
       .stat-card p {
@@ -913,13 +997,13 @@
         min-height: 260px;
         padding: 24px;
         border-radius: 26px;
-        border: 1px solid rgba(125, 188, 223, 0.24);
+        border: 1px solid rgba(211, 239, 255, 0.34);
         background:
-          linear-gradient(180deg, rgba(14, 34, 52, 0.98), rgba(9, 24, 39, 0.98)),
-          linear-gradient(145deg, rgba(111, 180, 217, 0.18), rgba(33, 92, 127, 0.08));
+          linear-gradient(180deg, rgba(50, 98, 145, 0.98), rgba(33, 72, 110, 0.98)),
+          linear-gradient(145deg, rgba(164, 219, 255, 0.24), rgba(95, 161, 228, 0.14));
         box-shadow:
-          0 22px 44px rgba(10, 27, 41, 0.28),
-          inset 0 1px 0 rgba(183, 225, 247, 0.08);
+          0 22px 44px rgba(10, 27, 41, 0.24),
+          inset 0 1px 0 rgba(233, 246, 255, 0.14);
       }
 
       .skill-card::before {
@@ -948,9 +1032,9 @@
         padding: 8px 12px;
         border-radius: 999px;
         margin-bottom: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        background: rgba(112, 172, 205, 0.08);
-        color: #295972;
+        border: 1px solid rgba(148, 206, 239, 0.16);
+        background: rgba(59, 119, 188, 0.16);
+        color: #9dd4ff;
         font-size: 0.82rem;
         text-transform: uppercase;
         letter-spacing: 0.12em;
@@ -984,7 +1068,7 @@
         z-index: 1;
         margin: 12px 0 0;
         line-height: 1.7;
-        color: #bdd2df;
+        color: #f0f8ff;
       }
 
       .timeline-layout {
@@ -1020,7 +1104,7 @@
         place-items: center;
         color: #ffffff;
         font-weight: 800;
-        background: linear-gradient(135deg, #70accd, #accfe2);
+        background: linear-gradient(135deg, #5fb0ff, #2f6fd4);
       }
 
       .timeline-step p {
@@ -1061,7 +1145,7 @@
         margin-top: 7px;
         border-radius: 50%;
         flex-shrink: 0;
-        background: linear-gradient(135deg, #70accd, #accfe2);
+        background: linear-gradient(135deg, #5fb0ff, #2f6fd4);
       }
 
       .contact-grid {
@@ -1072,6 +1156,27 @@
       .cta-panel {
         padding: 28px;
         border-radius: 28px;
+      }
+
+      .meta-chip,
+      .edit-track,
+      .skill-card,
+      .timeline-card,
+      .highlight-card,
+      .contact-card {
+        background: var(--deep-surface-bg);
+        border-color: var(--deep-surface-border);
+        box-shadow: var(--deep-surface-shadow);
+      }
+
+      .skill-card::before {
+        background: radial-gradient(circle, rgba(82, 146, 209, 0.18), transparent 72%);
+      }
+
+      .skill-card::after {
+        background:
+          linear-gradient(135deg, rgba(188, 225, 245, 0.08), transparent 42%),
+          linear-gradient(180deg, transparent 0%, rgba(84, 148, 212, 0.08) 100%);
       }
 
       .contact-list {
@@ -1141,8 +1246,8 @@
       .cta-panel {
         margin-top: 18px;
         background:
-          radial-gradient(circle at top right, rgba(112, 172, 205, 0.16), transparent 32%),
-          linear-gradient(135deg, rgba(172, 207, 226, 0.24), rgba(112, 172, 205, 0.1)),
+          radial-gradient(circle at top right, rgba(164, 219, 255, 0.24), transparent 34%),
+          linear-gradient(135deg, rgba(53, 104, 151, 0.98), rgba(33, 72, 110, 0.98)),
           var(--panel-strong);
       }
 
@@ -1173,7 +1278,7 @@
       }
 
       .media-photo:focus-visible {
-        outline: 2px solid rgba(46, 127, 166, 0.72);
+        outline: 2px solid rgba(95, 176, 255, 0.72);
         outline-offset: 4px;
       }
 
@@ -1254,7 +1359,7 @@
         padding: 14px;
         border-radius: 24px;
         border: 1px solid var(--line);
-        background: var(--panel-strong);
+        background: rgba(10, 23, 39, 0.96);
         box-shadow: var(--shadow);
       }
 
@@ -1289,7 +1394,7 @@
         max-height: 86vh;
         object-fit: contain;
         border-radius: 24px;
-        border: 1px solid rgba(216, 231, 239, 0.2);
+        border: 1px solid rgba(147, 192, 230, 0.24);
         box-shadow: 0 26px 70px rgba(0, 0, 0, 0.38);
         transform: scale(0.9);
         transition: transform 220ms ease;
@@ -1320,9 +1425,51 @@
         place-items: center;
         border: 1px solid var(--line);
         border-radius: 50%;
-        background: rgba(112, 172, 205, 0.08);
+        background: rgba(59, 119, 188, 0.18);
         color: var(--text);
         cursor: pointer;
+      }
+
+      html[dir="rtl"] body {
+        font-family: "Cairo", "Manrope", sans-serif;
+      }
+
+      html[dir="rtl"] .brand-copy strong,
+      html[dir="rtl"] .section-heading h2,
+      html[dir="rtl"] .hero-copy h1,
+      html[dir="rtl"] .cta-panel h2 {
+        font-family: "Cairo", "Manrope", sans-serif;
+        letter-spacing: 0;
+      }
+
+      html[dir="rtl"] .eyebrow,
+      html[dir="rtl"] .skill-tag,
+      html[dir="rtl"] .highlight-label {
+        letter-spacing: 0.04em;
+        text-transform: none;
+      }
+
+      html[dir="rtl"] .section-heading,
+      html[dir="rtl"] .track-label,
+      html[dir="rtl"] .contact-row,
+      html[dir="rtl"] .video-modal-top,
+      html[dir="rtl"] .footer-inner {
+        direction: rtl;
+      }
+
+      html[dir="rtl"] .topbar-menu,
+      html[dir="rtl"] .topbar-actions {
+        direction: rtl;
+      }
+
+      html[dir="rtl"] .hero-copy h1,
+      html[dir="rtl"] .section-heading h2,
+      html[dir="rtl"] .cta-panel h2 {
+        line-height: 1.08;
+      }
+
+      html[dir="rtl"] .timeline-step {
+        direction: rtl;
       }
 
       @keyframes floatBlob {
@@ -1352,25 +1499,79 @@
       }
 
       @media (max-width: 860px) {
-        .topbar-inner,
         .section-heading,
         .footer-inner {
           flex-direction: column;
           align-items: flex-start;
         }
 
+        .topbar-inner {
+          position: relative;
+          flex-direction: row;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          padding: 14px;
+        }
+
+        .brand {
+          width: calc(100% - 66px);
+          padding-inline-end: 12px;
+        }
+
+        .menu-toggle {
+          position: absolute;
+          top: 14px;
+          inset-inline-end: 14px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .topbar-menu {
+          width: 100%;
+          flex-basis: 100%;
+          display: block;
+          overflow: hidden;
+          max-height: 0;
+          opacity: 0;
+          padding-top: 0;
+          transition:
+            max-height 220ms ease,
+            opacity 180ms ease,
+            padding-top 180ms ease;
+        }
+
+        .topbar-inner.menu-open .topbar-menu {
+          max-height: 520px;
+          opacity: 1;
+          padding-top: 16px;
+        }
+
         .nav {
           width: 100%;
+          flex-direction: column;
+          align-items: stretch;
           justify-content: flex-start;
+          gap: 8px;
+        }
+
+        .nav a {
+          width: 100%;
+          padding: 13px 16px;
+          border: 1px solid rgba(102, 170, 226, 0.18);
+          background: rgba(10, 24, 40, 0.88);
         }
 
         .topbar-actions {
           width: 100%;
+          display: grid;
+          gap: 10px;
+          margin-top: 12px;
           flex-wrap: wrap;
         }
 
         .topbar-actions > * {
-          flex: 1 1 180px;
+          flex: unset;
         }
 
         .hero-copy,
@@ -1410,7 +1611,6 @@
 
         .button,
         .button-secondary,
-        .theme-toggle,
         .video-trigger {
           width: 100%;
         }
@@ -1427,7 +1627,6 @@
 
         .topbar-inner {
           border-radius: 26px;
-          padding: 14px;
         }
 
         .video-preview {
@@ -1447,30 +1646,46 @@
       <header class="topbar">
         <div class="container">
           <div class="topbar-inner">
-            <a class="brand" href="#home" aria-label="LEB for Video Editing home">
+            <a class="brand" href="#home" data-i18n-aria-label="aria.brandHome" aria-label="LEB for Video Editing home">
               <div class="brand-mark">LEB</div>
               <div class="brand-copy">
-                <strong>LEB for Video Editing</strong>
-                <span>YouTube-focused post-production</span>
+                <strong data-i18n="brand.name">LEB for Video Editing</strong>
+                <span data-i18n="brand.tagline">YouTube-focused post-production</span>
               </div>
             </a>
 
-            <nav class="nav" aria-label="Primary">
-              <a href="#home" class="active">Home</a>
-              <a href="#skills">Skills</a>
-              <a href="#highlights">Highlights</a>
-              <a href="#contact">Contact</a>
-            </nav>
+            <button
+              class="menu-toggle"
+              type="button"
+              id="menu-toggle"
+              aria-controls="topbar-menu"
+              aria-expanded="false"
+              aria-label="Open navigation menu"
+            >
+              <span class="sr-only" data-i18n="menu.toggle">Menu</span>
+              <span class="menu-icon" aria-hidden="true">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+              </span>
+            </button>
 
-            <div class="topbar-actions">
-              <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Toggle dark mode">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14.8a1 1 0 0 1 1 1V20a1 1 0 1 1-2 0v-1.2a1 1 0 0 1 1-1Zm9-6.8a1 1 0 0 1-1 1h-1.2a1 1 0 1 1 0-2H20a1 1 0 0 1 1 1ZM6.2 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h1.2a1 1 0 0 1 1 1Zm10.04-5.63a1 1 0 0 1 1.41 0l.86.85a1 1 0 1 1-1.41 1.42l-.86-.86a1 1 0 0 1 0-1.41ZM6.9 15.68a1 1 0 0 1 1.41 0l.85.86a1 1 0 1 1-1.41 1.41l-.85-.85a1 1 0 0 1 0-1.42Zm11.61 1.42a1 1 0 0 1-1.41 0l-.86-.86a1 1 0 0 1 1.41-1.41l.86.85a1 1 0 0 1 0 1.42ZM6.9 8.63a1 1 0 0 1 0-1.42l.85-.85a1 1 0 0 1 1.41 1.41l-.85.86A1 1 0 0 1 6.9 8.63ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Z"/>
-                </svg>
-                <span>Dark Mode</span>
-              </button>
-              <a class="button-secondary" href="#highlights">See Work Style</a>
-              <a class="button" href="#contact">Book an Edit</a>
+            <div class="topbar-menu" id="topbar-menu">
+              <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+                <a href="#home" class="active" data-i18n="nav.home">Home</a>
+                <a href="#skills" data-i18n="nav.skills">Skills</a>
+                <a href="#highlights" data-i18n="nav.highlights">Highlights</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
+              </nav>
+
+              <div class="topbar-actions">
+                <button class="translate-button" type="button" id="translate-button" aria-label="Translate to Arabic">
+                  <span class="material-symbols-outlined translate-symbol" aria-hidden="true">g_translate</span>
+                  <span class="sr-only translate-button-label">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span>
+                </button>
+                <a class="button" href="#highlights" data-i18n="actions.seeWorkStyle">See Work Style</a>
+                <a class="button" href="#contact" data-i18n="actions.bookEdit">Book a Service</a>
+              </div>
             </div>
           </div>
         </div>
@@ -1481,37 +1696,37 @@
           <div class="container">
             <div class="hero-grid">
               <article class="hero-copy reveal">
-                <div class="eyebrow">Professional Video Editor</div>
-                <h1>Editing built for attention.</h1>
-                <p>
+                <div class="eyebrow" data-i18n="hero.eyebrow">Professional Video Editor</div>
+                <h1 data-i18n="hero.title">Editing built for attention.</h1>
+                <p data-i18n="hero.copy1">
                   Hi, I'm Ibrahim Omar. I help YouTube creators turn raw footage into
                   polished, audience-retaining videos with strong pacing, cinematic
                   transitions, clean sound, and color that feels intentional from the
                   first frame to the last.
                 </p>
-                <p>
+                <p data-i18n="hero.copy2">
                   I work in DaVinci Resolve Studio and focus on edits that feel dynamic,
                   smooth, and visually clear whether the content is reaction-based,
                   gaming-heavy, or built around storytelling.
                 </p>
 
                 <div class="hero-actions">
-                  <a class="button" href="#contact">Start a Project</a>
-                  <a class="button-secondary" href="#skills">Explore My Skills</a>
+                  <a class="button" href="#contact" data-i18n="actions.startProject">Start a Project</a>
+                  <a class="button-secondary" href="#skills" data-i18n="actions.exploreSkills">Explore My Skills</a>
                 </div>
 
                 <div class="hero-meta">
                   <div class="meta-chip">
-                    <strong>4+ years</strong>
-                    <span>Hands-on DaVinci Resolve workflow</span>
+                    <strong data-i18n="hero.meta1Value">4+ years</strong>
+                    <span data-i18n="hero.meta1Label">Hands-on DaVinci Resolve workflow</span>
                   </div>
                   <div class="meta-chip">
-                    <strong>2 to 3 days</strong>
-                    <span>Typical delivery speed for quality edits</span>
+                    <strong data-i18n="hero.meta2Value">2 to 3 days</strong>
+                    <span data-i18n="hero.meta2Label">Typical delivery speed for quality edits</span>
                   </div>
                   <div class="meta-chip">
-                    <strong>Remote worldwide</strong>
-                    <span>Based in Cairo, working with creators globally</span>
+                    <strong data-i18n="hero.meta3Value">Remote worldwide</strong>
+                    <span data-i18n="hero.meta3Label">Based in Cairo, working with creators globally</span>
                   </div>
                 </div>
 
@@ -1527,13 +1742,20 @@
                             <path fill="currentColor" d="M8 5.14v13.72A1 1 0 0 0 9.5 19.7l10.28-6.86a1 1 0 0 0 0-1.68L9.5 4.3A1 1 0 0 0 8 5.14Z"/>
                           </svg>
                         </div>
-                        <strong>Main Showreel</strong>
-                        <span>A featured preview of the editing style, pacing, and final polish.</span>
+                        <strong data-i18n="hero.showreelTitle">Main Showreel</strong>
+                        <span data-i18n="hero.showreelText">A featured preview of the editing style, pacing, and final polish.</span>
                         <div class="video-actions">
-                          <button class="video-trigger" type="button" data-video-id="tj8V_6grayA" data-video-title="Main Showreel">
+                          <button
+                            class="video-trigger"
+                            type="button"
+                            data-video-id="tj8V_6grayA"
+                            data-video-title-en="Main Showreel"
+                            data-video-title-ar="&#1575;&#1604;&#1593;&#1585;&#1590; &#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;"
+                            data-i18n="actions.playVideo"
+                          >
                             Play Video
                           </button>
-                          <a class="button-secondary" href="https://www.youtube.com/watch?v=tj8V_6grayA" target="_blank" rel="noreferrer">
+                          <a class="button-secondary" href="https://www.youtube.com/watch?v=tj8V_6grayA" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
                             Open on YouTube
                           </a>
                         </div>
@@ -1546,8 +1768,8 @@
               <aside class="hero-showcase reveal">
                 <div class="showcase-screen showcase-screen--compact">
                   <div class="showcase-panel-heading">
-                    <strong>Creative snapshots</strong>
-                    <span>Extra visual context that supports the intro without competing with the showreel.</span>
+                    <strong data-i18n="showcase.heading">Creative snapshots</strong>
+                    <span data-i18n="showcase.copy">Extra visual context that supports the intro without competing with the showreel.</span>
                   </div>
                   <div class="edit-ui">
                     <div class="gallery-strip">
@@ -1556,8 +1778,8 @@
                         style="background-image: url('https://lh3.googleusercontent.com/sitesv/AA5AbUDtO4D9t9_DZOb-olbDlfBq_HyInG014oms_t0E_kIXNMXnG0FtKOLB_UT11Mz3Rx7K0Lj4PWoDzuXdSeW-909g23PAoLgW1TvGwf7WCwx8X2pGSSBMsxN0tFNU6DrvuZ9f3KynD1Da2gP3lQPfbxINKmocXnrp7hFapzUT_R_npf7qrpVLMfIs=w1280');"
                       >
                         <div>
-                          <strong>Studio frame</strong>
-                          <span>Visual direction that supports the editing brand.</span>
+                          <strong data-i18n="showcase.gallery1Title">Studio frame</strong>
+                          <span data-i18n="showcase.gallery1Text">Visual direction that supports the editing brand.</span>
                         </div>
                       </div>
                       <div
@@ -1565,8 +1787,8 @@
                         style="background-image: url('https://lh3.googleusercontent.com/sitesv/AA5AbUCRCZ-njjLvo5WDfiB3eePBsbKTaonrmvf2ceEK3kE5hMjZGqzdZRKVusBCs-hP-riCSDN9IVYRKKpQpOFrZsqSGntVWCjBrdWJISR2VreTZKEkHMn9uUM5t-cxijuLm4PgZ-Lq1e3HxjGQpc8AuxezC0Y7p9vOolk7SzMXdiFla_UahBYNWu2OWPljF_9q4a6WbGTMYcF1F4Lqpmf2Zw16d9hY-oH5AEcLfcw=w1280');"
                       >
                         <div>
-                          <strong>Creative workflow</strong>
-                          <span>Detail-focused editing supported by clean motion and finish work.</span>
+                          <strong data-i18n="showcase.gallery2Title">Creative workflow</strong>
+                          <span data-i18n="showcase.gallery2Text">Detail-focused editing supported by clean motion and finish work.</span>
                         </div>
                       </div>
                       <div
@@ -1574,16 +1796,16 @@
                         style="background-image: url('https://lh3.googleusercontent.com/sitesv/AA5AbUBPumyoQWaBA6lO9oJyGkTs34eAj4kos-_Mm39Ck950DJkH2vCgpE6d_1wPlbbaU-XACNd2NaFX2a1Er2Fr9B_prqY8jLW-NpECDM7UchlYbnu-V8_967YQnpHfcmrzrbXajVItSWwV749aglPjngBNm8-W2WPTiFFPvHAURosBPWwAWtqzR3bc=w1280');"
                       >
                         <div>
-                          <strong>Final polish</strong>
-                          <span>Strong presentation across pacing, color, and overall feel.</span>
+                          <strong data-i18n="showcase.gallery3Title">Final polish</strong>
+                          <span data-i18n="showcase.gallery3Text">Strong presentation across pacing, color, and overall feel.</span>
                         </div>
                       </div>
                     </div>
 
                     <div class="edit-track">
                       <div class="track-label">
-                        <strong>Featured projects</strong>
-                        <span>selected previews and portfolio visuals</span>
+                        <strong data-i18n="showcase.projectsTitle">Featured projects</strong>
+                        <span data-i18n="showcase.projectsLabel">selected previews and portfolio visuals</span>
                       </div>
                       <div class="video-grid">
                         <div class="video-card">
@@ -1597,31 +1819,38 @@
                                   <path fill="currentColor" d="M8 5.14v13.72A1 1 0 0 0 9.5 19.7l10.28-6.86a1 1 0 0 0 0-1.68L9.5 4.3A1 1 0 0 0 8 5.14Z"/>
                                 </svg>
                               </div>
-                              <strong>Second featured edit</strong>
-                              <span>A second example focused on energy, clarity, and audience retention.</span>
+                              <strong data-i18n="showcase.video2Title">Second featured edit</strong>
+                              <span data-i18n="showcase.video2Text">A second example focused on energy, clarity, and audience retention.</span>
                             </div>
                           </div>
                           <div class="video-actions">
-                            <button class="video-trigger" type="button" data-video-id="13I3VqSs1Co" data-video-title="Second Featured Edit">
+                            <button
+                              class="video-trigger"
+                              type="button"
+                              data-video-id="13I3VqSs1Co"
+                              data-video-title-en="Second Featured Edit"
+                              data-video-title-ar="&#1575;&#1604;&#1606;&#1605;&#1608;&#1584;&#1580; &#1575;&#1604;&#1605;&#1605;&#1610;&#1586; &#1575;&#1604;&#1579;&#1575;&#1606;&#1610;"
+                              data-i18n="actions.playVideo"
+                            >
                               Play Video
                             </button>
-                            <a class="button-secondary" href="https://www.youtube.com/watch?v=13I3VqSs1Co" target="_blank" rel="noreferrer">
+                            <a class="button-secondary" href="https://www.youtube.com/watch?v=13I3VqSs1Co" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
                               Open on YouTube
                             </a>
                           </div>
                         </div>
                         <div class="tool-stack">
                           <div class="tool-card">
-                            <strong>Clean visual system</strong>
-                            <span>Bright surfaces, stronger contrast, and a calm blue palette built for readability.</span>
+                            <strong data-i18n="showcase.tool1Title">Clean visual system</strong>
+                            <span data-i18n="showcase.tool1Text">Bright surfaces, stronger contrast, and a calm blue palette built for readability.</span>
                           </div>
                           <div class="tool-card">
-                            <strong>Portfolio gallery</strong>
-                            <span>Visual highlights arranged to support the work instead of competing with it.</span>
+                            <strong data-i18n="showcase.tool2Title">Portfolio gallery</strong>
+                            <span data-i18n="showcase.tool2Text">Visual highlights arranged to support the work instead of competing with it.</span>
                           </div>
                           <div class="tool-card">
-                            <strong>Focused presentation</strong>
-                            <span>Clear spacing, smoother flow, and polished sections that feel ready to publish.</span>
+                            <strong data-i18n="showcase.tool3Title">Focused presentation</strong>
+                            <span data-i18n="showcase.tool3Text">Clear spacing, smoother flow, and polished sections that feel ready to publish.</span>
                           </div>
                         </div>
                       </div>
@@ -1637,10 +1866,10 @@
           <div class="container">
             <div class="section-heading reveal">
               <div>
-                <div class="eyebrow">What You Get</div>
-                <h2>Professional polish without losing energy.</h2>
+                <div class="eyebrow" data-i18n="value.eyebrow">What You Get</div>
+                <h2 data-i18n="value.title">Professional polish without losing energy.</h2>
               </div>
-              <p>
+              <p data-i18n="value.copy">
                 Every section is built to communicate value quickly, with cleaner structure,
                 stronger hierarchy, and a more polished reading experience for potential
                 clients.
@@ -1649,24 +1878,24 @@
 
             <div class="stats-grid">
               <article class="stat-card stat-card--yt reveal">
-                <span>Editing Focus</span>
-                <strong>YT</strong>
-                <p>YouTube content shaped around retention, pacing, and cleaner storytelling.</p>
+                <span data-i18n="stats.focusLabel">Editing Focus</span>
+                <strong data-i18n="stats.focusValue">YT</strong>
+                <p data-i18n="stats.focusText">YouTube content shaped around retention, pacing, and cleaner storytelling.</p>
               </article>
               <article class="stat-card stat-card--drs reveal">
-                <span>Software</span>
-                <strong>DRS</strong>
-                <p>Built around DaVinci Resolve Studio for professional control in one pipeline.</p>
+                <span data-i18n="stats.softwareLabel">Software</span>
+                <strong data-i18n="stats.softwareValue">DRS</strong>
+                <p data-i18n="stats.softwareText">Built around DaVinci Resolve Studio for professional control in one pipeline.</p>
               </article>
               <article class="stat-card stat-card--fx reveal">
-                <span>Workflow</span>
-                <strong>FX</strong>
-                <p>Motion graphics, masking, sound design, and grading all working together.</p>
+                <span data-i18n="stats.workflowLabel">Workflow</span>
+                <strong data-i18n="stats.workflowValue">FX</strong>
+                <p data-i18n="stats.workflowText">Motion graphics, masking, sound design, and grading all working together.</p>
               </article>
               <article class="stat-card stat-card--fast reveal">
-                <span>Response</span>
-                <strong>Fast</strong>
-                <p>Quick communication and turnaround so creators can stay consistent.</p>
+                <span data-i18n="stats.responseLabel">Response</span>
+                <strong data-i18n="stats.responseValue">Fast</strong>
+                <p data-i18n="stats.responseText">Quick communication and turnaround so creators can stay consistent.</p>
               </article>
             </div>
           </div>
@@ -1676,10 +1905,10 @@
           <div class="container">
             <div class="section-heading reveal">
               <div>
-                <div class="eyebrow">Portfolio Frames</div>
-                <h2>Visual moments that support the brand and the work.</h2>
+                <div class="eyebrow" data-i18n="frames.eyebrow">Portfolio Frames</div>
+                <h2 data-i18n="frames.title">Visual moments that support the brand and the work.</h2>
               </div>
-              <p>
+              <p data-i18n="frames.copy">
                 This gallery adds breathing room between visuals, keeps the layout flexible,
                 and reinforces the polished feel of the portfolio.
               </p>
@@ -1690,6 +1919,7 @@
                 type="button"
                 class="media-photo reveal"
                 data-zoom-src="images/Screenshot (30).png"
+                data-i18n-aria-label="frames.photo1Label"
                 aria-label="Open portfolio frame 1"
                 style="background-image: url('images/Screenshot (30).png');"
               ></button>
@@ -1697,6 +1927,7 @@
                 type="button"
                 class="media-photo reveal"
                 data-zoom-src="images/Screenshot (541).png"
+                data-i18n-aria-label="frames.photo2Label"
                 aria-label="Open portfolio frame 2"
                 style="background-image: url('images/Screenshot (541).png');"
               ></button>
@@ -1704,6 +1935,7 @@
                 type="button"
                 class="media-photo reveal"
                 data-zoom-src="images/Screenshot (543).png"
+                data-i18n-aria-label="frames.photo3Label"
                 aria-label="Open portfolio frame 3"
                 style="background-image: url('images/Screenshot (543).png');"
               ></button>
@@ -1711,6 +1943,7 @@
                 type="button"
                 class="media-photo reveal"
                 data-zoom-src="images/Screenshot (848).png"
+                data-i18n-aria-label="frames.photo4Label"
                 aria-label="Open portfolio frame 4"
                 style="background-image: url('images/Screenshot (848).png');"
               ></button>
@@ -1722,10 +1955,10 @@
           <div class="container">
             <div class="section-heading reveal">
               <div>
-                <div class="eyebrow">My Skills</div>
-                <h2>Built for creators who need more than basic cuts.</h2>
+                <div class="eyebrow" data-i18n="skills.eyebrow">My Skills</div>
+                <h2 data-i18n="skills.title">Built for creators who need more than basic cuts.</h2>
               </div>
-              <p>
+              <p data-i18n="skills.copy">
                 The service offering is presented with clearer structure, stronger wording,
                 and enough detail for visitors to understand the editing value fast.
               </p>
@@ -1733,54 +1966,54 @@
 
             <div class="skills-grid">
               <article class="skill-card reveal">
-                <div class="skill-tag">Editing</div>
-                <h3>Storytelling and pacing</h3>
-                <p>
+                <div class="skill-tag" data-i18n="skills.card1Tag">Editing</div>
+                <h3 data-i18n="skills.card1Title">Storytelling and pacing</h3>
+                <p data-i18n="skills.card1Text">
                   Strong timing for reaction videos, gaming content, and personality-led
                   YouTube formats so the edit keeps moving without losing clarity.
                 </p>
               </article>
 
               <article class="skill-card reveal">
-                <div class="skill-tag">Fusion</div>
-                <h3>Motion graphics that add momentum</h3>
-                <p>
+                <div class="skill-tag" data-i18n="skills.card2Tag">Fusion</div>
+                <h3 data-i18n="skills.card2Title">Motion graphics that add momentum</h3>
+                <p data-i18n="skills.card2Text">
                   Animated titles, transitions, and custom visual effects built in Fusion
                   to make videos feel sharper and more memorable.
                 </p>
               </article>
 
               <article class="skill-card reveal">
-                <div class="skill-tag">Color</div>
-                <h3>Correction and grading</h3>
-                <p>
+                <div class="skill-tag" data-i18n="skills.card3Tag">Color</div>
+                <h3 data-i18n="skills.card3Title">Correction and grading</h3>
+                <p data-i18n="skills.card3Text">
                   Balanced, stylistically consistent color work that supports the mood of
                   the content instead of overpowering it.
                 </p>
               </article>
 
               <article class="skill-card reveal">
-                <div class="skill-tag">Masking</div>
-                <h3>Transitions and focus effects</h3>
-                <p>
+                <div class="skill-tag" data-i18n="skills.card4Tag">Masking</div>
+                <h3 data-i18n="skills.card4Title">Transitions and focus effects</h3>
+                <p data-i18n="skills.card4Text">
                   Clean masking for object isolation, custom transitions, and more
                   cinematic visual emphasis inside fast-moving edits.
                 </p>
               </article>
 
               <article class="skill-card reveal">
-                <div class="skill-tag">Audio</div>
-                <h3>Noise reduction and mix cleanup</h3>
-                <p>
+                <div class="skill-tag" data-i18n="skills.card5Tag">Audio</div>
+                <h3 data-i18n="skills.card5Title">Noise reduction and mix cleanup</h3>
+                <p data-i18n="skills.card5Text">
                   Dialogue cleanup, voice balancing, and music integration that help the
                   final video sound polished and easy to follow.
                 </p>
               </article>
 
               <article class="skill-card reveal">
-                <div class="skill-tag">Delivery</div>
-                <h3>Fast turnaround with attention to detail</h3>
-                <p>
+                <div class="skill-tag" data-i18n="skills.card6Tag">Delivery</div>
+                <h3 data-i18n="skills.card6Title">Fast turnaround with attention to detail</h3>
+                <p data-i18n="skills.card6Text">
                   High-quality edits delivered in around two to three days, depending on
                   scope, while keeping quality and communication steady.
                 </p>
@@ -1793,9 +2026,9 @@
           <div class="container">
             <div class="timeline-layout">
               <article class="timeline-card reveal">
-                <div class="eyebrow">Workflow</div>
-                <h3>How a project moves from raw footage to final upload</h3>
-                <p>
+                <div class="eyebrow" data-i18n="workflow.eyebrow">Workflow</div>
+                <h3 data-i18n="workflow.title">How a project moves from raw footage to final upload</h3>
+                <p data-i18n="workflow.copy">
                   A strong post-production process matters because the best edits are not
                   just flashy. They guide attention, reduce friction, and keep the viewer
                   engaged throughout the video.
@@ -1805,40 +2038,40 @@
                   <div class="timeline-step">
                     <div class="step-index">01</div>
                     <div>
-                      <h3>Structure the story</h3>
-                      <p>Find the best moments, tighten pacing, and shape the flow for YouTube viewing habits.</p>
+                      <h3 data-i18n="workflow.step1Title">Structure the story</h3>
+                      <p data-i18n="workflow.step1Text">Find the best moments, tighten pacing, and shape the flow for YouTube viewing habits.</p>
                     </div>
                   </div>
                   <div class="timeline-step">
                     <div class="step-index">02</div>
                     <div>
-                      <h3>Add motion and emphasis</h3>
-                      <p>Use text, transitions, and effects where they improve energy and understanding.</p>
+                      <h3 data-i18n="workflow.step2Title">Add motion and emphasis</h3>
+                      <p data-i18n="workflow.step2Text">Use text, transitions, and effects where they improve energy and understanding.</p>
                     </div>
                   </div>
                   <div class="timeline-step">
                     <div class="step-index">03</div>
                     <div>
-                      <h3>Polish picture and sound</h3>
-                      <p>Balance audio, clean noise, and finish the grade so the whole video feels complete.</p>
+                      <h3 data-i18n="workflow.step3Title">Polish picture and sound</h3>
+                      <p data-i18n="workflow.step3Text">Balance audio, clean noise, and finish the grade so the whole video feels complete.</p>
                     </div>
                   </div>
                 </div>
               </article>
 
               <article class="timeline-card reveal">
-                <div class="eyebrow">Why It Matters</div>
-                <h3>Better editing creates a better channel experience.</h3>
-                <p>
+                <div class="eyebrow" data-i18n="impact.eyebrow">Why It Matters</div>
+                <h3 data-i18n="impact.title">Better editing creates a better channel experience.</h3>
+                <p data-i18n="impact.copy">
                   Strong editing improves retention, sharpens the creator's brand, and helps
                   each upload feel more complete from the first click to the final second.
                 </p>
 
                 <div class="highlight-list">
-                  <span>Boost watch time and retention with cleaner pacing and stronger hooks.</span>
-                  <span>Stand out visually through motion graphics, cohesive grading, and sharp transitions.</span>
-                  <span>Save time as a creator by handing off the post-production process.</span>
-                  <span>Publish content that feels more professional, shareable, and brand-consistent.</span>
+                  <span data-i18n="impact.point1">Boost watch time and retention with cleaner pacing and stronger hooks.</span>
+                  <span data-i18n="impact.point2">Stand out visually through motion graphics, cohesive grading, and sharp transitions.</span>
+                  <span data-i18n="impact.point3">Save time as a creator by handing off the post-production process.</span>
+                  <span data-i18n="impact.point4">Publish content that feels more professional, shareable, and brand-consistent.</span>
                 </div>
               </article>
             </div>
@@ -1849,10 +2082,10 @@
           <div class="container">
             <div class="section-heading reveal">
               <div>
-                <div class="eyebrow">Highlights</div>
-                <h2>What the service is designed to improve.</h2>
+                <div class="eyebrow" data-i18n="highlights.eyebrow">Highlights</div>
+                <h2 data-i18n="highlights.title">What the service is designed to improve.</h2>
               </div>
-              <p>
+              <p data-i18n="highlights.copy">
                 This is the part that sells the outcome: not just editing features, but the
                 channel impact those features create for the client.
               </p>
@@ -1860,30 +2093,30 @@
 
             <div class="highlights-grid">
               <article class="highlight-card reveal">
-                <div class="highlight-label">Project Highlights</div>
-                <h3>Editing that matches format and audience</h3>
-                <p>
+                <div class="highlight-label" data-i18n="highlights.card1Label">Project Highlights</div>
+                <h3 data-i18n="highlights.card1Title">Editing that matches format and audience</h3>
+                <p data-i18n="highlights.card1Text">
                   From reaction videos to gaming content, each project is cut to fit the
                   creator's tone while staying visually engaging and easy to watch.
                 </p>
                 <div class="highlight-list">
-                  <span>Custom pacing for different YouTube niches</span>
-                  <span>Fusion graphics and animated text</span>
-                  <span>Masking-based cinematic transitions</span>
+                  <span data-i18n="highlights.card1Point1">Custom pacing for different YouTube niches</span>
+                  <span data-i18n="highlights.card1Point2">Fusion graphics and animated text</span>
+                  <span data-i18n="highlights.card1Point3">Masking-based cinematic transitions</span>
                 </div>
               </article>
 
               <article class="highlight-card reveal">
-                <div class="highlight-label">Final Outcome</div>
-                <h3>Finished videos that feel complete and polished</h3>
-                <p>
+                <div class="highlight-label" data-i18n="highlights.card2Label">Final Outcome</div>
+                <h3 data-i18n="highlights.card2Title">Finished videos that feel complete and polished</h3>
+                <p data-i18n="highlights.card2Text">
                   Audio cleanup, color finishing, and sharper storytelling all work toward a
                   simple goal: content that looks professional and keeps people watching.
                 </p>
                 <div class="highlight-list">
-                  <span>Cleaner audio with stronger voice clarity</span>
-                  <span>Color correction and grading for consistency</span>
-                  <span>Edits shaped around retention and repeat viewing</span>
+                  <span data-i18n="highlights.card2Point1">Cleaner audio with stronger voice clarity</span>
+                  <span data-i18n="highlights.card2Point2">Color correction and grading for consistency</span>
+                  <span data-i18n="highlights.card2Point3">Edits shaped around retention and repeat viewing</span>
                 </div>
               </article>
             </div>
@@ -1894,9 +2127,9 @@
           <div class="container">
             <div class="contact-grid">
               <article class="contact-card reveal">
-                <div class="eyebrow">Contact</div>
-                <h3>Let's create something strong together.</h3>
-                <p>
+                <div class="eyebrow" data-i18n="contact.eyebrow">Contact</div>
+                <h3 data-i18n="contact.title">Let's create something strong together.</h3>
+                <p data-i18n="contact.copy">
                   Whether you need fast-paced YouTube edits, cinematic storytelling, or a
                   cleaner sound and color finish, this page makes the service easy to
                   understand and the next step easy to take.
@@ -1905,24 +2138,24 @@
                 <div class="contact-list">
                   <div class="contact-row">
                     <div>
-                      <strong>Location</strong>
-                      <span>Cairo, Egypt</span>
+                      <strong data-i18n="contact.locationLabel">Location</strong>
+                      <span data-i18n="contact.locationText">Cairo, Egypt</span>
                     </div>
-                    <span>Working remotely worldwide</span>
+                    <span data-i18n="contact.locationValue">Working remotely worldwide</span>
                   </div>
 
                   <div class="contact-row">
                     <div>
-                      <strong>Languages</strong>
-                      <span>Arabic and English</span>
+                      <strong data-i18n="contact.languagesLabel">Languages</strong>
+                      <span data-i18n="contact.languagesText">Arabic and English</span>
                     </div>
-                    <span>Fast communication</span>
+                    <span data-i18n="contact.languagesValue">Fast communication</span>
                   </div>
 
                   <div class="contact-row">
                     <div>
-                      <strong>WhatsApp</strong>
-                      <span>Preferred for project inquiries</span>
+                      <strong data-i18n="contact.whatsappLabel">WhatsApp</strong>
+                      <span data-i18n="contact.whatsappText">Preferred for project inquiries</span>
                     </div>
                     <a class="contact-value social-link" href="https://wa.me/201055745967" target="_blank" rel="noreferrer">
                       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1934,22 +2167,22 @@
 
                   <div class="contact-row">
                     <div>
-                      <strong>Email</strong>
-                      <span>Direct project communication</span>
+                      <strong data-i18n="contact.emailLabel">Email</strong>
+                      <span data-i18n="contact.emailText">Direct project communication</span>
                     </div>
                     <a href="mailto:2005n4ruto999@gmail.com">2005n4ruto999@gmail.com</a>
                   </div>
 
                   <div class="contact-row">
                     <div>
-                      <strong>Instagram</strong>
-                      <span>Recent updates and profile access</span>
+                      <strong data-i18n="contact.instagramLabel">Instagram</strong>
+                      <span data-i18n="contact.instagramText">Recent updates and profile access</span>
                     </div>
                     <a class="contact-value social-link" href="https://instagram.com/ibr4him_libya" target="_blank" rel="noreferrer">
                       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.93 1.35a1.07 1.07 0 1 1 0 2.14a1.07 1.07 0 0 1 0-2.14ZM12 6.85A5.15 5.15 0 1 1 6.85 12A5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12A3.35 3.35 0 0 0 12 8.65Z"/>
                       </svg>
-                      Open Instagram
+                      <span data-i18n="contact.instagramValue">Open Instagram</span>
                     </a>
                   </div>
                 </div>
@@ -1957,35 +2190,35 @@
 
               <div class="reveal">
                 <article class="contact-card">
-                  <div class="eyebrow">Availability</div>
+                  <div class="eyebrow" data-i18n="availability.eyebrow">Availability</div>
                   <div class="availability">
                     <div class="availability-card">
-                      <strong>Freelance editing projects</strong>
-                      <p>For creators who want a reliable editor handling the full post-production flow.</p>
+                      <strong data-i18n="availability.item1Title">Freelance editing projects</strong>
+                      <p data-i18n="availability.item1Text">For creators who want a reliable editor handling the full post-production flow.</p>
                     </div>
                     <div class="availability-card">
-                      <strong>YouTube collaborations</strong>
-                      <p>For channels that need a consistent editing style across recurring uploads.</p>
+                      <strong data-i18n="availability.item2Title">YouTube collaborations</strong>
+                      <p data-i18n="availability.item2Text">For channels that need a consistent editing style across recurring uploads.</p>
                     </div>
                     <div class="availability-card">
-                      <strong>Post-production support</strong>
-                      <p>Color grading, sound cleanup, motion graphics, and overall visual polish.</p>
+                      <strong data-i18n="availability.item3Title">Post-production support</strong>
+                      <p data-i18n="availability.item3Text">Color grading, sound cleanup, motion graphics, and overall visual polish.</p>
                     </div>
                   </div>
                 </article>
 
                 <article class="cta-panel">
-                  <div class="eyebrow">Ready When You Are</div>
-                  <h2>Turn raw footage into videos people finish.</h2>
-                  <p>
+                  <div class="eyebrow" data-i18n="cta.eyebrow">Ready When You Are</div>
+                  <h2 data-i18n="cta.title">Turn raw footage into videos people finish.</h2>
+                  <p data-i18n="cta.copy">
                     The page is designed to feel polished, professional, and easy to trust,
                     with enough personality to stand out while keeping the focus on the work.
                   </p>
                   <div class="cta-actions">
-                    <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer">
+                    <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer" data-i18n="actions.whatsapp">
                       Message on WhatsApp
                     </a>
-                    <a class="button-secondary" href="#home">Back to Top</a>
+                    <a class="button-secondary" href="#home" data-i18n="actions.backTop">Back to Top</a>
                   </div>
                 </article>
               </div>
@@ -1997,8 +2230,8 @@
       <footer class="footer">
         <div class="container">
           <div class="footer-inner">
-            <span>LEB for Video Editing</span>
-            <span>Portfolio page for client-facing use</span>
+            <span data-i18n="footer.name">LEB for Video Editing</span>
+            <span data-i18n="footer.copy">Portfolio page for client-facing use</span>
           </div>
         </div>
       </footer>
@@ -2007,8 +2240,8 @@
     <div class="video-modal" id="video-modal" aria-hidden="true">
       <div class="video-modal-dialog">
         <div class="video-modal-top">
-          <strong id="video-modal-title">Video Preview</strong>
-          <button class="close-modal" type="button" id="close-video-modal" aria-label="Close video">
+          <strong id="video-modal-title" data-i18n="modal.videoTitle">Video Preview</strong>
+          <button class="close-modal" type="button" id="close-video-modal" data-i18n-aria-label="aria.closeVideo" aria-label="Close video">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29l-1.42 1.42L10.59 13.4L4.29 19.7L2.88 18.29L9.17 12L2.88 5.71L4.29 4.29l6.3 6.3l6.29-6.3z"/>
             </svg>
@@ -2027,7 +2260,7 @@
 
     <div class="image-modal" id="image-modal" aria-hidden="true">
       <div class="image-modal-dialog">
-        <button class="close-modal image-modal-close" type="button" id="close-image-modal" aria-label="Close image preview">
+        <button class="close-modal image-modal-close" type="button" id="close-image-modal" data-i18n-aria-label="aria.closeImage" aria-label="Close image preview">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29l-1.42 1.42L10.59 13.4L4.29 19.7L2.88 18.29L9.17 12L2.88 5.71L4.29 4.29l6.3 6.3l6.29-6.3z"/>
           </svg>
@@ -2036,12 +2269,20 @@
       </div>
     </div>
 
-    <script>
+    <script src="portfolio.js"></script>
+    <script type="text/plain" data-disabled-legacy-script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en", includedLanguages: "en,ar" },
+          "google_translate_element"
+        );
+      }
+
       const root = document.body;
       const navLinks = document.querySelectorAll(".nav a");
       const observedSections = document.querySelectorAll("main section[id]");
       const revealItems = document.querySelectorAll(".reveal");
-      const themeToggle = document.getElementById("theme-toggle");
+      const translateButton = document.getElementById("translate-button");
       const videoModal = document.getElementById("video-modal");
       const videoModalFrame = document.getElementById("video-modal-frame");
       const videoModalTitle = document.getElementById("video-modal-title");
@@ -2052,25 +2293,25 @@
       const videoTriggers = document.querySelectorAll("[data-video-id]");
       const zoomablePhotos = document.querySelectorAll("[data-zoom-src]");
 
-      const storedTheme = localStorage.getItem("leb-theme");
-      if (storedTheme) {
-        root.dataset.theme = storedTheme;
-      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        root.dataset.theme = "dark";
-      }
+      let isArabic = false;
 
-      function syncThemeLabel() {
-        const isDark = root.dataset.theme === "dark";
-        themeToggle.querySelector("span").textContent = isDark ? "Light Mode" : "Dark Mode";
-      }
-
-      syncThemeLabel();
-
-      themeToggle.addEventListener("click", () => {
-        const isDark = root.dataset.theme === "dark";
-        root.dataset.theme = isDark ? "light" : "dark";
-        localStorage.setItem("leb-theme", root.dataset.theme);
-        syncThemeLabel();
+      translateButton.addEventListener("click", () => {
+        isArabic = !isArabic;
+        if (isArabic) {
+          const googleTranslateElement = document.querySelector(".goog-te-combo");
+          if (googleTranslateElement) {
+            googleTranslateElement.value = "ar";
+            googleTranslateElement.dispatchEvent(new Event("change"));
+          }
+          translateButton.querySelector("span").textContent = "English";
+        } else {
+          const googleTranslateElement = document.querySelector(".goog-te-combo");
+          if (googleTranslateElement) {
+            googleTranslateElement.value = "en";
+            googleTranslateElement.dispatchEvent(new Event("change"));
+          }
+          translateButton.querySelector("span").textContent = "العربية";
+        }
       });
 
       function syncModalLock() {
