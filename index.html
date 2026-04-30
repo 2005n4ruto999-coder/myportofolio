@@ -1005,17 +1005,21 @@
       }
 
       .short-media {
+        display: block;
         overflow: hidden;
         border-radius: 22px;
         border: 1px solid rgba(112, 170, 222, 0.18);
         background: rgba(7, 19, 29, 0.88);
       }
 
-      .short-frame {
-        width: 100%;
+      .short-preview {
+        min-height: 0;
         aspect-ratio: 9 / 16;
-        border: 0;
-        display: block;
+        padding: 18px;
+      }
+
+      .short-preview .video-preview-copy {
+        min-height: 100%;
       }
 
       .short-copy {
@@ -1934,17 +1938,20 @@
 
             <div class="shorts-grid">
               <article class="short-card reveal">
-                <div class="short-media">
-                  <iframe
-                    class="short-frame"
-                    src="https://www.youtube-nocookie.com/embed/XKlFe4DwkMc?rel=0"
-                    title="YouTube short sample 1"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    loading="lazy"
-                    allowfullscreen
-                  ></iframe>
-                </div>
+                <a class="short-media" href="https://youtube.com/shorts/XKlFe4DwkMc?si=Qg5gZfiKQ2HJd_BA" target="_blank" rel="noreferrer" aria-label="Open YouTube short sample 1">
+                  <div
+                    class="video-preview short-preview"
+                    style="background-image: url('https://i.ytimg.com/vi/XKlFe4DwkMc/hqdefault.jpg');"
+                  >
+                    <div class="video-preview-copy">
+                      <div class="play-badge" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24">
+                          <path fill="currentColor" d="M8 5.14v13.72A1 1 0 0 0 9.5 19.7l10.28-6.86a1 1 0 0 0 0-1.68L9.5 4.3A1 1 0 0 0 8 5.14Z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
                 <div class="short-copy">
                   <strong data-i18n="shorts.card1Title">Short sample 01</strong>
                   <p data-i18n="shorts.card1Text">
@@ -1957,17 +1964,20 @@
               </article>
 
               <article class="short-card reveal">
-                <div class="short-media">
-                  <iframe
-                    class="short-frame"
-                    src="https://www.youtube-nocookie.com/embed/S4ELfEkozTE?rel=0"
-                    title="YouTube short sample 2"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    loading="lazy"
-                    allowfullscreen
-                  ></iframe>
-                </div>
+                <a class="short-media" href="https://youtube.com/shorts/S4ELfEkozTE?si=9KmVd11g2kN26_Wo" target="_blank" rel="noreferrer" aria-label="Open YouTube short sample 2">
+                  <div
+                    class="video-preview short-preview"
+                    style="background-image: url('https://i.ytimg.com/vi/S4ELfEkozTE/hqdefault.jpg');"
+                  >
+                    <div class="video-preview-copy">
+                      <div class="play-badge" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24">
+                          <path fill="currentColor" d="M8 5.14v13.72A1 1 0 0 0 9.5 19.7l10.28-6.86a1 1 0 0 0 0-1.68L9.5 4.3A1 1 0 0 0 8 5.14Z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
                 <div class="short-copy">
                   <strong data-i18n="shorts.card2Title">Short sample 02</strong>
                   <p data-i18n="shorts.card2Text">
@@ -1980,17 +1990,20 @@
               </article>
 
               <article class="short-card reveal">
-                <div class="short-media">
-                  <iframe
-                    class="short-frame"
-                    src="https://www.youtube-nocookie.com/embed/HTfICUpeAUA?rel=0"
-                    title="YouTube short sample 3"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    loading="lazy"
-                    allowfullscreen
-                  ></iframe>
-                </div>
+                <a class="short-media" href="https://youtube.com/shorts/HTfICUpeAUA?feature=share" target="_blank" rel="noreferrer" aria-label="Open YouTube short sample 3">
+                  <div
+                    class="video-preview short-preview"
+                    style="background-image: url('https://i.ytimg.com/vi/HTfICUpeAUA/hqdefault.jpg');"
+                  >
+                    <div class="video-preview-copy">
+                      <div class="play-badge" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24">
+                          <path fill="currentColor" d="M8 5.14v13.72A1 1 0 0 0 9.5 19.7l10.28-6.86a1 1 0 0 0 0-1.68L9.5 4.3A1 1 0 0 0 8 5.14Z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
                 <div class="short-copy">
                   <strong data-i18n="shorts.card3Title">Short sample 03</strong>
                   <p data-i18n="shorts.card3Text">
