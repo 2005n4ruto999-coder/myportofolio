@@ -982,10 +982,60 @@
       }
 
       .skills-grid,
+      .shorts-grid,
       .highlights-grid,
       .contact-grid {
         display: grid;
         gap: 18px;
+      }
+
+      .shorts-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .short-card {
+        display: grid;
+        gap: 16px;
+        align-content: start;
+        padding: 18px;
+        border-radius: 26px;
+        border: 1px solid var(--deep-surface-border);
+        background: var(--deep-surface-bg);
+        box-shadow: var(--deep-surface-shadow);
+      }
+
+      .short-media {
+        overflow: hidden;
+        border-radius: 22px;
+        border: 1px solid rgba(112, 170, 222, 0.18);
+        background: rgba(7, 19, 29, 0.88);
+      }
+
+      .short-frame {
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        border: 0;
+        display: block;
+      }
+
+      .short-copy {
+        display: grid;
+        gap: 8px;
+      }
+
+      .short-copy strong {
+        color: var(--subrect-title);
+        font-size: 1.06rem;
+      }
+
+      .short-copy p {
+        margin: 0;
+        color: var(--subrect-copy);
+        line-height: 1.7;
+      }
+
+      .short-card .button-secondary {
+        width: 100%;
       }
 
       .skills-grid {
@@ -1497,6 +1547,10 @@
         .skills-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
+        .shorts-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
 
       @media (max-width: 860px) {
@@ -1585,6 +1639,7 @@
         .hero-meta,
         .edit-bottom,
         .skills-grid,
+        .shorts-grid,
         .highlights-grid,
         .gallery-strip,
         .video-grid,
@@ -1674,6 +1729,7 @@
             <div class="topbar-menu" id="topbar-menu">
               <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
                 <a href="#home" class="active" data-i18n="nav.home">Home</a>
+                <a href="#shorts" data-i18n="nav.shorts">Shorts</a>
                 <a href="#skills" data-i18n="nav.skills">Skills</a>
                 <a href="#highlights" data-i18n="nav.highlights">Highlights</a>
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -1859,6 +1915,92 @@
                   </div>
                 </div>
               </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="shorts">
+          <div class="container">
+            <div class="section-heading reveal">
+              <div>
+                <div class="eyebrow" data-i18n="shorts.eyebrow">YouTube Shorts</div>
+                <h2 data-i18n="shorts.title">Quick vertical edits that show the style fast.</h2>
+              </div>
+              <p data-i18n="shorts.copy">
+                These short-form samples give visitors a fast look at pacing, hooks,
+                captions, and overall polish in a mobile-first format.
+              </p>
+            </div>
+
+            <div class="shorts-grid">
+              <article class="short-card reveal">
+                <div class="short-media">
+                  <iframe
+                    class="short-frame"
+                    src="https://www.youtube-nocookie.com/embed/XKlFe4DwkMc?rel=0"
+                    title="YouTube short sample 1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="short-copy">
+                  <strong data-i18n="shorts.card1Title">Short sample 01</strong>
+                  <p data-i18n="shorts.card1Text">
+                    A fast vertical example focused on hook timing, movement, and clean presentation.
+                  </p>
+                </div>
+                <a class="button-secondary" href="https://youtube.com/shorts/XKlFe4DwkMc?si=Qg5gZfiKQ2HJd_BA" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
+                  Open on YouTube
+                </a>
+              </article>
+
+              <article class="short-card reveal">
+                <div class="short-media">
+                  <iframe
+                    class="short-frame"
+                    src="https://www.youtube-nocookie.com/embed/S4ELfEkozTE?rel=0"
+                    title="YouTube short sample 2"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="short-copy">
+                  <strong data-i18n="shorts.card2Title">Short sample 02</strong>
+                  <p data-i18n="shorts.card2Text">
+                    Another short-form cut showing clear rhythm, quick emphasis, and strong readability.
+                  </p>
+                </div>
+                <a class="button-secondary" href="https://youtube.com/shorts/S4ELfEkozTE?si=9KmVd11g2kN26_Wo" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
+                  Open on YouTube
+                </a>
+              </article>
+
+              <article class="short-card reveal">
+                <div class="short-media">
+                  <iframe
+                    class="short-frame"
+                    src="https://www.youtube-nocookie.com/embed/HTfICUpeAUA?rel=0"
+                    title="YouTube short sample 3"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="short-copy">
+                  <strong data-i18n="shorts.card3Title">Short sample 03</strong>
+                  <p data-i18n="shorts.card3Text">
+                    A final vertical sample that highlights pacing, subtitle flow, and polished finish.
+                  </p>
+                </div>
+                <a class="button-secondary" href="https://youtube.com/shorts/HTfICUpeAUA?feature=share" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
+                  Open on YouTube
+                </a>
+              </article>
             </div>
           </div>
         </section>

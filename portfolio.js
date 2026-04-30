@@ -13,6 +13,7 @@ const translations = {
     "brand.name": "LEB for Video Editing",
     "brand.tagline": "YouTube-focused post-production",
     "nav.home": "Home",
+    "nav.shorts": "Shorts",
     "nav.skills": "Skills",
     "nav.highlights": "Highlights",
     "nav.contact": "Contact",
@@ -81,6 +82,19 @@ const translations = {
     "frames.photo3Label": "Open portfolio frame 3",
     "frames.photo4Label": "Open portfolio frame 4",
     "frames.imageAltFallback": "Portfolio frame preview",
+    "shorts.eyebrow": "YouTube Shorts",
+    "shorts.title": "Quick vertical edits that show the style fast.",
+    "shorts.copy":
+      "These short-form samples give visitors a fast look at pacing, hooks, captions, and overall polish in a mobile-first format.",
+    "shorts.card1Title": "Short sample 01",
+    "shorts.card1Text":
+      "A fast vertical example focused on hook timing, movement, and clean presentation.",
+    "shorts.card2Title": "Short sample 02",
+    "shorts.card2Text":
+      "Another short-form cut showing clear rhythm, quick emphasis, and strong readability.",
+    "shorts.card3Title": "Short sample 03",
+    "shorts.card3Text":
+      "A final vertical sample that highlights pacing, subtitle flow, and polished finish.",
     "skills.eyebrow": "My Skills",
     "skills.title": "Built for creators who need more than basic cuts.",
     "skills.copy":
@@ -346,6 +360,24 @@ const translations = {
 translations.ar["actions.seeWorkStyle"] =
   "\u0634\u0627\u0647\u062f \u0623\u0633\u0644\u0648\u0628 \u0627\u0644\u0639\u0645\u0644";
 translations.ar["actions.bookEdit"] = "\u0627\u062d\u062c\u0632 \u062e\u062f\u0645\u0629";
+translations.ar["nav.shorts"] = "\u0634\u0648\u0631\u062a\u0633";
+translations.ar["shorts.eyebrow"] = "\u064a\u0648\u062a\u064a\u0648\u0628 \u0634\u0648\u0631\u062a\u0633";
+translations.ar["shorts.title"] =
+  "\u0644\u0642\u0637\u0627\u062a \u0639\u0645\u0648\u062f\u064a\u0629 \u0633\u0631\u064a\u0639\u0629 \u062a\u0638\u0647\u0631 \u0623\u0633\u0644\u0648\u0628 \u0627\u0644\u0645\u0648\u0646\u062a\u0627\u062c \u0645\u0646 \u0623\u0648\u0644 \u062b\u0627\u0646\u064a\u0629.";
+translations.ar["shorts.copy"] =
+  "\u0647\u0630\u0647 \u0627\u0644\u0623\u0645\u062b\u0644\u0629 \u0627\u0644\u0642\u0635\u064a\u0631\u0629 \u062a\u0639\u0637\u064a \u0627\u0644\u0632\u0627\u0626\u0631 \u0646\u0638\u0631\u0629 \u0633\u0631\u064a\u0639\u0629 \u0639\u0644\u0649 \u0627\u0644\u0625\u064a\u0642\u0627\u0639 \u0648\u0627\u0644\u0647\u0648\u0643\u0627\u062a \u0648\u0627\u0644\u0643\u0627\u0628\u0634\u0646\u0632 \u0648\u0644\u0645\u0633\u0629 \u0627\u0644\u062a\u0644\u0645\u064a\u0639 \u062f\u0627\u062e\u0644 \u062a\u0646\u0633\u064a\u0642 \u0645\u0646\u0627\u0633\u0628 \u0644\u0644\u0645\u0648\u0628\u0627\u064a\u0644.";
+translations.ar["shorts.card1Title"] =
+  "\u0646\u0645\u0648\u0630\u062c \u0642\u0635\u064a\u0631 01";
+translations.ar["shorts.card1Text"] =
+  "\u0645\u062b\u0627\u0644 \u0639\u0645\u0648\u062f\u064a \u0633\u0631\u064a\u0639 \u064a\u0631\u0643\u0632 \u0639\u0644\u0649 \u0642\u0648\u0629 \u0627\u0644\u0628\u062f\u0627\u064a\u0629 \u0648\u0627\u0644\u062d\u0631\u0643\u0629 \u0648\u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0646\u0638\u064a\u0641.";
+translations.ar["shorts.card2Title"] =
+  "\u0646\u0645\u0648\u0630\u062c \u0642\u0635\u064a\u0631 02";
+translations.ar["shorts.card2Text"] =
+  "\u0645\u0642\u0637\u0639 \u0642\u0635\u064a\u0631 \u0622\u062e\u0631 \u064a\u0638\u0647\u0631 \u0625\u064a\u0642\u0627\u0639\u064b\u0627 \u0648\u0627\u0636\u062d\u064b\u0627 \u0648\u062a\u0623\u0643\u064a\u062f\u064b\u0627 \u0633\u0631\u064a\u0639\u064b\u0627 \u0648\u0642\u0631\u0627\u0621\u0629 \u0633\u0647\u0644\u0629.";
+translations.ar["shorts.card3Title"] =
+  "\u0646\u0645\u0648\u0630\u062c \u0642\u0635\u064a\u0631 03";
+translations.ar["shorts.card3Text"] =
+  "\u0646\u0645\u0648\u0630\u062c \u0639\u0645\u0648\u062f\u064a \u0623\u062e\u064a\u0631 \u064a\u0628\u0631\u0632 \u0627\u0644\u0625\u064a\u0642\u0627\u0639 \u0648\u062a\u062f\u0641\u0642 \u0627\u0644\u062a\u0631\u062c\u0645\u0627\u062a \u0648\u0627\u0644\u0644\u0645\u0633\u0629 \u0627\u0644\u0645\u0635\u0642\u0648\u0644\u0629.";
 
 const html = document.documentElement;
 const root = document.body;
