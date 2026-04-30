@@ -28,7 +28,7 @@ const translations = {
     "hero.eyebrow": "Professional Video Editor",
     "hero.title": "Editing built for attention.",
     "hero.copy1":
-      "Hi, I'm Ibrahim Omar. I help YouTube creators turn raw footage into polished, audience-retaining videos with strong pacing, cinematic transitions, clean sound, and color that feels intentional from the first frame to the last.",
+      "Hi, I'm Ibrahim Omar. I help YouTube creators, brands, and media teams turn raw footage into polished videos that hold attention, strengthen the message, and feel intentional from the first frame to the last through sharp pacing, cinematic transitions, clean audio, and refined color.",
     "hero.copy2":
       "I work in DaVinci Resolve Studio and focus on edits that feel dynamic, smooth, and visually clear whether the content is reaction-based, gaming-heavy, or built around storytelling.",
     "hero.meta1Value": "4+ years",
@@ -212,7 +212,7 @@ const translations = {
     "hero.eyebrow": "مونتير فيديو محترف",
     "hero.title": "مونتاج مصمم لخطف الانتباه.",
     "hero.copy1":
-      "مرحبًا، أنا إبراهيم عمر. أساعد صناع المحتوى على يوتيوب في تحويل اللقطات الخام إلى فيديوهات مصقولة تحافظ على انتباه المشاهد، بإيقاع قوي، وانتقالات سينمائية، وصوت نظيف، وألوان مقصودة من أول ثانية إلى آخر لقطة.",
+      "??????? ??? ??????? ???. ????? ???? ??????? ??? ??????? ????????? ????????? ?????? ????????? ??? ????? ??????? ????? ??? ???????? ?????? ???? ????????? ????? ???????? ????? ?????? ?? ??? ???? ??? ????? ?? ???? ????? ???? ????????? ????????? ???? ????? ?????? ?????.",
     "hero.copy2":
       "أعمل على DaVinci Resolve Studio، وأركز على مونتاج ديناميكي وسلس وواضح بصريًا، سواء كان المحتوى تفاعليًا، أو قائمًا على الألعاب، أو مبنيًا على السرد.",
     "hero.meta1Value": "4+ سنوات",
@@ -360,6 +360,8 @@ const translations = {
 translations.ar["actions.seeWorkStyle"] =
   "\u0634\u0627\u0647\u062f \u0623\u0633\u0644\u0648\u0628 \u0627\u0644\u0639\u0645\u0644";
 translations.ar["actions.bookEdit"] = "\u0627\u062d\u062c\u0632 \u062e\u062f\u0645\u0629";
+translations.ar["hero.copy1"] =
+  "\u0645\u0631\u062D\u0628\u0627\u060C \u0623\u0646\u0627 \u0625\u0628\u0631\u0627\u0647\u064A\u0645 \u0639\u0645\u0631. \u0623\u0633\u0627\u0639\u062F \u0635\u0646\u0627\u0639 \u0627\u0644\u0645\u062D\u062A\u0648\u0649 \u0639\u0644\u0649 \u064A\u0648\u062A\u064A\u0648\u0628\u060C \u0648\u0627\u0644\u0639\u0644\u0627\u0645\u0627\u062A \u0627\u0644\u062A\u062C\u0627\u0631\u064A\u0629\u060C \u0648\u0627\u0644\u0641\u0631\u0642 \u0627\u0644\u0625\u0639\u0644\u0627\u0645\u064A\u0629 \u0639\u0644\u0649 \u062A\u062D\u0648\u064A\u0644 \u0627\u0644\u0644\u0642\u0637\u0627\u062A \u0627\u0644\u062E\u0627\u0645 \u0625\u0644\u0649 \u0641\u064A\u062F\u064A\u0648\u0647\u0627\u062A \u0645\u0635\u0642\u0648\u0644\u0629 \u062A\u062C\u0630\u0628 \u0627\u0644\u0627\u0646\u062A\u0628\u0627\u0647\u060C \u0648\u062A\u0639\u0632\u0632 \u0627\u0644\u0631\u0633\u0627\u0644\u0629\u060C \u0648\u062A\u0628\u062F\u0648 \u0645\u062F\u0631\u0648\u0633\u0629 \u0645\u0646 \u0623\u0648\u0644 \u0625\u0637\u0627\u0631 \u0625\u0644\u0649 \u0622\u062E\u0631\u0647\u060C \u0645\u0646 \u062E\u0644\u0627\u0644 \u0625\u064A\u0642\u0627\u0639 \u0642\u0648\u064A\u060C \u0648\u0627\u0646\u062A\u0642\u0627\u0644\u0627\u062A \u0633\u064A\u0646\u0645\u0627\u0626\u064A\u0629\u060C \u0648\u0635\u0648\u062A \u0646\u0638\u064A\u0641\u060C \u0648\u0623\u0644\u0648\u0627\u0646 \u0645\u062A\u0642\u0646\u0629.";
 translations.ar["nav.shorts"] = "\u0634\u0648\u0631\u062a\u0633";
 translations.ar["shorts.eyebrow"] = "\u064a\u0648\u062a\u064a\u0648\u0628 \u0634\u0648\u0631\u062a\u0633";
 translations.ar["shorts.title"] =
