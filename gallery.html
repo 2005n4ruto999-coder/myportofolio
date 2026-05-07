@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Video Gallery | LEB for Video Editing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="gallery.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="container topbar-inner">
+          <a class="brand" href="index.html" aria-label="Back to portfolio home">
+            <span class="brand-mark">LEB</span>
+            <span class="brand-copy">
+              <strong>LEB for Video Editing</strong>
+              <span>Short-form and long-form gallery</span>
+            </span>
+          </a>
+
+          <nav class="page-nav" aria-label="Gallery sections">
+            <a href="#overview">Overview</a>
+            <a href="#short-form">Short-form</a>
+            <a href="#long-form">Long-form</a>
+            <a href="#add-video">Add Video</a>
+          </nav>
+
+          <div class="topbar-actions">
+            <a class="button-secondary" href="index.html">Back to Portfolio</a>
+            <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer">
+              Start a Project
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="overview">
+          <div class="container hero-grid">
+            <article class="hero-copy panel">
+              <div class="eyebrow">Curated Work Library</div>
+              <h1>One page for short-form hits and long-form project work.</h1>
+              <p>
+                This gallery is built so new links can be added quickly without rebuilding the
+                layout. YouTube samples can open in-page, and LinkedIn project posts are grouped
+                cleanly as portfolio cards.
+              </p>
+
+              <div class="hero-actions">
+                <a class="button" href="#short-form">Browse Short-form</a>
+                <a class="button-secondary" href="#long-form">Browse Long-form</a>
+              </div>
+
+              <div class="stat-grid">
+                <article class="stat-card">
+                  <span>Total Samples</span>
+                  <strong id="total-count">0</strong>
+                  <p>All seeded projects currently loaded into the gallery.</p>
+                </article>
+                <article class="stat-card">
+                  <span>Short-form</span>
+                  <strong id="short-count">0</strong>
+                  <p>Vertical edits and fast pacing samples with quick previews.</p>
+                </article>
+                <article class="stat-card">
+                  <span>Long-form</span>
+                  <strong id="long-count">0</strong>
+                  <p>Project-focused work collected from your featured LinkedIn posts.</p>
+                </article>
+              </div>
+            </article>
+
+            <aside class="hero-visual panel">
+              <div class="hero-visual-frame">
+                <img
+                  src="images/Screenshot (853).png"
+                  alt="DaVinci Resolve Studio workspace"
+                />
+              </div>
+
+              <div class="hero-visual-copy">
+                <strong>Built for easy updates</strong>
+                <p>
+                  New videos are rendered from one data list, so adding more work later stays
+                  fast and tidy.
+                </p>
+              </div>
+
+              <div class="signal-list">
+                <div class="signal-card">
+                  <span>Preview-ready</span>
+                  <strong>YouTube Shorts</strong>
+                </div>
+                <div class="signal-card">
+                  <span>Portfolio links</span>
+                  <strong>LinkedIn Projects</strong>
+                </div>
+                <div class="signal-card">
+                  <span>Update path</span>
+                  <strong>One JS list</strong>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" id="short-form">
+          <div class="container">
+            <div class="section-header">
+              <div>
+                <div class="eyebrow">Short-form Videos</div>
+                <h2>Fast vertical edits with quick pacing and clean hooks.</h2>
+              </div>
+              <p>
+                These are the mobile-first samples. Each one can preview directly inside the page
+                and still link out to the original platform.
+              </p>
+            </div>
+
+            <div class="video-grid video-grid--short" id="short-form-grid"></div>
+          </div>
+        </section>
+
+        <section class="section" id="long-form">
+          <div class="container">
+            <div class="section-header">
+              <div>
+                <div class="eyebrow">Long-form Projects</div>
+                <h2>Project cards for deeper edits, motion work, and post-production breakdowns.</h2>
+              </div>
+              <p>
+                These entries open the original LinkedIn posts in a new tab, keeping the gallery
+                clean while still showcasing the work and story behind each piece.
+              </p>
+            </div>
+
+            <div class="video-grid video-grid--long" id="long-form-grid"></div>
+          </div>
+        </section>
+
+        <section class="section section-compact" id="add-video">
+          <div class="container">
+            <article class="panel add-video-panel">
+              <div class="section-header section-header--compact">
+                <div>
+                  <div class="eyebrow">Add More Later</div>
+                  <h2>Send a link and it can drop straight into this page.</h2>
+                </div>
+                <p>
+                  For the next additions, I only need the URL and whether it belongs under
+                  short-form or long-form. If you have a preferred title or thumbnail, that can be
+                  added too.
+                </p>
+              </div>
+
+              <div class="add-video-grid">
+                <div class="guide-card">
+                  <span>1</span>
+                  <strong>Send the video URL</strong>
+                  <p>YouTube, LinkedIn, or another platform link is enough to start.</p>
+                </div>
+                <div class="guide-card">
+                  <span>2</span>
+                  <strong>Choose the format</strong>
+                  <p>Tell me whether it belongs in short-form or long-form.</p>
+                </div>
+                <div class="guide-card">
+                  <span>3</span>
+                  <strong>Optional polish</strong>
+                  <p>Custom title, short description, or a preferred cover image can be layered in.</p>
+                </div>
+              </div>
+
+              <div class="support-strip">
+                <span>Current platforms:</span>
+                <strong>YouTube preview support</strong>
+                <strong>LinkedIn portfolio cards</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="video-modal" id="video-modal" aria-hidden="true">
+      <div class="video-modal-dialog">
+        <div class="video-modal-top">
+          <strong id="video-modal-title">Video Preview</strong>
+          <button class="close-modal" type="button" id="close-video-modal" aria-label="Close video preview">
+            Close
+          </button>
+        </div>
+        <iframe
+          class="video-modal-frame"
+          id="video-modal-frame"
+          src="about:blank"
+          title="Video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <script src="gallery.js"></script>
+  </body>
+</html>
