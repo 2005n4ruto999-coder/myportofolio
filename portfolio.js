@@ -362,6 +362,7 @@ translations.ar["actions.seeWorkStyle"] =
 translations.ar["actions.bookEdit"] = "\u0627\u062d\u062c\u0632 \u062e\u062f\u0645\u0629";
 translations.en["nav.gallery"] = "Gallery";
 translations.en["actions.openGallery"] = "See Gallery";
+translations.en["gallery.clickHere"] = "Click here";
 translations.en["actions.openLinkedin"] = "Open on LinkedIn";
 translations.en["gallery.eyebrow"] = "Gallery";
 translations.en["gallery.title"] = "Short-form and long-form work in one place.";
@@ -393,6 +394,7 @@ translations.ar["hero.copy1"] =
 translations.ar["nav.shorts"] = "\u0634\u0648\u0631\u062a\u0633";
 translations.ar["nav.gallery"] = "\u0645\u0639\u0631\u0636 \u0627\u0644\u0641\u064A\u062F\u064A\u0648\u0647\u0627\u062A";
 translations.ar["actions.openGallery"] = "\u0634\u0627\u0647\u062F \u0627\u0644\u0645\u0639\u0631\u0636";
+translations.ar["gallery.clickHere"] = "\u0627\u0636\u063A\u0637 \u0647\u0646\u0627";
 translations.ar["actions.openLinkedin"] = "\u0641\u062A\u062D \u0639\u0644\u0649 LinkedIn";
 translations.ar["gallery.eyebrow"] = "\u0645\u0639\u0631\u0636";
 translations.ar["gallery.title"] = "\u0623\u0639\u0645\u0627\u0644 \u0642\u0635\u064A\u0631\u0629 \u0648\u0637\u0648\u064A\u0644\u0629 \u0641\u064A \u0645\u0643\u0627\u0646 \u0648\u0627\u062D\u062F.";
@@ -445,6 +447,7 @@ const topbarMenu = document.getElementById("topbar-menu");
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.querySelectorAll(".nav a");
 const observedSections = document.querySelectorAll("main section[id]");
+const shortsSection = document.getElementById("shorts");
 const revealItems = document.querySelectorAll(".reveal");
 const translateButton = document.getElementById("translate-button");
 const translateButtonLabel = translateButton.querySelector(".translate-button-label");
@@ -459,6 +462,8 @@ const imageModalImage = document.getElementById("image-modal-image");
 const closeImageModal = document.getElementById("close-image-modal");
 const videoTriggers = document.querySelectorAll("[data-video-id]");
 const zoomablePhotos = document.querySelectorAll("[data-zoom-src]");
+const galleryNavLink = document.getElementById("gallery-nav-link");
+const galleryCta = document.getElementById("gallery-cta");
 
 let currentLanguage = "en";
 const ENGLISH_LABEL = "English";
@@ -486,6 +491,12 @@ function syncModalLock() {
     "modal-open",
     videoModal.classList.contains("open") || imageModal.classList.contains("open")
   );
+}
+
+function syncGalleryPrompt(isActive) {
+  root.classList.toggle("shorts-highlight-active", isActive);
+  galleryNavLink?.classList.toggle("is-spotlit", isActive);
+  galleryCta?.classList.toggle("is-spotlit", isActive);
 }
 
 function syncLanguageControls() {
@@ -725,5 +736,21 @@ const navObserver = new IntersectionObserver(
 );
 
 observedSections.forEach((section) => navObserver.observe(section));
+
+if (shortsSection) {
+  const shortsPromptObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        syncGalleryPrompt(entry.isIntersecting && entry.intersectionRatio > 0.18);
+      });
+    },
+    {
+      rootMargin: "-10% 0px -10% 0px",
+      threshold: [0, 0.18, 0.45],
+    }
+  );
+
+  shortsPromptObserver.observe(shortsSection);
+}
 
 applyTranslations("en");

@@ -271,11 +271,112 @@
         background: rgba(95, 176, 255, 0.18);
       }
 
+      .gallery-nav-link {
+        position: relative;
+      }
+
       .topbar-actions {
         display: flex;
         align-items: center;
         gap: 12px;
         flex-wrap: wrap;
+      }
+
+      .gallery-cta {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery-cta-button {
+        position: relative;
+        z-index: 1;
+      }
+
+      .gallery-hint {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 50%;
+        min-width: 130px;
+        padding: 10px 14px 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(205, 234, 255, 0.24);
+        background:
+          linear-gradient(180deg, rgba(15, 38, 63, 0.96), rgba(8, 21, 36, 0.96)),
+          linear-gradient(145deg, rgba(95, 176, 255, 0.16), rgba(8, 21, 36, 0.04));
+        box-shadow:
+          0 18px 36px rgba(3, 10, 18, 0.28),
+          0 0 0 1px rgba(95, 176, 255, 0.08);
+        color: #eaf7ff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translate(-50%, -10px) scale(0.96);
+        transition:
+          opacity 220ms ease,
+          visibility 220ms ease,
+          transform 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .gallery-hint::before,
+      .gallery-hint::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .gallery-hint::before {
+        top: -7px;
+        width: 14px;
+        height: 14px;
+        border-top: 1px solid rgba(205, 234, 255, 0.24);
+        border-left: 1px solid rgba(205, 234, 255, 0.24);
+        background: rgba(12, 30, 51, 0.96);
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      .gallery-hint::after {
+        top: -24px;
+        content: "↑";
+        color: #8ed4ff;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      body.shorts-highlight-active .gallery-nav-link {
+        color: #ffffff;
+        background: rgba(95, 176, 255, 0.18);
+        box-shadow:
+          0 0 0 1px rgba(164, 218, 255, 0.26),
+          0 0 24px rgba(95, 176, 255, 0.22);
+        animation: galleryGlow 1.8s ease-in-out infinite;
+      }
+
+      body.shorts-highlight-active .gallery-cta-button {
+        box-shadow:
+          0 20px 34px rgba(37, 105, 188, 0.34),
+          0 0 0 1px rgba(185, 226, 255, 0.22),
+          0 0 28px rgba(95, 176, 255, 0.34);
+        animation: galleryGlow 1.8s ease-in-out infinite;
+      }
+
+      body.shorts-highlight-active .gallery-hint {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0) scale(1);
+        animation: galleryHintFloat 1.4s ease-in-out infinite;
+      }
+
+      .gallery-hint::after {
+        content: "\2191";
       }
 
       .button,
@@ -1665,6 +1766,30 @@
         }
       }
 
+      @keyframes galleryGlow {
+        0%,
+        100% {
+          box-shadow:
+            0 0 0 1px rgba(164, 218, 255, 0.22),
+            0 0 18px rgba(95, 176, 255, 0.18);
+        }
+        50% {
+          box-shadow:
+            0 0 0 1px rgba(205, 238, 255, 0.34),
+            0 0 30px rgba(118, 196, 255, 0.34);
+        }
+      }
+
+      @keyframes galleryHintFloat {
+        0%,
+        100% {
+          transform: translate(-50%, 0) scale(1);
+        }
+        50% {
+          transform: translate(-50%, 4px) scale(1);
+        }
+      }
+
       @media (max-width: 1080px) {
         .hero-grid,
         .timeline-layout,
@@ -1764,6 +1889,29 @@
 
         .topbar-actions > * {
           flex: unset;
+        }
+
+        .gallery-cta {
+          width: 100%;
+          align-items: stretch;
+        }
+
+        .gallery-cta-button {
+          width: 100%;
+        }
+
+        .gallery-hint {
+          left: 0;
+          right: 0;
+          width: max-content;
+          max-width: min(100%, 180px);
+          margin-inline: auto;
+          transform: translate(0, -10px) scale(0.96);
+        }
+
+        body.shorts-highlight-active .gallery-hint {
+          animation: none;
+          transform: translate(0, 0) scale(1);
         }
 
         .hero-copy,
@@ -1868,7 +2016,7 @@
             <div class="topbar-menu" id="topbar-menu">
               <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
                 <a href="#home" class="active" data-i18n="nav.home">Home</a>
-                <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+                <a href="gallery.html" class="gallery-nav-link" id="gallery-nav-link" data-i18n="nav.gallery">Gallery</a>
                 <a href="#skills" data-i18n="nav.skills">Skills</a>
                 <a href="#highlights" data-i18n="nav.highlights">Highlights</a>
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -1879,7 +2027,10 @@
                   <span class="material-symbols-outlined translate-symbol" aria-hidden="true">g_translate</span>
                   <span class="sr-only translate-button-label">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span>
                 </button>
-                <a class="button" href="gallery.html" data-i18n="actions.openGallery">Open Gallery</a>
+                <div class="gallery-cta" id="gallery-cta">
+                  <a class="button gallery-cta-button" id="gallery-cta-button" href="gallery.html" data-i18n="actions.openGallery">Open Gallery</a>
+                  <span class="gallery-hint" id="gallery-hint" data-i18n="gallery.clickHere">Click here</span>
+                </div>
                 <a class="button" href="#contact" data-i18n="actions.bookEdit">Book a Service</a>
               </div>
             </div>
