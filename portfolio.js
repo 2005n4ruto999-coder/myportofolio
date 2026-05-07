@@ -85,7 +85,7 @@ const translations = {
     "shorts.eyebrow": "YouTube Shorts",
     "shorts.title": "Quick vertical edits that show the style fast.",
     "shorts.copy":
-      "These short-form samples give visitors a fast look at pacing, hooks, captions, and overall polish in a mobile-first format.",
+      "One clear short-form sample is shown here first, while the rest of the short-form library pulls attention toward the gallery.",
     "shorts.card1Title": "Short sample 01",
     "shorts.card1Text":
       "A fast vertical example focused on hook timing, movement, and clean presentation.",
@@ -95,6 +95,9 @@ const translations = {
     "shorts.card3Title": "Short sample 03",
     "shorts.card3Text":
       "A final vertical sample that highlights pacing, subtitle flow, and polished finish.",
+    "shorts.teaserTitle": "More short-form work lives in the gallery.",
+    "shorts.teaserText":
+      "This second preview fades into the page on purpose so the full library feels just out of reach until the gallery opens.",
     "skills.eyebrow": "My Skills",
     "skills.title": "Built for creators who need more than basic cuts.",
     "skills.copy":
@@ -425,7 +428,7 @@ translations.ar["shorts.eyebrow"] = "\u064a\u0648\u062a\u064a\u0648\u0628 \u0634
 translations.ar["shorts.title"] =
   "\u0644\u0642\u0637\u0627\u062a \u0639\u0645\u0648\u062f\u064a\u0629 \u0633\u0631\u064a\u0639\u0629 \u062a\u0638\u0647\u0631 \u0623\u0633\u0644\u0648\u0628 \u0627\u0644\u0645\u0648\u0646\u062a\u0627\u062c \u0645\u0646 \u0623\u0648\u0644 \u062b\u0627\u0646\u064a\u0629.";
 translations.ar["shorts.copy"] =
-  "\u0647\u0630\u0647 \u0627\u0644\u0623\u0645\u062b\u0644\u0629 \u0627\u0644\u0642\u0635\u064a\u0631\u0629 \u062a\u0639\u0637\u064a \u0627\u0644\u0632\u0627\u0626\u0631 \u0646\u0638\u0631\u0629 \u0633\u0631\u064a\u0639\u0629 \u0639\u0644\u0649 \u0627\u0644\u0625\u064a\u0642\u0627\u0639 \u0648\u0627\u0644\u0647\u0648\u0643\u0627\u062a \u0648\u0627\u0644\u0643\u0627\u0628\u0634\u0646\u0632 \u0648\u0644\u0645\u0633\u0629 \u0627\u0644\u062a\u0644\u0645\u064a\u0639 \u062f\u0627\u062e\u0644 \u062a\u0646\u0633\u064a\u0642 \u0645\u0646\u0627\u0633\u0628 \u0644\u0644\u0645\u0648\u0628\u0627\u064a\u0644.";
+  "\u064A\u0638\u0647\u0631 \u0647\u0646\u0627 \u0623\u0648\u0644\u0627\u064B \u0645\u062B\u0627\u0644 \u0648\u0627\u0636\u062D \u0648\u0627\u062D\u062F \u0645\u0646 \u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0634\u0648\u0631\u062A\u0633\u060C \u0628\u064A\u0646\u0645\u0627 \u064A\u0633\u062D\u0628 \u0628\u0627\u0642\u064A \u0627\u0644\u0645\u0643\u062A\u0628\u0629 \u0627\u0646\u062A\u0628\u0627\u0647 \u0627\u0644\u0632\u0627\u0626\u0631 \u0646\u062D\u0648 \u0627\u0644\u0645\u0639\u0631\u0636.";
 translations.ar["shorts.card1Title"] =
   "\u0646\u0645\u0648\u0630\u062c \u0642\u0635\u064a\u0631 01";
 translations.ar["shorts.card1Text"] =
@@ -438,6 +441,10 @@ translations.ar["shorts.card3Title"] =
   "\u0646\u0645\u0648\u0630\u062c \u0642\u0635\u064a\u0631 03";
 translations.ar["shorts.card3Text"] =
   "\u0646\u0645\u0648\u0630\u062c \u0639\u0645\u0648\u062f\u064a \u0623\u062e\u064a\u0631 \u064a\u0628\u0631\u0632 \u0627\u0644\u0625\u064a\u0642\u0627\u0639 \u0648\u062a\u062f\u0641\u0642 \u0627\u0644\u062a\u0631\u062c\u0645\u0627\u062a \u0648\u0627\u0644\u0644\u0645\u0633\u0629 \u0627\u0644\u0645\u0635\u0642\u0648\u0644\u0629.";
+translations.ar["shorts.teaserTitle"] =
+  "\u0627\u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0634\u0648\u0631\u062a\u0633 \u0645\u0648\u062c\u0648\u062f \u0641\u064a \u0627\u0644\u0645\u0639\u0631\u0636.";
+translations.ar["shorts.teaserText"] =
+  "\u0647\u0630\u0627 \u0627\u0644\u062A\u0645\u0647\u064A\u062F \u0627\u0644\u062B\u0627\u0646\u064A \u064A\u062E\u062A\u0641\u064A \u062F\u0627\u062E\u0644 \u062A\u062F\u0631\u062C \u0627\u0644\u0635\u0641\u062D\u0629 \u0639\u0645\u062F\u064B\u0627 \u0644\u064A\u0634\u0639\u0631 \u0627\u0644\u0632\u0627\u0626\u0631 \u0623\u0646 \u0628\u0627\u0642\u064A \u0627\u0644\u0645\u0643\u062A\u0628\u0629 \u062A\u0646\u062A\u0638\u0631\u0647 \u062F\u0627\u062E\u0644 \u0627\u0644\u0645\u0639\u0631\u0636.";
 
 const html = document.documentElement;
 const root = document.body;

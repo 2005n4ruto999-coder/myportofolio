@@ -39,9 +39,10 @@ const videoLibrary = [
     id: "long-01",
     title: "3D Visual Masterpiece",
     format: "long",
-    platform: "LinkedIn",
-    href: "https://www.linkedin.com/posts/ibrahim-omar-for-business_davinciresolve-fusion3d-motiondesign-activity-7458156915940970496-loNQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY",
-    poster: "images/Screenshot (543).png",
+    platform: "YouTube",
+    href: "https://www.youtube.com/shorts/S4ELfEkozTE",
+    videoId: "S4ELfEkozTE",
+    poster: "https://i.ytimg.com/vi/S4ELfEkozTE/hqdefault.jpg",
     description: "Fusion 3D environment work that turns explanatory footage into a deeper visual story.",
     tags: ["Fusion 3D", "Motion Design", "Visual Storytelling"],
   },
@@ -65,23 +66,10 @@ const videoLibrary = [
     description: "A Cubit Team project built around motion graphics, sound design, and a tighter audiovisual finish.",
     tags: ["Sound Design", "Motion Graphics", "DaVinci Resolve"],
   },
-  {
-    id: "long-04",
-    title: "LinkedIn Group Feature",
-    format: "long",
-    platform: "LinkedIn",
-    href: "https://www.linkedin.com/feed/update/urn:li:groupPost:12651962-7458160928304324609?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY",
-    poster: "images/Gemini_Generated_Image_tvonj1tvonj1tvon.png",
-    description: "A shared group-post entry reserved as another long-form showcase slot in the gallery.",
-    tags: ["LinkedIn", "Portfolio Link", "Project Feature"],
-  },
 ];
 
 const shortFormGrid = document.getElementById("short-form-grid");
 const longFormGrid = document.getElementById("long-form-grid");
-const totalCount = document.getElementById("total-count");
-const shortCount = document.getElementById("short-count");
-const longCount = document.getElementById("long-count");
 const videoModal = document.getElementById("video-modal");
 const videoModalFrame = document.getElementById("video-modal-frame");
 const videoModalTitle = document.getElementById("video-modal-title");
@@ -175,9 +163,6 @@ function renderLibrary() {
     .map((video, index) => createCardMarkup(video, index + shortVideos.length))
     .join("");
 
-  totalCount.textContent = String(videoLibrary.length);
-  shortCount.textContent = String(shortVideos.length);
-  longCount.textContent = String(longVideos.length);
 }
 
 function openVideoModal(video) {

@@ -354,6 +354,37 @@ button {
   align-content: start;
 }
 
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.proof-card {
+  padding: 18px 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(214, 236, 255, 0.18);
+  background:
+    linear-gradient(180deg, rgba(14, 35, 59, 0.98), rgba(8, 21, 36, 0.96)),
+    linear-gradient(145deg, rgba(85, 157, 220, 0.14), rgba(8, 21, 36, 0.04));
+  box-shadow:
+    0 20px 38px rgba(2, 8, 16, 0.28),
+    inset 0 1px 0 rgba(225, 242, 255, 0.08);
+}
+
+.proof-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.proof-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .hero-visual-frame {
   position: relative;
   overflow: hidden;
@@ -385,14 +416,33 @@ button {
   padding: 0 4px;
 }
 
+.hero-visual-copy--promise {
+  text-align: center;
+}
+
 .hero-visual-copy strong {
   display: block;
   margin-bottom: 8px;
   font-size: 1.12rem;
 }
 
+.hero-visual-copy--promise strong {
+  margin-bottom: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: #e9f7ff;
+}
+
 .hero-visual-copy p {
   margin: 0;
+}
+
+.hero-visual-frame--promise {
+  min-height: 400px;
+}
+
+.hero-visual-frame--promise img {
+  object-position: top center;
 }
 
 .signal-list {
@@ -608,6 +658,168 @@ button {
   padding: 28px;
 }
 
+.platform-marquee {
+  display: grid;
+  gap: 14px;
+}
+
+.platform-row {
+  position: relative;
+  overflow: hidden;
+  padding: 6px 0;
+  border-radius: 22px;
+  border: 1px solid rgba(214, 236, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(11, 28, 47, 0.84), rgba(8, 21, 36, 0.92)),
+    linear-gradient(145deg, rgba(85, 157, 220, 0.12), rgba(8, 21, 36, 0.04));
+}
+
+.platform-row::before,
+.platform-row::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.platform-row::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(8, 21, 36, 0.98), transparent);
+}
+
+.platform-row::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(8, 21, 36, 0.98), transparent);
+}
+
+.platform-track {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  padding-inline: 12px;
+  animation: platformSlide 26s linear infinite;
+}
+
+.platform-row--reverse .platform-track {
+  animation-direction: reverse;
+  animation-duration: 30s;
+}
+
+.platform-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 236, 255, 0.14);
+  background: rgba(12, 27, 44, 0.88);
+  color: #eff8ff;
+  box-shadow: inset 0 1px 0 rgba(225, 242, 255, 0.06);
+  white-space: nowrap;
+}
+
+.platform-mark {
+  width: 30px;
+  height: 30px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.platform-pill--youtube .platform-mark {
+  background: linear-gradient(135deg, #ff5353, #c92727);
+}
+
+.platform-pill--instagram .platform-mark {
+  background: linear-gradient(135deg, #ff8b5f, #db2f8f);
+}
+
+.platform-pill--tiktok .platform-mark {
+  background: linear-gradient(135deg, #25f4ee, #111111);
+}
+
+.platform-pill--linkedin .platform-mark {
+  background: linear-gradient(135deg, #3ea0ff, #0a66c2);
+}
+
+.platform-pill--facebook .platform-mark {
+  background: linear-gradient(135deg, #4f78ff, #1d46c7);
+}
+
+.platform-pill--x .platform-mark {
+  background: linear-gradient(135deg, #1b1b1b, #4f4f4f);
+}
+
+.platform-pill--twitch .platform-mark {
+  background: linear-gradient(135deg, #a970ff, #6e34d7);
+}
+
+.platform-pill--vimeo .platform-mark {
+  background: linear-gradient(135deg, #37b6ff, #0b80d2);
+}
+
+.platform-pill--snapchat .platform-mark {
+  background: linear-gradient(135deg, #ffe45f, #ffbf00);
+  color: #2e2e2e;
+}
+
+.platform-pill--behance .platform-mark {
+  background: linear-gradient(135deg, #0057ff, #0041bf);
+}
+
+.platform-pill--dribbble .platform-mark {
+  background: linear-gradient(135deg, #ff6baf, #d44382);
+}
+
+.platform-pill--pinterest .platform-mark {
+  background: linear-gradient(135deg, #ef4444, #bb1f1f);
+}
+
+.platform-pill--discord .platform-mark {
+  background: linear-gradient(135deg, #7c8eff, #5566d7);
+}
+
+.platform-pill--reddit .platform-mark {
+  background: linear-gradient(135deg, #ff7a3d, #ff4500);
+}
+
+.platform-pill--telegram .platform-mark {
+  background: linear-gradient(135deg, #44c3ff, #1687d9);
+}
+
+.platform-pill--whatsapp .platform-mark {
+  background: linear-gradient(135deg, #45dc7d, #0d9b48);
+}
+
+.closing-cta {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(214, 236, 255, 0.12);
+  text-align: center;
+}
+
+.closing-cta strong {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.closing-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .add-video-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -743,6 +955,16 @@ body.modal-open {
   }
 }
 
+@keyframes platformSlide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 1100px) {
   .hero-grid,
   .section-header,
@@ -756,6 +978,10 @@ body.modal-open {
 
   .video-grid--short {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -790,7 +1016,8 @@ body.modal-open {
   .video-grid--long,
   .signal-list,
   .add-video-grid,
-  .stat-grid {
+  .stat-grid,
+  .proof-grid {
     grid-template-columns: 1fr;
   }
 

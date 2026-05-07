@@ -1105,8 +1105,14 @@
         box-shadow: var(--deep-surface-shadow);
       }
 
+      .short-card--teaser,
+      .short-card--ghost {
+        min-height: 100%;
+      }
+
       .short-media {
         display: block;
+        position: relative;
         overflow: hidden;
         border-radius: 22px;
         border: 1px solid rgba(112, 170, 222, 0.18);
@@ -1141,6 +1147,43 @@
 
       .short-card .button-secondary {
         width: 100%;
+      }
+
+      .short-card--teaser .short-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(9, 23, 39, 0) 12%, rgba(72, 139, 196, 0.18) 46%, rgba(72, 139, 196, 0.62) 74%, rgba(48, 100, 154, 0.96) 100%);
+        animation: teaserFade 4.8s ease-in-out infinite;
+      }
+
+      .short-card--teaser .short-preview {
+        filter: saturate(0.82) brightness(0.88);
+      }
+
+      .short-copy--teaser strong {
+        color: #dff2ff;
+      }
+
+      .short-copy--teaser p {
+        color: rgba(227, 244, 255, 0.84);
+      }
+
+      .short-card--ghost {
+        background:
+          linear-gradient(180deg, rgba(17, 37, 59, 0.5), rgba(8, 21, 36, 0.26)),
+          rgba(8, 21, 36, 0.18);
+      }
+
+      .short-empty-slot {
+        min-height: 0;
+        aspect-ratio: 9 / 16;
+        border-radius: 22px;
+        border: 1px dashed rgba(173, 216, 252, 0.18);
+        background:
+          radial-gradient(circle at center, rgba(121, 188, 240, 0.1), transparent 54%),
+          linear-gradient(180deg, rgba(14, 31, 50, 0.22), rgba(8, 21, 36, 0.08));
       }
 
       .gallery-summary-grid,
@@ -1790,6 +1833,16 @@
         }
       }
 
+      @keyframes teaserFade {
+        0%,
+        100% {
+          opacity: 0.86;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
       @media (max-width: 1080px) {
         .hero-grid,
         .timeline-layout,
@@ -2250,8 +2303,8 @@
                 </a>
               </article>
 
-              <article class="short-card reveal">
-                <a class="short-media" href="https://youtube.com/shorts/S4ELfEkozTE?si=9KmVd11g2kN26_Wo" target="_blank" rel="noreferrer" aria-label="Open YouTube short sample 2">
+              <article class="short-card short-card--teaser reveal" aria-hidden="true">
+                <div class="short-media short-media--teaser">
                   <div
                     class="video-preview short-preview"
                     style="background-image: url('https://i.ytimg.com/vi/S4ELfEkozTE/hqdefault.jpg');"
@@ -2264,42 +2317,18 @@
                       </div>
                     </div>
                   </div>
-                </a>
-                <div class="short-copy">
-                  <strong data-i18n="shorts.card2Title">Short sample 02</strong>
-                  <p data-i18n="shorts.card2Text">
-                    Another short-form cut showing clear rhythm, quick emphasis, and strong readability.
+                </div>
+                <div class="short-copy short-copy--teaser">
+                  <strong data-i18n="shorts.teaserTitle">More short-form work lives in the gallery.</strong>
+                  <p data-i18n="shorts.teaserText">
+                    This second preview fades into the page on purpose so the full library feels
+                    just out of reach until the gallery opens.
                   </p>
                 </div>
-                <a class="button-secondary" href="https://youtube.com/shorts/S4ELfEkozTE?si=9KmVd11g2kN26_Wo" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
-                  Open on YouTube
-                </a>
               </article>
 
-              <article class="short-card reveal">
-                <a class="short-media" href="https://youtube.com/shorts/HTfICUpeAUA?feature=share" target="_blank" rel="noreferrer" aria-label="Open YouTube short sample 3">
-                  <div
-                    class="video-preview short-preview"
-                    style="background-image: url('https://i.ytimg.com/vi/HTfICUpeAUA/hqdefault.jpg');"
-                  >
-                    <div class="video-preview-copy">
-                      <div class="play-badge" aria-hidden="true">
-                        <svg class="icon" viewBox="0 0 24 24">
-                          <path fill="currentColor" d="M8 5.14v13.72A1 1 0 0 0 9.5 19.7l10.28-6.86a1 1 0 0 0 0-1.68L9.5 4.3A1 1 0 0 0 8 5.14Z"/>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <div class="short-copy">
-                  <strong data-i18n="shorts.card3Title">Short sample 03</strong>
-                  <p data-i18n="shorts.card3Text">
-                    A final vertical sample that highlights pacing, subtitle flow, and polished finish.
-                  </p>
-                </div>
-                <a class="button-secondary" href="https://youtube.com/shorts/HTfICUpeAUA?feature=share" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
-                  Open on YouTube
-                </a>
+              <article class="short-card short-card--ghost reveal" aria-hidden="true">
+                <div class="short-empty-slot"></div>
               </article>
             </div>
           </div>
