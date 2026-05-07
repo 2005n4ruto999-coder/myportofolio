@@ -164,7 +164,7 @@ button {
   justify-content: center;
   gap: 10px;
   flex: 1;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .page-nav a {
@@ -191,6 +191,10 @@ button {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.topbar-actions {
+  flex-wrap: nowrap;
 }
 
 .button,
@@ -775,6 +779,11 @@ body.modal-open {
   .signal-list,
   .stat-grid {
     justify-content: flex-start;
+  }
+
+  .page-nav,
+  .topbar-actions {
+    flex-wrap: wrap;
   }
 
   .video-grid--short,
