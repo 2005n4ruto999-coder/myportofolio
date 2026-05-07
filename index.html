@@ -1042,6 +1042,134 @@
         width: 100%;
       }
 
+      .gallery-summary-grid,
+      .project-gallery-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .gallery-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 24px;
+      }
+
+      .gallery-summary-card,
+      .project-card {
+        border-radius: 26px;
+        border: 1px solid var(--deep-surface-border);
+        background: var(--deep-surface-bg);
+        box-shadow: var(--deep-surface-shadow);
+      }
+
+      .gallery-summary-card {
+        padding: 24px;
+      }
+
+      .gallery-summary-card strong,
+      .project-copy strong {
+        display: block;
+        color: var(--subrect-title);
+        font-size: 1.14rem;
+        margin-bottom: 10px;
+      }
+
+      .gallery-summary-card p,
+      .project-copy p {
+        margin: 0;
+        color: var(--subrect-copy);
+        line-height: 1.7;
+      }
+
+      .gallery-summary-card .button-secondary {
+        margin-top: 16px;
+      }
+
+      .project-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-card {
+        display: grid;
+        gap: 16px;
+        padding: 18px;
+        align-content: start;
+      }
+
+      .project-media {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        min-height: 260px;
+        border-radius: 22px;
+        border: 1px solid rgba(112, 170, 222, 0.18);
+        background-position: center;
+        background-size: cover;
+      }
+
+      .project-media::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(7, 19, 29, 0.08), rgba(7, 19, 29, 0.84)),
+          linear-gradient(135deg, rgba(112, 172, 205, 0.14), transparent 54%);
+      }
+
+      .project-meta {
+        position: absolute;
+        inset: auto 16px 16px 16px;
+        z-index: 1;
+        display: grid;
+        gap: 10px;
+      }
+
+      .project-kicker {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: #eef8ff;
+        background: rgba(8, 24, 40, 0.74);
+        border: 1px solid rgba(214, 236, 255, 0.18);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-title {
+        color: #ffffff;
+        font-size: 1.34rem;
+        line-height: 1.08;
+        font-family: "Syne", sans-serif;
+      }
+
+      .project-copy {
+        display: grid;
+        gap: 12px;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .project-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(10, 24, 40, 0.88);
+        border: 1px solid rgba(214, 236, 255, 0.14);
+        color: var(--subrect-copy);
+        font-size: 0.82rem;
+      }
+
+      .project-card .button-secondary {
+        width: 100%;
+      }
+
       .skills-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
@@ -1552,8 +1680,13 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
+        .gallery-summary-grid,
         .shorts-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .project-gallery-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -1643,10 +1776,12 @@
         .hero-meta,
         .edit-bottom,
         .skills-grid,
+        .gallery-summary-grid,
         .shorts-grid,
         .highlights-grid,
         .gallery-strip,
         .video-grid,
+        .project-gallery-grid,
         .media-gallery {
           grid-template-columns: 1fr;
         }
@@ -1734,7 +1869,7 @@
               <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
                 <a href="#home" class="active" data-i18n="nav.home">Home</a>
                 <a href="#shorts" data-i18n="nav.shorts">Shorts</a>
-                <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+                <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
                 <a href="#skills" data-i18n="nav.skills">Skills</a>
                 <a href="#highlights" data-i18n="nav.highlights">Highlights</a>
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -1745,7 +1880,7 @@
                   <span class="material-symbols-outlined translate-symbol" aria-hidden="true">g_translate</span>
                   <span class="sr-only translate-button-label">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span>
                 </button>
-                <a class="button" href="gallery.html" data-i18n="actions.openGallery">Open Gallery</a>
+                <a class="button" href="#gallery" data-i18n="actions.openGallery">Open Gallery</a>
                 <a class="button" href="#contact" data-i18n="actions.bookEdit">Book a Service</a>
               </div>
             </div>
@@ -2014,6 +2149,187 @@
                 </div>
                 <a class="button-secondary" href="https://youtube.com/shorts/HTfICUpeAUA?feature=share" target="_blank" rel="noreferrer" data-i18n="actions.openYoutube">
                   Open on YouTube
+                </a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="gallery">
+          <div class="container">
+            <div class="section-heading reveal">
+              <div>
+                <div class="eyebrow" data-i18n="gallery.eyebrow">Gallery</div>
+                <h2 data-i18n="gallery.title">Short-form and long-form work in one place.</h2>
+              </div>
+              <p data-i18n="gallery.copy">
+                This section brings the gallery into the main portfolio so visitors can
+                see vertical samples and deeper project work without leaving the page.
+              </p>
+            </div>
+
+            <div class="gallery-summary-grid">
+              <article class="gallery-summary-card reveal">
+                <strong data-i18n="gallery.shortTitle">Short-form edits</strong>
+                <p data-i18n="gallery.shortText">
+                  Fast, mobile-first videos built around hooks, readable captions, and
+                  sharp pacing. The full short-form row is right above this section.
+                </p>
+                <a class="button-secondary" href="#shorts" data-i18n="gallery.shortAction">See Shorts</a>
+              </article>
+
+              <article class="gallery-summary-card reveal">
+                <strong data-i18n="gallery.longTitle">Long-form project work</strong>
+                <p data-i18n="gallery.longText">
+                  These cards highlight deeper edits from LinkedIn posts, including motion
+                  design, Fusion scenes, sound design, and more detailed post-production work.
+                </p>
+                <a class="button-secondary" href="#gallery-projects" data-i18n="gallery.longAction">See Long-form</a>
+              </article>
+            </div>
+
+            <div class="project-gallery-grid" id="gallery-projects">
+              <article class="project-card reveal">
+                <a
+                  class="project-media"
+                  href="https://www.linkedin.com/posts/ibrahim-omar-for-business_davinciresolve-fusion3d-motiondesign-activity-7458156915940970496-loNQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open LinkedIn project 1"
+                  style="background-image: url('images/Screenshot (543).png');"
+                >
+                  <div class="project-meta">
+                    <span class="project-kicker" data-i18n="gallery.cardKicker">Long-form / LinkedIn</span>
+                    <strong class="project-title" data-i18n="gallery.card1Title">3D Visual Masterpiece</strong>
+                  </div>
+                </a>
+                <div class="project-copy">
+                  <p data-i18n="gallery.card1Text">
+                    Fusion 3D environment work that turns an explanation-heavy idea into a
+                    stronger visual sequence with more depth and motion.
+                  </p>
+                  <div class="project-tags">
+                    <span class="project-tag">Fusion 3D</span>
+                    <span class="project-tag">Motion Design</span>
+                    <span class="project-tag">Visual Storytelling</span>
+                  </div>
+                </div>
+                <a
+                  class="button-secondary"
+                  href="https://www.linkedin.com/posts/ibrahim-omar-for-business_davinciresolve-fusion3d-motiondesign-activity-7458156915940970496-loNQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-i18n="actions.openLinkedin"
+                >
+                  Open on LinkedIn
+                </a>
+              </article>
+
+              <article class="project-card reveal">
+                <a
+                  class="project-media"
+                  href="https://www.linkedin.com/posts/ibrahim-omar-for-business_cubitteam-davinciresolve-motiondesign-activity-7457328974268960768-kV4d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open LinkedIn project 2"
+                  style="background-image: url('images/Screenshot (541).png');"
+                >
+                  <div class="project-meta">
+                    <span class="project-kicker" data-i18n="gallery.cardKicker">Long-form / LinkedIn</span>
+                    <strong class="project-title" data-i18n="gallery.card2Title">Timeline Architecture</strong>
+                  </div>
+                </a>
+                <div class="project-copy">
+                  <p data-i18n="gallery.card2Text">
+                    A project focused on keyframing precision, workflow structure, and the
+                    detail behind a tightly built edit.
+                  </p>
+                  <div class="project-tags">
+                    <span class="project-tag">Cubit Team</span>
+                    <span class="project-tag">Keyframes</span>
+                    <span class="project-tag">Workflow</span>
+                  </div>
+                </div>
+                <a
+                  class="button-secondary"
+                  href="https://www.linkedin.com/posts/ibrahim-omar-for-business_cubitteam-davinciresolve-motiondesign-activity-7457328974268960768-kV4d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-i18n="actions.openLinkedin"
+                >
+                  Open on LinkedIn
+                </a>
+              </article>
+
+              <article class="project-card reveal">
+                <a
+                  class="project-media"
+                  href="https://www.linkedin.com/posts/ibrahim-omar-for-business_davinciresolve-motiongraphics-sounddesign-activity-7457014470494638080-I5Qx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open LinkedIn project 3"
+                  style="background-image: url('images/Screenshot (854).png');"
+                >
+                  <div class="project-meta">
+                    <span class="project-kicker" data-i18n="gallery.cardKicker">Long-form / LinkedIn</span>
+                    <strong class="project-title" data-i18n="gallery.card3Title">Motion Graphics and Sound Design</strong>
+                  </div>
+                </a>
+                <div class="project-copy">
+                  <p data-i18n="gallery.card3Text">
+                    A Cubit Team project built around motion graphics, sound design, and a
+                    tighter audiovisual finish.
+                  </p>
+                  <div class="project-tags">
+                    <span class="project-tag">Sound Design</span>
+                    <span class="project-tag">Motion Graphics</span>
+                    <span class="project-tag">DaVinci Resolve</span>
+                  </div>
+                </div>
+                <a
+                  class="button-secondary"
+                  href="https://www.linkedin.com/posts/ibrahim-omar-for-business_davinciresolve-motiongraphics-sounddesign-activity-7457014470494638080-I5Qx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-i18n="actions.openLinkedin"
+                >
+                  Open on LinkedIn
+                </a>
+              </article>
+
+              <article class="project-card reveal">
+                <a
+                  class="project-media"
+                  href="https://www.linkedin.com/feed/update/urn:li:groupPost:12651962-7458160928304324609?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open LinkedIn project 4"
+                  style="background-image: url('images/Gemini_Generated_Image_tvonj1tvonj1tvon.png');"
+                >
+                  <div class="project-meta">
+                    <span class="project-kicker" data-i18n="gallery.cardKicker">Long-form / LinkedIn</span>
+                    <strong class="project-title" data-i18n="gallery.card4Title">LinkedIn Group Feature</strong>
+                  </div>
+                </a>
+                <div class="project-copy">
+                  <p data-i18n="gallery.card4Text">
+                    A reserved long-form slot for your shared group-post feature so it stays
+                    visible alongside the rest of the project work.
+                  </p>
+                  <div class="project-tags">
+                    <span class="project-tag">LinkedIn</span>
+                    <span class="project-tag">Portfolio Link</span>
+                    <span class="project-tag">Project Feature</span>
+                  </div>
+                </div>
+                <a
+                  class="button-secondary"
+                  href="https://www.linkedin.com/feed/update/urn:li:groupPost:12651962-7458160928304324609?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFseUI0BllAIr8GGhNd_zj456TSxEY50HnY"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-i18n="actions.openLinkedin"
+                >
+                  Open on LinkedIn
                 </a>
               </article>
             </div>
