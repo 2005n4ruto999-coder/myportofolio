@@ -17,23 +17,26 @@
     <div class="page-shell">
       <header class="topbar">
         <div class="container topbar-inner">
-          <a class="brand" href="index.html" aria-label="Back to portfolio home">
+          <a class="brand" href="index.html" data-i18n-aria-label="aria.brandHome" aria-label="Back to portfolio home">
             <span class="brand-mark">LEB</span>
             <span class="brand-copy">
-              <strong>LEB for Video Editing</strong>
-              <span>Short-form and long-form gallery</span>
+              <strong data-i18n="brand.name">LEB for Video Editing</strong>
+              <span data-i18n="brand.tagline">Short-form and long-form gallery</span>
             </span>
           </a>
 
-          <nav class="page-nav" aria-label="Gallery sections">
-            <a href="#overview">Overview</a>
-            <a href="#long-form">Long-form</a>
-            <a href="#add-video">Platforms</a>
+          <nav class="page-nav" data-i18n-aria-label="aria.gallerySections" aria-label="Gallery sections">
+            <a href="#overview" data-i18n="nav.overview">Overview</a>
+            <a href="#long-form" data-i18n="nav.longForm">Long-form</a>
+            <a href="#add-video" data-i18n="nav.platforms">Platforms</a>
           </nav>
 
           <div class="topbar-actions">
-            <a class="button-secondary" href="index.html">Back to Portfolio</a>
-            <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer">
+            <button class="translate-button" type="button" id="translate-button" aria-label="Translate page to Arabic">
+              <span class="translate-button-label">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span>
+            </button>
+            <a class="button-secondary" href="index.html" data-i18n="actions.backPortfolio">Back to Portfolio</a>
+            <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer" data-i18n="actions.startProject">
               Start a Project
             </a>
           </div>
@@ -44,17 +47,17 @@
         <section class="hero" id="overview">
           <div class="container hero-grid">
             <article class="hero-copy panel">
-              <div class="eyebrow">Curated Work Library</div>
-              <h1>One page for short-form hits and long-form project work.</h1>
-              <p>
+              <div class="eyebrow" data-i18n="hero.eyebrow">Curated Work Library</div>
+              <h1 data-i18n="hero.title">One page for short-form hits and long-form project work.</h1>
+              <p data-i18n="hero.copy">
                 This gallery is built so new links can be added quickly without rebuilding the
                 layout. YouTube samples can open in-page, and LinkedIn project posts are grouped
                 cleanly as portfolio cards.
               </p>
 
               <div class="hero-actions">
-                <a class="button" href="#short-form">Browse Short-form</a>
-                <a class="button-secondary" href="#long-form">Browse Long-form</a>
+                <a class="button" href="#short-form" data-i18n="actions.browseShort">Browse Short-form</a>
+                <a class="button-secondary" href="#long-form" data-i18n="actions.browseLong">Browse Long-form</a>
               </div>
             </article>
 
@@ -62,25 +65,26 @@
               <div class="proof-grid">
                 <article class="proof-card">
                   <strong>+1500</strong>
-                  <span>Hours of editing</span>
+                  <span data-i18n="proof.hours">Hours of editing</span>
                 </article>
                 <article class="proof-card">
                   <strong>+1M</strong>
-                  <span>Views for clients</span>
+                  <span data-i18n="proof.views">Views for clients</span>
                 </article>
                 <article class="proof-card">
                   <strong>+200</strong>
-                  <span>Long / short-form videos</span>
+                  <span data-i18n="proof.videos">Long / short-form videos</span>
                 </article>
               </div>
 
               <div class="hero-visual-copy hero-visual-copy--promise">
-                <strong>And anything I make will be on the site soon.</strong>
+                <strong data-i18n="hero.promise">And anything I make will be on the site soon.</strong>
               </div>
 
               <div class="hero-visual-frame hero-visual-frame--promise">
                 <img
                   src="https://2005n4ruto999-coder.github.io/myportofolio/images/Screenshot%20(853).png"
+                  data-i18n-alt="hero.imageAlt"
                   alt="DaVinci Resolve Studio workspace"
                 />
               </div>
@@ -92,10 +96,10 @@
           <div class="container">
             <div class="section-header">
               <div>
-                <div class="eyebrow">Short-form Videos</div>
-                <h2>Fast vertical edits with quick pacing and clean hooks.</h2>
+                <div class="eyebrow" data-i18n="short.eyebrow">Short-form Videos</div>
+                <h2 data-i18n="short.title">Fast vertical edits with quick pacing and clean hooks.</h2>
               </div>
-              <p>
+              <p data-i18n="short.copy">
                 These are the mobile-first samples. Each one can preview directly inside the page
                 and still link out to the original platform.
               </p>
@@ -109,10 +113,10 @@
           <div class="container">
             <div class="section-header">
               <div>
-                <div class="eyebrow">Long-form Projects</div>
-                <h2>Project cards for deeper edits, motion work, and post-production breakdowns.</h2>
+                <div class="eyebrow" data-i18n="long.eyebrow">Long-form Projects</div>
+                <h2 data-i18n="long.title">Project cards for deeper edits, motion work, and post-production breakdowns.</h2>
               </div>
-              <p>
+              <p data-i18n="long.copy">
                 These entries open the original LinkedIn posts in a new tab, keeping the gallery
                 clean while still showcasing the work and story behind each piece.
               </p>
@@ -127,16 +131,16 @@
             <article class="panel add-video-panel">
               <div class="section-header section-header--compact">
                 <div>
-                  <div class="eyebrow">Every Platform</div>
-                  <h2>Editing for all platforms is becoming true.</h2>
+                  <div class="eyebrow" data-i18n="platforms.eyebrow">Every Platform</div>
+                  <h2 data-i18n="platforms.title">Editing for all platforms is becoming true.</h2>
                 </div>
-                <p>
+                <p data-i18n="platforms.copy">
                   The work is expanding across more feeds, formats, and communities, and this page
                   will keep growing with it.
                 </p>
               </div>
 
-              <div class="platform-marquee" aria-label="Supported platforms">
+              <div class="platform-marquee" data-i18n-aria-label="aria.supportedPlatforms" aria-label="Supported platforms">
                 <div class="platform-row">
                   <div class="platform-track">
                     <span class="platform-pill platform-pill--youtube">
@@ -277,10 +281,10 @@
               </div>
 
               <div class="closing-cta">
-                <strong>Convinced now?</strong>
+                <strong data-i18n="closing.title">Convinced now?</strong>
                 <div class="closing-actions">
-                  <a class="button-secondary" href="index.html">Return to the page</a>
-                  <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer">
+                  <a class="button-secondary" href="index.html" data-i18n="actions.returnPage">Return to the page</a>
+                  <a class="button" href="https://wa.me/201055745967" target="_blank" rel="noreferrer" data-i18n="actions.bookService">
                     Book the service
                   </a>
                 </div>
@@ -294,8 +298,8 @@
     <div class="video-modal" id="video-modal" aria-hidden="true">
       <div class="video-modal-dialog">
         <div class="video-modal-top">
-          <strong id="video-modal-title">Video Preview</strong>
-          <button class="close-modal" type="button" id="close-video-modal" aria-label="Close video preview">
+          <strong id="video-modal-title" data-i18n="modal.videoTitle">Video Preview</strong>
+          <button class="close-modal" type="button" id="close-video-modal" data-i18n-aria-label="aria.closeVideo" aria-label="Close video preview" data-i18n="actions.close">
             Close
           </button>
         </div>
@@ -303,6 +307,7 @@
           class="video-modal-frame"
           id="video-modal-frame"
           src="about:blank"
+          data-i18n-title="modal.playerTitle"
           title="Video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
