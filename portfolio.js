@@ -1,360 +1,87 @@
 /* =====================================================================
-   LEB for Video Editing — portfolio.js
-   (You normally don't need to edit this file. Add videos/images in content.js)
+   LEB for Video Editing — portfolio.js (shared by index.html + gallery.html)
+   You normally don't need to edit this file:
+     • projects, showreel, screenshots → content.js
+     • text / translations             → i18n.js
    ===================================================================== */
 
 (() => {
   "use strict";
 
   /* ------------------------------------------------------------------
-     1. Translations
+     1. Setup & helpers
      ------------------------------------------------------------------ */
-  const translations = {
-    en: {
-      pageTitle: "LEB for Video Editing",
-      "a11y.skip": "Skip to content",
-      "aria.brandHome": "LEB for Video Editing home",
-      "aria.primaryNav": "Primary navigation",
-      "aria.mobileNav": "Mobile navigation",
-      "aria.closeVideo": "Close video",
-      "aria.closeImage": "Close image preview",
-      "aria.imagePreview": "Image preview",
-      "aria.prevImage": "Previous image",
-      "aria.nextImage": "Next image",
-      "aria.switchToArabic": "Translate page to Arabic",
-      "aria.switchToEnglish": "Switch page to English",
-      "aria.menuOpen": "Open navigation menu",
-      "aria.menuClose": "Close navigation menu",
-      "aria.filterVideos": "Filter videos",
-      "aria.copyEmail": "Copy email address",
-      "brand.name": "LEB for Video Editing",
-      "brand.tagline": "YouTube-focused post-production",
-      "nav.home": "Home",
-      "nav.work": "Work",
-      "nav.skills": "Skills",
-      "nav.highlights": "Highlights",
-      "nav.contact": "Contact",
-      "actions.bookEdit": "Book a Service",
-      "actions.startProject": "Start a Project",
-      "actions.seeWork": "See My Work",
-      "actions.playVideo": "Play Video",
-      "actions.watch": "Watch",
-      "actions.openYoutube": "Open on YouTube",
-      "actions.whatsapp": "Message on WhatsApp",
-      "actions.backTop": "Back to Top",
-      "hero.eyebrow": "Professional Video Editor",
-      "hero.title": "Editing built for attention.",
-      "hero.copy1":
-        "Hi, I'm Ibrahim Omar. I help YouTube creators turn raw footage into polished, audience-retaining videos with strong pacing, cinematic transitions, clean sound, and color that feels intentional from the first frame to the last.",
-      "hero.copy2":
-        "I work in DaVinci Resolve Studio and focus on edits that feel dynamic, smooth, and visually clear whether the content is reaction-based, gaming-heavy, or built around storytelling.",
-      "hero.yearsUnit": "years",
-      "hero.meta1Label": "Hands-on DaVinci Resolve workflow",
-      "hero.meta2Value": "2 to 3 days",
-      "hero.meta2Label": "Typical delivery speed for quality edits",
-      "hero.meta3Value": "Remote worldwide",
-      "hero.meta3Label": "Based in Cairo, working with creators globally",
-      "hero.showreelBadge": "Showreel",
-      "showcase.heading": "Creative snapshots",
-      "showcase.gallery1Title": "Studio frame",
-      "showcase.gallery1Text": "Visual direction that supports the editing brand.",
-      "showcase.gallery2Title": "Creative workflow",
-      "showcase.gallery2Text": "Detail-focused editing supported by clean motion and finish work.",
-      "showcase.gallery3Title": "Final polish",
-      "showcase.gallery3Text": "Strong presentation across pacing, color, and overall feel.",
-      "work.eyebrow": "Selected Work",
-      "work.title": "Recent edits, ready to watch.",
-      "work.copy": "Tap any video to play it right here. New projects are added regularly.",
-      "work.empty": "New videos are on the way — check back soon.",
-      "work.new": "New",
-      "filters.all": "All",
-      "cat.gaming": "Gaming",
-      "cat.reaction": "Reaction",
-      "cat.motion": "Motion graphics",
-      "cat.story": "Storytelling",
-      "cat.shorts": "Shorts",
-      "cat.promo": "Promo / SaaS",
-      "cat.other": "Edit",
-      "value.eyebrow": "What You Get",
-      "value.title": "Professional polish without losing energy.",
-      "value.copy": "Every edit is built around one goal: keeping viewers watching until the very last second.",
-      "stats.focusLabel": "Editing Focus",
-      "stats.focusValue": "YT",
-      "stats.focusText": "YouTube content shaped around retention, pacing, and cleaner storytelling.",
-      "stats.softwareLabel": "Software",
-      "stats.softwareValue": "DRS",
-      "stats.softwareText": "Built around DaVinci Resolve Studio for professional control in one pipeline.",
-      "stats.workflowLabel": "Workflow",
-      "stats.workflowValue": "FX",
-      "stats.workflowText": "Motion graphics, masking, sound design, and grading all working together.",
-      "stats.responseLabel": "Response",
-      "stats.responseValue": "Fast",
-      "stats.responseText": "Quick communication and turnaround so creators can stay consistent.",
-      "frames.eyebrow": "Behind the Edit",
-      "frames.title": "Real timelines, nodes and grades.",
-      "frames.copy": "Screenshots straight from real projects in DaVinci Resolve. Tap any frame to take a closer look.",
-      "frames.imageAltFallback": "Portfolio frame preview",
-      "skills.eyebrow": "My Skills",
-      "skills.title": "Built for creators who need more than basic cuts.",
-      "skills.copy": "From the first cut to the final export, every stage of post-production is handled in one place.",
-      "skills.card1Tag": "Editing",
-      "skills.card1Title": "Storytelling and pacing",
-      "skills.card1Text": "Strong timing for reaction videos, gaming content, and personality-led YouTube formats so the edit keeps moving without losing clarity.",
-      "skills.card2Tag": "Fusion",
-      "skills.card2Title": "Motion graphics that add momentum",
-      "skills.card2Text": "Animated titles, transitions, and custom visual effects built in Fusion to make videos feel sharper and more memorable.",
-      "skills.card3Tag": "Color",
-      "skills.card3Title": "Correction and grading",
-      "skills.card3Text": "Balanced, stylistically consistent color work that supports the mood of the content instead of overpowering it.",
-      "skills.card4Tag": "Masking",
-      "skills.card4Title": "Transitions and focus effects",
-      "skills.card4Text": "Clean masking for object isolation, custom transitions, and more cinematic visual emphasis inside fast-moving edits.",
-      "skills.card5Tag": "Audio",
-      "skills.card5Title": "Noise reduction and mix cleanup",
-      "skills.card5Text": "Dialogue cleanup, voice balancing, and music integration that help the final video sound polished and easy to follow.",
-      "skills.card6Tag": "Delivery",
-      "skills.card6Title": "Fast turnaround with attention to detail",
-      "skills.card6Text": "High-quality edits delivered in around two to three days, depending on scope, while keeping quality and communication steady.",
-      "workflow.eyebrow": "Workflow",
-      "workflow.title": "How a project moves from raw footage to final upload",
-      "workflow.copy":
-        "A strong post-production process matters because the best edits are not just flashy. They guide attention, reduce friction, and keep the viewer engaged throughout the video.",
-      "workflow.step1Title": "Structure the story",
-      "workflow.step1Text": "Find the best moments, tighten pacing, and shape the flow for YouTube viewing habits.",
-      "workflow.step2Title": "Add motion and emphasis",
-      "workflow.step2Text": "Use text, transitions, and effects where they improve energy and understanding.",
-      "workflow.step3Title": "Polish picture and sound",
-      "workflow.step3Text": "Balance audio, clean noise, and finish the grade so the whole video feels complete.",
-      "impact.eyebrow": "Why It Matters",
-      "impact.title": "Better editing creates a better channel experience.",
-      "impact.copy":
-        "Strong editing improves retention, sharpens the creator's brand, and helps each upload feel more complete from the first click to the final second.",
-      "impact.point1": "Boost watch time and retention with cleaner pacing and stronger hooks.",
-      "impact.point2": "Stand out visually through motion graphics, cohesive grading, and sharp transitions.",
-      "impact.point3": "Save time as a creator by handing off the post-production process.",
-      "impact.point4": "Publish content that feels more professional, shareable, and brand-consistent.",
-      "highlights.eyebrow": "Highlights",
-      "highlights.title": "What the service is designed to improve.",
-      "highlights.copy": "Not just a list of editing features — the real impact they have on your channel.",
-      "highlights.card1Label": "Project Highlights",
-      "highlights.card1Title": "Editing that matches format and audience",
-      "highlights.card1Text": "From reaction videos to gaming content, each project is cut to fit the creator's tone while staying visually engaging and easy to watch.",
-      "highlights.card1Point1": "Custom pacing for different YouTube niches",
-      "highlights.card1Point2": "Fusion graphics and animated text",
-      "highlights.card1Point3": "Masking-based cinematic transitions",
-      "highlights.card2Label": "Final Outcome",
-      "highlights.card2Title": "Finished videos that feel complete and polished",
-      "highlights.card2Text": "Audio cleanup, color finishing, and sharper storytelling all work toward a simple goal: content that looks professional and keeps people watching.",
-      "highlights.card2Point1": "Cleaner audio with stronger voice clarity",
-      "highlights.card2Point2": "Color correction and grading for consistency",
-      "highlights.card2Point3": "Edits shaped around retention and repeat viewing",
-      "contact.eyebrow": "Contact",
-      "contact.title": "Let's create something strong together.",
-      "contact.copy":
-        "Whether you need fast-paced YouTube edits, cinematic storytelling, or a cleaner sound and color finish, send a message and let's talk about your next video.",
-      "contact.locationLabel": "Location",
-      "contact.locationText": "Cairo, Egypt",
-      "contact.locationValue": "Working remotely worldwide",
-      "contact.languagesLabel": "Languages",
-      "contact.languagesText": "Arabic and English",
-      "contact.languagesValue": "Fast communication",
-      "contact.whatsappLabel": "WhatsApp",
-      "contact.whatsappText": "Preferred for project inquiries",
-      "contact.emailLabel": "Email",
-      "contact.emailText": "Direct project communication",
-      "contact.instagramLabel": "Instagram",
-      "contact.instagramText": "Recent updates and profile access",
-      "contact.instagramValue": "Open Instagram",
-      "availability.eyebrow": "Availability",
-      "availability.item1Title": "Freelance editing projects",
-      "availability.item1Text": "For creators who want a reliable editor handling the full post-production flow.",
-      "availability.item2Title": "YouTube collaborations",
-      "availability.item2Text": "For channels that need a consistent editing style across recurring uploads.",
-      "availability.item3Title": "Post-production support",
-      "availability.item3Text": "Color grading, sound cleanup, motion graphics, and overall visual polish.",
-      "cta.eyebrow": "Ready When You Are",
-      "cta.title": "Turn raw footage into videos people finish.",
-      "cta.copy": "Send your footage and the style you have in mind — I'll handle the rest and keep you updated at every step.",
-      "footer.name": "LEB for Video Editing",
-      "footer.rights": "All rights reserved",
-      "modal.videoTitle": "Video Preview",
-      "modal.playerTitle": "Video player",
-      "toast.copied": "Email copied to clipboard",
-      "toast.copyFailed": "Couldn't copy — long-press the email instead",
-    },
-    ar: {
-      pageTitle: "LEB لتحرير الفيديو",
-      "a11y.skip": "تخطَّ إلى المحتوى",
-      "aria.brandHome": "العودة إلى الصفحة الرئيسية لـ LEB لتحرير الفيديو",
-      "aria.primaryNav": "التنقل الرئيسي",
-      "aria.mobileNav": "قائمة التنقل",
-      "aria.closeVideo": "إغلاق الفيديو",
-      "aria.closeImage": "إغلاق معاينة الصورة",
-      "aria.imagePreview": "معاينة الصورة",
-      "aria.prevImage": "الصورة السابقة",
-      "aria.nextImage": "الصورة التالية",
-      "aria.switchToArabic": "ترجمة الصفحة إلى العربية",
-      "aria.switchToEnglish": "التبديل إلى الإنجليزية",
-      "aria.menuOpen": "فتح قائمة التنقل",
-      "aria.menuClose": "إغلاق قائمة التنقل",
-      "aria.filterVideos": "تصفية الفيديوهات",
-      "aria.copyEmail": "نسخ البريد الإلكتروني",
-      "brand.name": "LEB لتحرير الفيديو",
-      "brand.tagline": "خدمات ما بعد الإنتاج الموجهة لليوتيوب",
-      "nav.home": "الرئيسية",
-      "nav.work": "أعمالي",
-      "nav.skills": "المهارات",
-      "nav.highlights": "أبرز النقاط",
-      "nav.contact": "التواصل",
-      "actions.bookEdit": "احجز خدمة",
-      "actions.startProject": "ابدأ مشروعك",
-      "actions.seeWork": "شاهد أعمالي",
-      "actions.playVideo": "تشغيل الفيديو",
-      "actions.watch": "شاهد",
-      "actions.openYoutube": "فتح على YouTube",
-      "actions.whatsapp": "راسلني على واتساب",
-      "actions.backTop": "العودة للأعلى",
-      "hero.eyebrow": "مونتير فيديو محترف",
-      "hero.title": "مونتاج مصمم لخطف الانتباه.",
-      "hero.copy1":
-        "مرحبًا، أنا إبراهيم عمر. أساعد صناع المحتوى على يوتيوب في تحويل اللقطات الخام إلى فيديوهات مصقولة تحافظ على انتباه المشاهد، بإيقاع قوي، وانتقالات سينمائية، وصوت نظيف، وألوان مقصودة من أول ثانية إلى آخر لقطة.",
-      "hero.copy2":
-        "أعمل على DaVinci Resolve Studio، وأركز على مونتاج ديناميكي وسلس وواضح بصريًا، سواء كان المحتوى تفاعليًا، أو قائمًا على الألعاب، أو مبنيًا على السرد.",
-      "hero.yearsUnit": "سنوات",
-      "hero.meta1Label": "خبرة عملية داخل DaVinci Resolve",
-      "hero.meta2Value": "من يومين إلى 3 أيام",
-      "hero.meta2Label": "سرعة تسليم معتادة لمونتاج متقن",
-      "hero.meta3Value": "عن بُعد حول العالم",
-      "hero.meta3Label": "أعمل من القاهرة مع صناع محتوى في مختلف الدول",
-      "hero.showreelBadge": "الشوريل",
-      "showcase.heading": "لقطات إبداعية",
-      "showcase.gallery1Title": "لقطة استوديو",
-      "showcase.gallery1Text": "اتجاه بصري يدعم هوية المونتاج ويقوي الانطباع.",
-      "showcase.gallery2Title": "سير عمل إبداعي",
-      "showcase.gallery2Text": "تركيز على التفاصيل مع حركة نظيفة ولمسات نهائية متقنة.",
-      "showcase.gallery3Title": "اللمسة الأخيرة",
-      "showcase.gallery3Text": "حضور بصري قوي في الإيقاع، والألوان، والإحساس العام.",
-      "work.eyebrow": "أعمال مختارة",
-      "work.title": "أحدث المونتاجات، جاهزة للمشاهدة.",
-      "work.copy": "اضغط على أي فيديو لتشغيله هنا مباشرة. تتم إضافة مشاريع جديدة باستمرار.",
-      "work.empty": "فيديوهات جديدة في الطريق — عُد قريبًا.",
-      "work.new": "جديد",
-      "filters.all": "الكل",
-      "cat.gaming": "ألعاب",
-      "cat.reaction": "رياكشن",
-      "cat.motion": "موشن جرافيك",
-      "cat.story": "سرد قصصي",
-      "cat.shorts": "فيديوهات قصيرة",
-      "cat.promo": "إعلانات / SaaS",
-      "cat.other": "مونتاج",
-      "value.eyebrow": "ما الذي تحصل عليه",
-      "value.title": "مستوى احترافي من دون أن يفقد الفيديو طاقته.",
-      "value.copy": "كل مونتاج مبني حول هدف واحد: أن يكمل المشاهد الفيديو حتى آخر ثانية.",
-      "stats.focusLabel": "تركيز المونتاج",
-      "stats.focusValue": "يوتيوب",
-      "stats.focusText": "محتوى يوتيوب مبني على الاحتفاظ بالمشاهد، والإيقاع، وسرد أوضح.",
-      "stats.softwareLabel": "البرنامج",
-      "stats.softwareValue": "دافنشي",
-      "stats.softwareText": "العمل يتم داخل DaVinci Resolve Studio لتحكم احترافي ضمن خط إنتاج واحد.",
-      "stats.workflowLabel": "الأسلوب",
-      "stats.workflowValue": "مؤثرات",
-      "stats.workflowText": "موشن جرافيك، وماسكينغ، وتصميم صوت، وتلوين يعملون معًا داخل نفس الرؤية.",
-      "stats.responseLabel": "الاستجابة",
-      "stats.responseValue": "سريع",
-      "stats.responseText": "تواصل سريع وتسليم مرن حتى تبقى القناة مستمرة ومنتظمة.",
-      "frames.eyebrow": "كواليس المونتاج",
-      "frames.title": "تايملاين ونودز وتلوين حقيقي.",
-      "frames.copy": "لقطات شاشة مباشرة من مشاريع حقيقية على DaVinci Resolve. اضغط على أي صورة لتشاهدها بحجم أكبر.",
-      "frames.imageAltFallback": "معاينة لقطة من الأعمال",
-      "skills.eyebrow": "مهاراتي",
-      "skills.title": "مخصص لصناع المحتوى الذين يحتاجون أكثر من قصات أساسية.",
-      "skills.copy": "من أول قصة إلى التصدير النهائي، كل مراحل ما بعد الإنتاج في مكان واحد.",
-      "skills.card1Tag": "المونتاج",
-      "skills.card1Title": "السرد والإيقاع",
-      "skills.card1Text": "توقيت قوي لفيديوهات الرياكشن، والألعاب، والمحتوى القائم على الشخصية حتى يبقى الفيديو متحركًا وواضحًا في الوقت نفسه.",
-      "skills.card2Tag": "Fusion",
-      "skills.card2Title": "موشن جرافيك يزيد الزخم",
-      "skills.card2Text": "عناوين متحركة، وانتقالات، ومؤثرات مخصصة داخل Fusion تجعل الفيديو أكثر حدة وثباتًا في الذاكرة.",
-      "skills.card3Tag": "الألوان",
-      "skills.card3Title": "تصحيح وتلوين",
-      "skills.card3Text": "معالجة لونية متوازنة ومتسقة تدعم مزاج المحتوى بدل أن تطغى عليه.",
-      "skills.card4Tag": "الماسكينغ",
-      "skills.card4Title": "انتقالات وتأثيرات تركيز",
-      "skills.card4Text": "عزل نظيف للعناصر، وانتقالات مخصصة، وتركيز سينمائي داخل المونتاج السريع.",
-      "skills.card5Tag": "الصوت",
-      "skills.card5Title": "تنظيف الضوضاء وتحسين المكس",
-      "skills.card5Text": "تنظيف الحوار، وضبط التوازن، ودمج الموسيقى بطريقة تجعل النتيجة أكثر وضوحًا واحترافية.",
-      "skills.card6Tag": "التسليم",
-      "skills.card6Title": "سرعة في التنفيذ مع اهتمام بالتفاصيل",
-      "skills.card6Text": "مونتاج عالي الجودة خلال يومين إلى ثلاثة تقريبًا بحسب حجم المشروع، مع ثبات في الجودة والتواصل.",
-      "workflow.eyebrow": "سير العمل",
-      "workflow.title": "كيف ينتقل المشروع من اللقطات الخام إلى نسخة جاهزة للنشر",
-      "workflow.copy":
-        "مرحلة ما بعد الإنتاج القوية مهمة لأن أفضل المونتاجات ليست مجرد مؤثرات لافتة، بل توجه الانتباه، وتقلل التشتيت، وتحافظ على تفاعل المشاهد حتى النهاية.",
-      "workflow.step1Title": "بناء القصة",
-      "workflow.step1Text": "أختار أفضل اللحظات، وأشد الإيقاع، وأشكل التدفق بما يناسب عادات مشاهدة يوتيوب.",
-      "workflow.step2Title": "إضافة الحركة والتركيز",
-      "workflow.step2Text": "أستخدم النصوص، والانتقالات، والمؤثرات فقط حين تخدم الطاقة والفهم.",
-      "workflow.step3Title": "صقل الصورة والصوت",
-      "workflow.step3Text": "أوازن الصوت، وأنظف الضوضاء، وأنهي التلوين حتى يبدو الفيديو مكتملاً.",
-      "impact.eyebrow": "لماذا يهم ذلك",
-      "impact.title": "المونتاج الأفضل يصنع تجربة قناة أفضل.",
-      "impact.copy":
-        "المونتاج القوي يرفع الاحتفاظ بالمشاهد، ويقوي هوية القناة، ويجعل كل فيديو يبدو أكثر اكتمالًا من أول نقرة إلى آخر ثانية.",
-      "impact.point1": "ارفع مدة المشاهدة والاحتفاظ بالمشاهد بإيقاع أنظف وبدايات أقوى.",
-      "impact.point2": "تميّز بصريًا عبر الموشن جرافيك، وتلوين متماسك، وانتقالات حادة.",
-      "impact.point3": "وفّر وقتك كصانع محتوى عبر تسليم ما بعد الإنتاج بالكامل.",
-      "impact.point4": "انشر محتوى يبدو أكثر احترافية وقابلية للمشاركة واتساقًا مع الهوية.",
-      "highlights.eyebrow": "أبرز النقاط",
-      "highlights.title": "ما الذي صُممت الخدمة لتحسينه.",
-      "highlights.copy": "ليست مجرد قائمة بخصائص المونتاج — بل الأثر الحقيقي الذي تصنعه على قناتك.",
-      "highlights.card1Label": "ملامح المشروع",
-      "highlights.card1Title": "مونتاج يناسب نوع المحتوى والجمهور",
-      "highlights.card1Text": "من فيديوهات الرياكشن إلى محتوى الألعاب، يتم قص كل مشروع ليتماشى مع نبرة صانع المحتوى ويظل جذابًا وواضحًا للمشاهدة.",
-      "highlights.card1Point1": "إيقاع مخصص لأنواع المحتوى المختلفة على يوتيوب",
-      "highlights.card1Point2": "رسوم Fusion ونصوص متحركة",
-      "highlights.card1Point3": "انتقالات سينمائية مبنية على الماسكينغ",
-      "highlights.card2Label": "النتيجة النهائية",
-      "highlights.card2Title": "فيديوهات مكتملة وتشعر بأنها مصقولة",
-      "highlights.card2Text": "تنظيف الصوت، والإنهاء اللوني، والسرد الأوضح كلها تعمل لهدف بسيط: محتوى يبدو احترافيًا ويجعل الناس يكملون المشاهدة.",
-      "highlights.card2Point1": "صوت أنظف مع وضوح أقوى للصوت البشري",
-      "highlights.card2Point2": "تصحيح لوني وتلوين يمنحان اتساقًا بصريًا",
-      "highlights.card2Point3": "مونتاج مبني على الاحتفاظ بالمشاهد والعودة للمشاهدة",
-      "contact.eyebrow": "التواصل",
-      "contact.title": "لنصنع شيئًا قويًا معًا.",
-      "contact.copy":
-        "سواء كنت تحتاج إلى مونتاج سريع لليوتيوب، أو سرد سينمائي، أو تحسين أوضح للصوت والألوان، راسلني ولنتحدث عن فيديوك القادم.",
-      "contact.locationLabel": "الموقع",
-      "contact.locationText": "القاهرة، مصر",
-      "contact.locationValue": "أعمل عن بُعد مع عملاء حول العالم",
-      "contact.languagesLabel": "اللغات",
-      "contact.languagesText": "العربية والإنجليزية",
-      "contact.languagesValue": "تواصل سريع",
-      "contact.whatsappLabel": "واتساب",
-      "contact.whatsappText": "الخيار المفضل لاستفسارات المشاريع",
-      "contact.emailLabel": "البريد الإلكتروني",
-      "contact.emailText": "للتواصل المباشر حول المشاريع",
-      "contact.instagramLabel": "إنستغرام",
-      "contact.instagramText": "آخر التحديثات والوصول إلى الحساب",
-      "contact.instagramValue": "فتح إنستغرام",
-      "availability.eyebrow": "التوفر",
-      "availability.item1Title": "مشاريع مونتاج حرة",
-      "availability.item1Text": "لصناع المحتوى الذين يريدون مونتيرًا يعتمد عليه لإدارة مرحلة ما بعد الإنتاج بالكامل.",
-      "availability.item2Title": "تعاونات يوتيوب",
-      "availability.item2Text": "للقنوات التي تحتاج إلى أسلوب مونتاج ثابت عبر رفعاتها المتكررة.",
-      "availability.item3Title": "دعم ما بعد الإنتاج",
-      "availability.item3Text": "تلوين، وتنظيف صوت، وموشن جرافيك، ولمسة بصرية نهائية.",
-      "cta.eyebrow": "جاهز عندما تكون جاهزًا",
-      "cta.title": "حوّل اللقطات الخام إلى فيديوهات يكملها الناس حتى النهاية.",
-      "cta.copy": "أرسل لقطاتك والأسلوب اللي في بالك — وأنا أتولى الباقي وأبقيك على اطلاع في كل خطوة.",
-      "footer.name": "LEB لتحرير الفيديو",
-      "footer.rights": "جميع الحقوق محفوظة",
-      "modal.videoTitle": "معاينة الفيديو",
-      "modal.playerTitle": "مشغل الفيديو",
-      "toast.copied": "تم نسخ البريد الإلكتروني",
-      "toast.copyFailed": "تعذر النسخ — اضغط مطولًا على البريد بدلًا من ذلك",
-    },
+  const translations = window.LEB_I18N || { en: {}, ar: {} };
+  const content = window.PORTFOLIO_CONTENT || { videos: [], frames: [] };
+  const settings = content.settings || {};
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const html = document.documentElement;
+  const body = document.body;
+  const page = body.dataset.page || "home";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  let lang = "en";
+  const t = (key) => translations[lang]?.[key] ?? translations.en?.[key] ?? "";
+
+  const esc = (value) =>
+    String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+  const icon = (name, cls = "") => `<svg class="ic ${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
+
+  /** Bilingual field from content.js: titleAr / titleEn (or plain title) with fallback. */
+  const pick = (item, field) => {
+    if (!item) return "";
+    const ar = item[field + "Ar"];
+    const en = item[field + "En"] ?? item[field];
+    return lang === "ar" ? ar || en || "" : en || ar || "";
   };
+
+  const pickList = (item, field) => {
+    const ar = item[field + "Ar"];
+    const en = item[field + "En"] ?? item[field];
+    const list = lang === "ar" ? ar || en : en || ar;
+    return Array.isArray(list) ? list : [];
+  };
+
+  /** Makes local paths with spaces safe for src attributes (and never throws). */
+  const safeUrl = (u) => {
+    try {
+      return encodeURI(decodeURI(String(u)));
+    } catch (_) {
+      return encodeURI(String(u));
+    }
+  };
+
+  function debounce(fn, ms) {
+    let id;
+    return (...args) => {
+      clearTimeout(id);
+      id = setTimeout(() => fn(...args), ms);
+    };
+  }
+
+  /* ------------------------------------------------------------------
+     2. Platforms, categories, media parsing
+     ------------------------------------------------------------------ */
+  const PLATFORMS = {
+    youtube: { icon: "i-youtube", color: "#ff4d4d" },
+    drive: { icon: "i-drive", color: "#1fa463" },
+    instagram: { icon: "i-instagram", color: "#e1306c" },
+    tiktok: { icon: "i-tiktok", color: "#25c8d9" },
+    facebook: { icon: "i-facebook", color: "#1877f2" },
+    vimeo: { icon: "i-vimeo", color: "#1ab7ea" },
+    x: { icon: "i-x", color: "#6b7280" },
+    linkedin: { icon: "i-linkedin", color: "#0a66c2" },
+    behance: { icon: "i-behance", color: "#0057ff" },
+    khamsat: { icon: "i-briefcase", color: "#f59e0b" },
+    client: { icon: "i-users", color: "#5fb0ff" },
+    file: { icon: "i-film", color: "#5fb0ff" },
+    other: { icon: "i-link", color: "#5fb0ff" },
+  };
+  const PLATFORM_ALIASES = { twitter: "x", "x / twitter": "x", ig: "instagram", yt: "youtube", "google drive": "drive", gdrive: "drive" };
 
   const CATEGORY_ICONS = {
     gaming: "i-gamepad",
@@ -366,208 +93,458 @@
     other: "i-film",
   };
 
-  /* ------------------------------------------------------------------
-     2. Helpers
-     ------------------------------------------------------------------ */
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-  const html = document.documentElement;
-  const body = document.body;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const content = window.PORTFOLIO_CONTENT || { videos: [], frames: [] };
-
-  let lang = "en";
-
-  const t = (key) => translations[lang][key] ?? translations.en[key] ?? "";
-
-  const esc = (value) =>
-    String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-
-  const icon = (name, cls = "") => `<svg class="ic ${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
-
-  /** Bilingual field from content.js: picks titleAr / titleEn with fallback. */
-  const pick = (item, field) => {
-    if (!item) return "";
-    const ar = item[field + "Ar"];
-    const en = item[field + "En"] ?? item[field];
-    return lang === "ar" ? ar || en || "" : en || ar || "";
-  };
-
-  /** Accepts any YouTube URL format or a bare 11-char ID. */
-  function parseYouTube(input) {
-    const raw = String(input || "").trim();
+  /** Turns any supported link into { kind, id, embed, vertical, thumbs[], watchUrl }. */
+  function parseMedia(url, item = {}) {
+    const raw = String(url || "").trim();
     if (!raw) return null;
-    if (/^[\w-]{11}$/.test(raw)) return { id: raw, vertical: false };
-    const patterns = [
-      /youtube\.com\/shorts\/([\w-]{11})/,
-      /youtu\.be\/([\w-]{11})/,
-      /[?&]v=([\w-]{11})/,
-      /youtube(?:-nocookie)?\.com\/(?:embed|live|v)\/([\w-]{11})/,
-    ];
-    for (const re of patterns) {
-      const m = raw.match(re);
-      if (m) return { id: m[1], vertical: /\/shorts\//.test(raw) };
+    let m;
+
+    // YouTube (or a bare 11-char id)
+    if (/^[\w-]{11}$/.test(raw) || /youtu\.?be/.test(raw)) {
+      const id = /^[\w-]{11}$/.test(raw)
+        ? raw
+        : (m = raw.match(/(?:shorts\/|youtu\.be\/|[?&]v=|embed\/|live\/)([\w-]{11})/)) && m[1];
+      if (id) {
+        const vertical = /\/shorts\//.test(raw) || !!item.vertical;
+        return {
+          kind: "youtube",
+          id,
+          vertical,
+          embed: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`,
+          thumbs: vertical
+            ? [`https://i.ytimg.com/vi/${id}/hqdefault.jpg`]
+            : [`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, `https://i.ytimg.com/vi/${id}/hqdefault.jpg`],
+          watchUrl: vertical ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}`,
+        };
+      }
     }
-    console.warn("[content.js] Could not read this YouTube link:", raw);
-    return null;
+
+    // Google Drive
+    if ((m = raw.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{10,})/))) {
+      const id = m[1];
+      return {
+        kind: "drive",
+        id,
+        vertical: !!item.vertical,
+        embed: `https://drive.google.com/file/d/${id}/preview`,
+        thumbs: [`https://drive.google.com/thumbnail?id=${id}&sz=w1280`],
+        watchUrl: `https://drive.google.com/file/d/${id}/view`,
+      };
+    }
+
+    // Vimeo
+    if ((m = raw.match(/vimeo\.com\/(?:video\/)?(\d+)/))) {
+      return {
+        kind: "vimeo",
+        id: m[1],
+        vertical: !!item.vertical,
+        embed: `https://player.vimeo.com/video/${m[1]}?autoplay=1`,
+        thumbs: [],
+        watchUrl: `https://vimeo.com/${m[1]}`,
+      };
+    }
+
+    // Instagram reel / post
+    if ((m = raw.match(/instagram\.com\/(reels?|p|tv)\/([\w-]+)/))) {
+      const type = m[1] === "reels" ? "reel" : m[1];
+      return {
+        kind: "instagram",
+        id: m[2],
+        vertical: item.vertical !== false,
+        embed: `https://www.instagram.com/${type}/${m[2]}/embed/`,
+        thumbs: [`https://www.instagram.com/${type}/${m[2]}/media/?size=l`],
+        watchUrl: `https://www.instagram.com/${type}/${m[2]}/`,
+      };
+    }
+
+    // TikTok
+    if ((m = raw.match(/tiktok\.com\/.*video\/(\d+)/))) {
+      return {
+        kind: "tiktok",
+        id: m[1],
+        vertical: true,
+        embed: `https://www.tiktok.com/embed/v2/${m[1]}`,
+        thumbs: [],
+        watchUrl: raw,
+      };
+    }
+
+    // Video file hosted with the site
+    if (/\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(raw)) {
+      return { kind: "file", id: raw, vertical: !!item.vertical, embed: raw, thumbs: [], watchUrl: raw };
+    }
+
+    // Anything else: opens in a new tab
+    return { kind: "link", id: raw, vertical: !!item.vertical, embed: "", thumbs: [], watchUrl: raw };
   }
 
-  /** <img> with maxres → hq fallback (maxres doesn't exist for every video). */
-  function thumbImg(item, yt, eager = false) {
-    if (item.thumbnail) {
-      return `<img src="${esc(item.thumbnail)}" alt="" ${eager ? "" : 'loading="lazy"'} decoding="async" />`;
-    }
-    return `<img src="https://i.ytimg.com/vi/${yt.id}/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/${yt.id}/hqdefault.jpg" alt="" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" />`;
+  function guessPlatformFromUrl(url) {
+    const u = String(url || "").toLowerCase();
+    if (/youtu\.?be/.test(u)) return "youtube";
+    if (u.includes("drive.google")) return "drive";
+    if (u.includes("instagram.com")) return "instagram";
+    if (u.includes("tiktok.com")) return "tiktok";
+    if (u.includes("facebook.com") || u.includes("fb.watch")) return "facebook";
+    if (u.includes("vimeo.com")) return "vimeo";
+    if (u.includes("linkedin.com")) return "linkedin";
+    if (u.includes("behance.net")) return "behance";
+    if (u.includes("khamsat.com")) return "khamsat";
+    if (/(^|\.)x\.com|twitter\.com/.test(u)) return "x";
+    return "";
   }
 
-  function wireThumbFallbacks(root) {
-    $$("img[data-fallback]", root).forEach((img) => {
-      const swap = () => {
-        if (img.dataset.fallback && img.src !== img.dataset.fallback) {
-          img.src = img.dataset.fallback;
-          img.removeAttribute("data-fallback");
+  /** Platform object: known key → icon/color/translated label; custom text → shown as-is. */
+  function resolvePlatform(item, media) {
+    let rawName = String(item.platform || "").trim();
+    let key = PLATFORM_ALIASES[rawName.toLowerCase()] || rawName.toLowerCase();
+    if (!rawName) {
+      key = guessPlatformFromUrl(item.platformUrl) || guessPlatformFromUrl(item.video || item.youtube) || (media?.kind === "file" ? "file" : "other");
+    }
+    if (PLATFORMS[key]) return { key, custom: "", ...PLATFORMS[key] };
+    return { key: "custom:" + rawName.toLowerCase(), custom: rawName, icon: "i-globe", color: "#5fb0ff" };
+  }
+
+  const platformLabel = (p) => p.custom || t("platform." + p.key) || p.key;
+
+  /** Normalizes one entry from content.js. */
+  function normalize(item, index) {
+    if (!item) return null;
+    const media = parseMedia(item.video || item.youtube, item);
+    if (!media && !item.thumbnail) return null;
+    const platform = resolvePlatform(item, media);
+    const format = item.format === "short" || item.format === "long" ? item.format : media?.vertical ? "short" : "long";
+    let category = CATEGORY_ICONS[item.category] ? item.category : format === "short" ? "shorts" : "other";
+    const thumbs = [item.thumbnail, ...(media?.thumbs || [])].filter(Boolean);
+    const playable = !!media && media.kind !== "link";
+    const externalUrl = item.platformUrl || (media && media.kind !== "file" ? media.watchUrl : "");
+    // the "View on …" button names wherever that link actually goes
+    const linkPlatform = item.platformUrl || !media ? platform : resolvePlatform({ video: media.watchUrl }, media);
+    return { index, item, media, platform, linkPlatform, format, category, thumbs, playable, externalUrl };
+  }
+
+  const projects = (content.videos || []).map(normalize).filter(Boolean);
+  projects.forEach((p, i) => (p.index = i));
+  const showreel = content.showreel ? normalize(content.showreel, "showreel") : null;
+  const frames = (content.frames || []).map((f) => (typeof f === "string" ? { src: f } : f)).filter((f) => f && f.src);
+
+  /* ------------------------------------------------------------------
+     3. Thumbnails (with fallbacks and an automatic cover)
+     ------------------------------------------------------------------ */
+  function initials(text) {
+    const words = String(text || "").trim().split(/\s+/).filter(Boolean);
+    return (words.slice(0, 2).map((w) => w[0]).join("") || "▶").toUpperCase();
+  }
+
+  function thumbMarkup(p, { eager = false } = {}) {
+    const title = pick(p.item, "title");
+    const cover = `<span class="thumb-cover" style="--pc:${p.platform.color}" aria-hidden="true">
+        ${icon(p.platform.icon)}<b>${esc(initials(title))}</b>
+      </span>`;
+    if (!p.thumbs.length) return cover;
+    const [first, ...rest] = p.thumbs;
+    return `${cover}<img src="${esc(safeUrl(first))}" data-fallbacks="${esc(rest.map(safeUrl).join("|"))}" alt="" ${
+      eager ? 'fetchpriority="high"' : 'loading="lazy"'
+    } decoding="async" />`;
+  }
+
+  function wireThumbs(root = document) {
+    $$("img[data-fallbacks]", root).forEach((img) => {
+      if (img.dataset.wired) return;
+      img.dataset.wired = "1";
+      const next = () => {
+        const list = (img.dataset.fallbacks || "").split("|").filter(Boolean);
+        if (list.length) {
+          img.dataset.fallbacks = list.slice(1).join("|");
+          img.src = list[0];
+        } else {
+          img.remove(); // the automatic cover underneath stays visible
         }
       };
-      img.addEventListener("error", swap, { once: true });
-      // YouTube returns a 120×90 grey placeholder (not an error) when maxres is missing
-      const check = () => img.naturalWidth > 0 && img.naturalWidth <= 120 && swap();
-      if (img.complete) check();
-      else img.addEventListener("load", check, { once: true });
-    });
-  }
-
-  let toastTimer;
-  function toast(message) {
-    const el = $("#toast");
-    if (!el) return;
-    el.innerHTML = icon("i-check") + `<span>${esc(message)}</span>`;
-    el.classList.add("is-visible");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.classList.remove("is-visible"), 2400);
-  }
-
-  /* ------------------------------------------------------------------
-     3. Render content from content.js
-     ------------------------------------------------------------------ */
-  const videoItems = (content.videos || [])
-    .map((v) => ({ ...v, yt: parseYouTube(v.youtube) }))
-    .filter((v) => v.yt || v.thumbnail);
-  videoItems.forEach((v) => {
-    if (!CATEGORY_ICONS[v.category]) v.category = v.yt?.vertical ? "shorts" : "other";
-  });
-  let activeFilter = "all";
-
-  function renderShowreel() {
-    const box = $("#showreel");
-    const item = content.showreel;
-    const yt = item && parseYouTube(item.youtube);
-    if (!box) return;
-    if (!yt) {
-      box.hidden = true;
-      return;
-    }
-    box.innerHTML = `
-      <button class="thumb" type="button" data-play="${yt.id}" data-vertical="${yt.vertical}" data-title-key="showreel">
-        ${thumbImg(item, yt, true)}
-        <span class="showreel-badge"><span class="live-dot" aria-hidden="true"></span>${esc(t("hero.showreelBadge"))}</span>
-        <span class="play-button">${icon("i-play")}</span>
-        <span class="thumb-caption">
-          <strong>${esc(pick(item, "title"))}</strong>
-          <span>${esc(pick(item, "desc"))}</span>
-        </span>
-      </button>
-      <div class="showreel-actions">
-        <button class="button" type="button" data-play="${yt.id}" data-vertical="${yt.vertical}" data-title-key="showreel">
-          ${icon("i-play")}<span>${esc(t("actions.playVideo"))}</span>
-        </button>
-        <a class="button-secondary" href="https://www.youtube.com/watch?v=${yt.id}" target="_blank" rel="noopener">
-          ${icon("i-youtube")}<span>${esc(t("actions.openYoutube"))}</span>
-        </a>
-      </div>`;
-    wireThumbFallbacks(box);
-  }
-
-  function renderFilters() {
-    const bar = $("#video-filters");
-    if (!bar) return;
-    const counts = videoItems.reduce((acc, v) => ((acc[v.category] = (acc[v.category] || 0) + 1), acc), {});
-    const cats = Object.keys(CATEGORY_ICONS).filter((c) => counts[c]);
-    if (cats.length < 2) {
-      bar.hidden = true;
-      activeFilter = "all";
-      return;
-    }
-    bar.hidden = false;
-    const chip = (key, label, iconName, count) => `
-      <button class="filter-chip" type="button" data-filter="${key}" aria-pressed="${activeFilter === key}">
-        ${icon(iconName)}<span>${esc(label)}</span><span class="count">${count}</span>
-      </button>`;
-    bar.innerHTML =
-      chip("all", t("filters.all"), "i-grid", videoItems.length) +
-      cats.map((c) => chip(c, t("cat." + c), CATEGORY_ICONS[c], counts[c])).join("");
-  }
-
-  function renderVideos() {
-    const grid = $("#video-grid");
-    if (!grid) return;
-    if (!videoItems.length) {
-      grid.innerHTML = `<div class="empty-state">${icon("i-film")}<p>${esc(t("work.empty"))}</p></div>`;
-      return;
-    }
-    grid.classList.toggle("is-single", videoItems.length === 1);
-    grid.classList.toggle("is-few", videoItems.length > 1 && videoItems.length <= 3);
-    grid.innerHTML = videoItems
-      .map((v, i) => {
-        const id = v.yt ? v.yt.id : "";
-        const ytLink = id ? `https://www.youtube.com/watch?v=${id}` : "";
-        const hidden = activeFilter !== "all" && v.category !== activeFilter;
-        return `
-        <article class="video-card card reveal${hidden ? " is-hidden" : ""}" data-category="${v.category}" data-tilt>
-          <button class="thumb" type="button" data-play="${id}" data-vertical="${!!v.yt?.vertical}" data-index="${i}" aria-label="${esc(t("actions.playVideo"))}: ${esc(pick(v, "title"))}">
-            ${thumbImg(v, v.yt || {})}
-            <span class="thumb-tags">
-              <span class="thumb-tag">${icon(CATEGORY_ICONS[v.category])}${esc(t("cat." + v.category))}</span>
-              ${v.isNew ? `<span class="thumb-tag is-new">${icon("i-sparkles")}${esc(t("work.new"))}</span>` : ""}
-            </span>
-            <span class="play-button">${icon("i-play")}</span>
-          </button>
-          <div class="video-card-body">
-            <h3>${esc(pick(v, "title"))}</h3>
-            ${pick(v, "desc") ? `<p>${esc(pick(v, "desc"))}</p>` : ""}
-          </div>
-          <div class="video-card-foot">
-            <button class="video-trigger" type="button" data-play="${id}" data-vertical="${!!v.yt?.vertical}" data-index="${i}">
-              ${icon("i-play")}<span>${esc(t("actions.watch"))}</span>
-            </button>
-            ${ytLink ? `<a class="icon-button" href="${ytLink}" target="_blank" rel="noopener" aria-label="${esc(t("actions.openYoutube"))}">${icon("i-youtube")}</a>` : ""}
-          </div>
-        </article>`;
-      })
-      .join("");
-    wireThumbFallbacks(grid);
-    enhanceCards(grid);
-    observeReveal(grid);
-  }
-
-  function applyFilter(filter) {
-    activeFilter = filter;
-    $$("#video-filters .filter-chip").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.filter === filter)));
-    $$("#video-grid .video-card").forEach((card) => {
-      const show = filter === "all" || card.dataset.category === filter;
-      card.classList.toggle("is-hidden", !show);
-      if (show) {
-        card.classList.remove("is-entering");
-        void card.offsetWidth;
-        card.classList.add("is-entering", "is-visible");
+      img.addEventListener("error", next);
+      // YouTube answers a missing maxres thumbnail with a 120×90 grey placeholder
+      img.addEventListener("load", () => img.naturalWidth > 0 && img.naturalWidth <= 120 && next());
+      if (img.complete) {
+        if (!img.naturalWidth) next();
+        else if (img.naturalWidth <= 120) next();
       }
     });
   }
 
+  /* ------------------------------------------------------------------
+     4. Cards
+     ------------------------------------------------------------------ */
+  function searchText(p) {
+    const it = p.item;
+    return [
+      it.titleEn, it.titleAr, it.title, it.descEn, it.descAr, it.desc,
+      ...(it.tagsEn || []), ...(it.tagsAr || []),
+      p.platform.custom, translations.en["platform." + p.platform.key], translations.ar["platform." + p.platform.key],
+      translations.en["cat." + p.category], translations.ar["cat." + p.category],
+    ].filter(Boolean).join(" ").toLowerCase();
+  }
+
+  function cardMarkup(p, { variant = p.format, reveal = true } = {}) {
+    const title = pick(p.item, "title");
+    const desc = pick(p.item, "desc");
+    const tags = pickList(p.item, "tags");
+    const pl = p.platform;
+    const plLabel = platformLabel(pl);
+    const lp = p.linkPlatform;
+    const linkLabel = platformLabel(lp);
+    const date = p.item.date ? `<span class="card-date">${icon("i-calendar")}${esc(p.item.date)}</span>` : "";
+
+    const thumbInner = `
+      ${thumbMarkup(p)}
+      <span class="thumb-tags">
+        <span class="platform-badge" style="--pc:${pl.color}">${icon(pl.icon)}${esc(plLabel)}</span>
+        ${p.item.isNew ? `<span class="thumb-tag is-new">${icon("i-sparkles")}${esc(t("work.new"))}</span>` : ""}
+      </span>
+      <span class="play-button${p.playable ? "" : " is-external"}">${icon(p.playable ? "i-play" : "i-external")}</span>`;
+
+    const thumb = p.playable
+      ? `<button class="thumb thumb--${variant}" type="button" data-project="${p.index}" aria-label="${esc(t("actions.playVideo"))}: ${esc(title)}">${thumbInner}</button>`
+      : `<a class="thumb thumb--${variant}" href="${esc(p.externalUrl)}" target="_blank" rel="noopener" aria-label="${esc(t("actions.openProject"))}: ${esc(title)}">${thumbInner}</a>`;
+
+    const primary = p.playable
+      ? `<button class="video-trigger" type="button" data-project="${p.index}">${icon("i-play")}<span>${esc(t("actions.watch"))}</span></button>`
+      : `<a class="video-trigger" href="${esc(p.externalUrl)}" target="_blank" rel="noopener">${icon("i-external")}<span>${esc(t("actions.viewOn"))} ${esc(linkLabel)}</span></a>`;
+
+    const secondary =
+      p.playable && p.externalUrl
+        ? `<a class="icon-button platform-link" style="--pc:${lp.color}" href="${esc(p.externalUrl)}" target="_blank" rel="noopener" aria-label="${esc(t("actions.viewOn"))} ${esc(linkLabel)}" title="${esc(t("actions.viewOn"))} ${esc(linkLabel)}">${icon(lp.icon)}</a>`
+        : "";
+
+    return `
+      <article class="video-card project-card project-card--${variant} card${reveal ? " reveal" : ""}" data-tilt
+        data-format="${p.format}" data-category="${p.category}" data-platform="${esc(pl.key)}" data-search="${esc(searchText(p))}">
+        ${thumb}
+        <div class="video-card-body">
+          <div class="card-meta"><span>${icon(CATEGORY_ICONS[p.category])}${esc(t("cat." + p.category))}</span>${date}</div>
+          <h3>${esc(title)}</h3>
+          ${desc ? `<p>${esc(desc)}</p>` : ""}
+          ${tags.length ? `<div class="tag-list">${tags.map((tg) => `<span class="tag-chip">${esc(tg)}</span>`).join("")}</div>` : ""}
+        </div>
+        <div class="video-card-foot">${primary}${secondary}</div>
+      </article>`;
+  }
+
+  function afterRender(root) {
+    wireThumbs(root);
+    enhanceCards(root);
+    observeReveal(root);
+  }
+
+  /* ------------------------------------------------------------------
+     5. Home page rendering
+     ------------------------------------------------------------------ */
+  function renderShowreel() {
+    const box = $("#showreel");
+    if (!box) return;
+    if (!showreel || !showreel.playable) {
+      box.hidden = true;
+      return;
+    }
+    const title = pick(showreel.item, "title");
+    box.innerHTML = `
+      <button class="thumb" type="button" data-project="showreel" aria-label="${esc(t("actions.playVideo"))}: ${esc(title)}">
+        ${thumbMarkup(showreel, { eager: true })}
+        <span class="showreel-badge"><span class="live-dot" aria-hidden="true"></span>${esc(t("hero.showreelBadge"))}</span>
+        <span class="play-button">${icon("i-play")}</span>
+        <span class="thumb-caption">
+          <strong>${esc(title)}</strong>
+          <span>${esc(pick(showreel.item, "desc"))}</span>
+        </span>
+      </button>
+      <div class="showreel-actions">
+        <button class="button" type="button" data-project="showreel">${icon("i-play")}<span>${esc(t("actions.playVideo"))}</span></button>
+        ${showreel.externalUrl ? `<a class="button-secondary" href="${esc(showreel.externalUrl)}" target="_blank" rel="noopener">${icon(showreel.linkPlatform.icon)}<span>${esc(t("actions.viewOn"))} ${esc(platformLabel(showreel.linkPlatform))}</span></a>` : ""}
+      </div>`;
+    wireThumbs(box);
+  }
+
+  function renderHomeWork() {
+    const grid = $("#video-grid");
+    const strip = $("#short-strip");
+    if (!grid) return;
+    const longs = projects.filter((p) => p.format === "long").slice(0, settings.homeLong ?? 3);
+    const shorts = projects.filter((p) => p.format === "short").slice(0, settings.homeShort ?? 5);
+
+    if (!longs.length && !shorts.length) {
+      grid.innerHTML = `<div class="empty-state">${icon("i-film")}<p>${esc(t("work.empty"))}</p></div>`;
+    } else {
+      grid.classList.toggle("is-single", longs.length === 1);
+      grid.classList.toggle("is-few", longs.length > 1 && longs.length <= 3);
+      grid.innerHTML = longs.map((p) => cardMarkup(p, { variant: "long" })).join("");
+      $("#home-long-head")?.toggleAttribute("hidden", !longs.length);
+    }
+    if (strip) {
+      strip.innerHTML = shorts.map((p) => cardMarkup(p, { variant: "short" })).join("");
+      $("#home-short-block")?.toggleAttribute("hidden", !shorts.length);
+    }
+    const count = $("#gallery-cta-count");
+    if (count) count.textContent = projects.length;
+    afterRender($("#work") || document);
+  }
+
+  /* ------------------------------------------------------------------
+     6. Gallery page rendering + filters
+     ------------------------------------------------------------------ */
+  const filters = { q: "", format: "all", cat: "all", platform: "all" };
+
+  function readFiltersFromUrl() {
+    const params = new URLSearchParams(location.search);
+    ["format", "cat", "platform"].forEach((k) => params.get(k) && (filters[k] = params.get(k)));
+    if (params.get("q")) filters.q = params.get("q");
+  }
+
+  function writeFiltersToUrl() {
+    const params = new URLSearchParams(location.search);
+    Object.entries(filters).forEach(([k, v]) => (v && v !== "all" ? params.set(k, v) : params.delete(k)));
+    const qs = params.toString();
+    history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+  }
+
+  function renderGalleryStats() {
+    const set = (id, n) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = n;
+    };
+    set("stat-projects", projects.length);
+    set("stat-platforms", new Set(projects.map((p) => p.platform.key)).size);
+    set("stat-frames", frames.length);
+  }
+
+  function renderGalleryControls() {
+    const fmtBox = $("#format-filter");
+    const catBox = $("#category-filter");
+    const plSelect = $("#platform-filter");
+    if (!fmtBox) return;
+
+    const countBy = (key) => projects.reduce((acc, p) => ((acc[p[key]] = (acc[p[key]] || 0) + 1), acc), {});
+    const formats = countBy("format");
+    fmtBox.innerHTML = [
+      ["all", t("format.all"), projects.length, "i-grid"],
+      ["short", t("format.short"), formats.short || 0, "i-phone"],
+      ["long", t("format.long"), formats.long || 0, "i-monitor"],
+    ]
+      .map(([k, label, n, ic]) => `<button type="button" class="seg-btn" data-format-filter="${k}" aria-pressed="${filters.format === k}">${icon(ic)}<span>${esc(label)}</span><span class="count">${n}</span></button>`)
+      .join("");
+
+    const cats = countBy("category");
+    const catKeys = Object.keys(CATEGORY_ICONS).filter((c) => cats[c]);
+    catBox.hidden = catKeys.length < 2;
+    catBox.innerHTML =
+      `<button class="filter-chip" type="button" data-cat-filter="all" aria-pressed="${filters.cat === "all"}">${icon("i-grid")}<span>${esc(t("filters.all"))}</span></button>` +
+      catKeys.map((c) => `<button class="filter-chip" type="button" data-cat-filter="${c}" aria-pressed="${filters.cat === c}">${icon(CATEGORY_ICONS[c])}<span>${esc(t("cat." + c))}</span><span class="count">${cats[c]}</span></button>`).join("");
+
+    const plats = {};
+    projects.forEach((p) => (plats[p.platform.key] = plats[p.platform.key] || { p: p.platform, n: 0 }).n++);
+    plSelect.innerHTML =
+      `<option value="all">${esc(t("gallery.allPlatforms"))}</option>` +
+      Object.entries(plats).map(([k, v]) => `<option value="${esc(k)}"${filters.platform === k ? " selected" : ""}>${esc(platformLabel(v.p))} (${v.n})</option>`).join("");
+    $("#platform-filter-wrap").hidden = Object.keys(plats).length < 2;
+
+    const search = $("#gallery-search");
+    if (search && search.value !== filters.q) search.value = filters.q;
+  }
+
+  function renderGalleryGrids() {
+    const shortGrid = $("#short-grid");
+    const longGrid = $("#long-grid");
+    if (!shortGrid) return;
+    shortGrid.innerHTML = projects.filter((p) => p.format === "short").map((p) => cardMarkup(p, { variant: "short" })).join("");
+    longGrid.innerHTML = projects.filter((p) => p.format === "long").map((p) => cardMarkup(p, { variant: "long" })).join("");
+    afterRender($("#library"));
+    applyGalleryFilters({ animate: false });
+  }
+
+  function applyGalleryFilters({ animate = true } = {}) {
+    const q = filters.q.trim().toLowerCase();
+    let total = 0;
+    ["short", "long"].forEach((fmt) => {
+      const grid = document.getElementById(fmt + "-grid");
+      const section = document.getElementById(fmt + "-form");
+      let visible = 0;
+      $$(".project-card", grid).forEach((card) => {
+        const ok =
+          (filters.format === "all" || filters.format === fmt) &&
+          (filters.cat === "all" || card.dataset.category === filters.cat) &&
+          (filters.platform === "all" || card.dataset.platform === filters.platform) &&
+          (!q || q.split(/\s+/).every((w) => card.dataset.search.includes(w)));
+        const wasHidden = card.classList.contains("is-hidden");
+        card.classList.toggle("is-hidden", !ok);
+        if (ok) {
+          visible++;
+          if (animate && wasHidden) {
+            card.classList.remove("is-entering");
+            void card.offsetWidth;
+            card.classList.add("is-entering", "is-visible");
+          }
+        }
+      });
+      if (section) section.hidden = visible === 0;
+      total += visible;
+    });
+
+    $("#gallery-empty").hidden = total > 0;
+    $("#results-count").textContent = total;
+    const active = filters.q || filters.format !== "all" || filters.cat !== "all" || filters.platform !== "all";
+    $("#clear-filters").hidden = !active;
+
+    $$("[data-format-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.formatFilter === filters.format)));
+    $$("[data-cat-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.catFilter === filters.cat)));
+    const sel = $("#platform-filter");
+    if (sel) sel.value = filters.platform;
+    writeFiltersToUrl();
+  }
+
+  function initGalleryControls() {
+    const lib = $("#library");
+    if (!lib) return;
+    lib.addEventListener("click", (e) => {
+      const f = e.target.closest("[data-format-filter]");
+      const c = e.target.closest("[data-cat-filter]");
+      if (f) filters.format = f.dataset.formatFilter;
+      else if (c) filters.cat = c.dataset.catFilter;
+      else if (e.target.closest("#clear-filters, #empty-clear")) {
+        Object.assign(filters, { q: "", format: "all", cat: "all", platform: "all" });
+        $("#gallery-search").value = "";
+      } else return;
+      applyGalleryFilters();
+    });
+    $("#platform-filter").addEventListener("change", (e) => {
+      filters.platform = e.target.value;
+      applyGalleryFilters();
+    });
+    $("#gallery-search").addEventListener(
+      "input",
+      debounce((e) => {
+        filters.q = e.target.value;
+        applyGalleryFilters();
+      }, 160)
+    );
+    // "/" focuses the search box
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName) && $$(".modal").every((m) => m.hidden)) {
+        e.preventDefault();
+        $("#gallery-search").focus();
+      }
+    });
+    // jump links in the hero switch the format filter too
+    $$("[data-jump-format]").forEach((a) =>
+      a.addEventListener("click", () => {
+        filters.format = "all";
+        applyGalleryFilters();
+      })
+    );
+  }
+
+  /* ------------------------------------------------------------------
+     7. Screenshots gallery (both pages)
+     ------------------------------------------------------------------ */
   function renderFrames() {
     const gallery = $("#media-gallery");
     if (!gallery) return;
-    const frames = (content.frames || []).map((f) => (typeof f === "string" ? { src: f } : f));
     const section = $("#frames");
     if (!frames.length) {
       if (section) section.hidden = true;
@@ -578,7 +555,7 @@
         const caption = pick(f, "caption");
         return `
         <button class="media-photo reveal" type="button" data-frame="${i}" aria-label="${esc(caption || t("frames.imageAltFallback"))}">
-          <img src="${esc(f.src)}" alt="" loading="lazy" decoding="async" />
+          <img src="${esc(safeUrl(f.src))}" alt="" loading="lazy" decoding="async" />
           <span class="media-photo-caption"><span>${esc(caption)}</span>${icon("i-zoom")}</span>
         </button>`;
       })
@@ -587,13 +564,22 @@
   }
 
   /* ------------------------------------------------------------------
-     4. Language
+     8. Language
      ------------------------------------------------------------------ */
+  function renderAll() {
+    renderShowreel();
+    renderHomeWork();
+    renderGalleryStats();
+    renderGalleryControls();
+    renderGalleryGrids();
+    renderFrames();
+  }
+
   function applyLanguage(next, { persist = true } = {}) {
     lang = next === "ar" ? "ar" : "en";
     html.lang = lang;
     html.dir = lang === "ar" ? "rtl" : "ltr";
-    document.title = t("pageTitle");
+    document.title = t(page === "gallery" ? "gallery.pageTitle" : "pageTitle");
 
     $$("[data-i18n]").forEach((node) => {
       const value = t(node.dataset.i18n);
@@ -602,6 +588,14 @@
     $$("[data-i18n-aria-label]").forEach((node) => {
       const value = t(node.dataset.i18nAriaLabel);
       if (value) node.setAttribute("aria-label", value);
+    });
+    $$("[data-i18n-placeholder]").forEach((node) => {
+      const value = t(node.dataset.i18nPlaceholder);
+      if (value) node.setAttribute("placeholder", value);
+    });
+    $$("[data-i18n-alt]").forEach((node) => {
+      const value = t(node.dataset.i18nAlt);
+      if (value) node.setAttribute("alt", value);
     });
 
     const langBtn = $("#lang-toggle");
@@ -612,11 +606,9 @@
     $("#video-modal-frame").title = t("modal.playerTitle");
     syncMenuLabel();
 
-    renderShowreel();
-    renderFilters();
-    renderVideos();
-    renderFrames();
+    renderAll();
     if (lightbox.isOpen()) lightbox.show(lightbox.index);
+    if (currentProject && !videoModal.hidden) fillModalInfo(currentProject);
 
     if (persist) {
       try {
@@ -636,7 +628,7 @@
   }
 
   /* ------------------------------------------------------------------
-     5. Header, menu, scroll UI
+     9. Header, menu, scroll UI
      ------------------------------------------------------------------ */
   const topbar = $("#topbar");
   const menuToggle = $("#menu-toggle");
@@ -658,13 +650,10 @@
     e.stopPropagation();
     setMenu(!topbar.classList.contains("menu-open"));
   });
-
   $$("#mobile-menu a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
-
   document.addEventListener("click", (e) => {
     if (topbar.classList.contains("menu-open") && !topbar.contains(e.target)) setMenu(false);
   });
-
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1024 && topbar.classList.contains("menu-open")) setMenu(false);
   });
@@ -678,35 +667,37 @@
     requestAnimationFrame(() => {
       const y = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+      if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
       topbar.classList.toggle("is-scrolled", y > 12);
-      backTop.classList.toggle("is-visible", y > window.innerHeight * 0.8);
+      backTop?.classList.toggle("is-visible", y > window.innerHeight * 0.8);
       ticking = false;
     });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+  backTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
 
-  backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
-
-  // active nav link
+  // active nav link: watch every section that an in-page nav link points to
   const navLinks = $$(".nav a, .mobile-nav a");
   const navObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href.startsWith("#")) link.classList.toggle("active", href === `#${entry.target.id}`);
+        });
       });
     },
     { rootMargin: "-40% 0px -55% 0px" }
   );
-  ["home", "work", "skills", "highlights", "contact"].forEach((id) => {
-    const el = document.getElementById(id);
+  new Set(navLinks.map((a) => a.getAttribute("href")).filter((h) => h.startsWith("#") && h.length > 1)).forEach((h) => {
+    const el = document.getElementById(h.slice(1));
     if (el) navObserver.observe(el);
   });
 
   /* ------------------------------------------------------------------
-     6. Reveal on scroll (with stagger inside grids)
+     10. Reveal on scroll (with stagger inside grids)
      ------------------------------------------------------------------ */
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -716,7 +707,7 @@
         revealObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -5% 0px" }
+    { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
   );
 
   function observeReveal(root = document) {
@@ -729,7 +720,7 @@
   }
 
   /* ------------------------------------------------------------------
-     7. Cards: cursor spotlight + 3D tilt
+     11. Cards: cursor spotlight + 3D tilt
      ------------------------------------------------------------------ */
   function enhanceCards(root = document) {
     $$(".card, .media-photo", root).forEach((card) => {
@@ -748,7 +739,7 @@
         card.style.setProperty("--my", `${y}px`);
         if (finePointer && !reduceMotion && card.hasAttribute("data-tilt")) {
           card.classList.add("is-tilting");
-          card.style.setProperty("--ry", `${((x / r.width) - 0.5) * 8}deg`);
+          card.style.setProperty("--ry", `${(x / r.width - 0.5) * 8}deg`);
           card.style.setProperty("--rx", `${(0.5 - y / r.height) * 8}deg`);
         }
       });
@@ -761,13 +752,14 @@
   }
 
   /* ------------------------------------------------------------------
-     8. Modals (video + image lightbox) with focus trap
+     12. Modals (video player + image lightbox) with focus trap
      ------------------------------------------------------------------ */
   let lastFocus = null;
+  let currentProject = null;
 
   function trapFocus(modal, e) {
     if (e.key !== "Tab") return;
-    const focusables = $$('a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])', modal).filter(
+    const focusables = $$('a[href], button:not([disabled]), iframe:not([hidden]), video:not([hidden]), [tabindex]:not([tabindex="-1"])', modal).filter(
       (el) => el.offsetParent !== null
     );
     if (!focusables.length) return;
@@ -800,31 +792,82 @@
     }, reduceMotion ? 0 : 230);
   }
 
-  // --- video
+  // --- video player
   const videoModal = $("#video-modal");
   const videoFrame = $("#video-modal-frame");
+  const videoEl = $("#video-modal-video");
   const videoWrap = $("#video-frame-wrap");
+  const videoDialog = $(".modal-dialog", videoModal);
 
-  function openVideo(id, vertical, title) {
-    if (!id) return;
-    videoFrame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
-    videoWrap.classList.toggle("is-vertical", vertical);
+  function fillModalInfo(p) {
+    const title = pick(p.item, "title");
     $("#video-modal-title").textContent = title || t("modal.videoTitle");
-    $("#video-modal-yt").href = vertical ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}`;
+    const ext = $("#video-modal-ext");
+    const plLabel = platformLabel(p.platform);
+    const linkLabel = platformLabel(p.linkPlatform);
+    if (p.externalUrl) {
+      ext.hidden = false;
+      ext.href = p.externalUrl;
+      ext.setAttribute("aria-label", `${t("actions.viewOn")} ${linkLabel}`);
+      ext.title = `${t("actions.viewOn")} ${linkLabel}`;
+      ext.innerHTML = icon(p.linkPlatform.icon);
+    } else {
+      ext.hidden = true;
+    }
+    const desc = pick(p.item, "desc");
+    const info = $("#video-modal-info");
+    info.innerHTML = `
+      <div class="modal-info-row">
+        <span class="platform-badge" style="--pc:${p.platform.color}">${icon(p.platform.icon)}${esc(plLabel)}</span>
+        ${p.index !== "showreel" ? `<span class="modal-cat">${icon(CATEGORY_ICONS[p.category])}${esc(t("cat." + p.category))}</span>` : ""}
+        ${p.item.date ? `<span class="modal-cat">${icon("i-calendar")}${esc(p.item.date)}</span>` : ""}
+      </div>
+      ${desc ? `<p>${esc(desc)}</p>` : ""}
+      ${p.externalUrl ? `<a class="button-secondary button-sm" href="${esc(p.externalUrl)}" target="_blank" rel="noopener">${icon(p.linkPlatform.icon)}<span>${esc(t("actions.viewOn"))} ${esc(linkLabel)}</span>${icon("i-external")}</a>` : ""}`;
+  }
+
+  function openProject(p) {
+    if (!p) return;
+    if (!p.playable) {
+      if (p.externalUrl) window.open(p.externalUrl, "_blank", "noopener");
+      return;
+    }
+    currentProject = p;
+    const vertical = !!p.media.vertical;
+    videoWrap.classList.toggle("is-vertical", vertical);
+    videoDialog.classList.toggle("is-vertical", vertical);
+    if (p.media.kind === "file") {
+      videoFrame.hidden = true;
+      videoFrame.src = "about:blank";
+      videoEl.hidden = false;
+      videoEl.src = p.media.embed;
+      if (p.thumbs[0]) videoEl.poster = p.thumbs[0];
+      videoEl.play?.().catch(() => {});
+    } else {
+      videoEl.hidden = true;
+      videoEl.removeAttribute("src");
+      videoFrame.hidden = false;
+      videoFrame.src = p.media.embed;
+    }
+    fillModalInfo(p);
     openModal(videoModal);
   }
 
   function closeVideo() {
-    closeModal(videoModal, () => (videoFrame.src = "about:blank"));
+    closeModal(videoModal, () => {
+      videoFrame.src = "about:blank";
+      videoEl.pause?.();
+      videoEl.removeAttribute("src");
+      videoEl.load?.();
+      currentProject = null;
+    });
   }
 
   document.addEventListener("click", (e) => {
-    const trigger = e.target.closest("[data-play]");
+    const trigger = e.target.closest("[data-project]");
     if (!trigger) return;
-    let title = "";
-    if (trigger.dataset.titleKey === "showreel") title = pick(content.showreel, "title");
-    else if (trigger.dataset.index) title = pick(videoItems[+trigger.dataset.index], "title");
-    openVideo(trigger.dataset.play, trigger.dataset.vertical === "true", title);
+    const key = trigger.dataset.project;
+    openProject(key === "showreel" ? showreel : projects[+key]);
   });
 
   videoModal.addEventListener("click", (e) => {
@@ -835,15 +878,13 @@
   const imageModal = $("#image-modal");
   const lightbox = {
     index: 0,
-    frames: () => (content.frames || []).map((f) => (typeof f === "string" ? { src: f } : f)),
     isOpen: () => !imageModal.hidden,
     show(i) {
-      const frames = this.frames();
       if (!frames.length) return;
       this.index = (i + frames.length) % frames.length;
       const f = frames[this.index];
       const img = $("#image-modal-image");
-      img.src = f.src;
+      img.src = safeUrl(f.src);
       img.alt = pick(f, "caption") || t("frames.imageAltFallback");
       $("#lightbox-caption").textContent = pick(f, "caption");
       $("#lightbox-count").textContent = `${this.index + 1} / ${frames.length}`;
@@ -864,14 +905,12 @@
     const frame = e.target.closest("[data-frame]");
     if (frame) lightbox.open(+frame.dataset.frame);
   });
-
   $("#lightbox-prev").addEventListener("click", () => lightbox.show(lightbox.index - 1));
   $("#lightbox-next").addEventListener("click", () => lightbox.show(lightbox.index + 1));
   imageModal.addEventListener("click", (e) => {
     if (e.target === imageModal || e.target.closest("[data-close]")) lightbox.close();
   });
 
-  // swipe in lightbox
   let swipeX = null;
   const fig = $(".lightbox-figure");
   fig.addEventListener("pointerdown", (e) => (swipeX = e.clientX));
@@ -904,12 +943,17 @@
   });
 
   /* ------------------------------------------------------------------
-     9. Small interactions: filters, copy email, counters, year
+     13. Small interactions: copy email, counters, year
      ------------------------------------------------------------------ */
-  $("#video-filters").addEventListener("click", (e) => {
-    const chip = e.target.closest("[data-filter]");
-    if (chip) applyFilter(chip.dataset.filter);
-  });
+  let toastTimer;
+  function toast(message) {
+    const el = $("#toast");
+    if (!el) return;
+    el.innerHTML = icon("i-check") + `<span>${esc(message)}</span>`;
+    el.classList.add("is-visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("is-visible"), 2400);
+  }
 
   $$("[data-copy]").forEach((btn) =>
     btn.addEventListener("click", async () => {
@@ -930,9 +974,9 @@
       counterObserver.unobserve(entry.target);
       const el = entry.target;
       const target = +el.dataset.count;
-      if (reduceMotion) return;
+      if (reduceMotion || !target) return;
       const start = performance.now();
-      const dur = 1100;
+      const dur = target > 50 ? 1600 : 1100;
       const step = (now) => {
         const p = Math.min(1, (now - start) / dur);
         el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
@@ -948,7 +992,7 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* ------------------------------------------------------------------
-     10. Floating emoji background — drifts, bobs, parallaxes and
+     14. Floating emoji background — drifts, bobs, parallaxes and
          reacts to the cursor (push away + spin + grow), bursts on click.
      ------------------------------------------------------------------ */
   function initEmojiField() {
@@ -963,7 +1007,6 @@
       "💾", "🔥", "🌟", "💬", "👀", "🍿", "🎉", "📱",
     ];
 
-    // far → near: smaller & blurrier at the back, bigger & sharper at the front
     const LAYERS = [
       { depth: 0.35, size: [18, 26], blur: 3.2, opacity: 0.3, drift: 0.12 },
       { depth: 0.65, size: [26, 38], blur: 1.6, opacity: 0.42, drift: 0.2 },
@@ -978,18 +1021,17 @@
     let lastScroll = window.scrollY;
     let rafId = 0;
     let lastT = 0;
-
     const rand = (a, b) => a + Math.random() * (b - a);
+    const countFor = () => Math.max(12, Math.min(48, Math.round((W * H) / 36000)));
 
     function build() {
       W = window.innerWidth;
       H = window.innerHeight;
       field.textContent = "";
       items = [];
-      const count = Math.max(12, Math.min(48, Math.round((W * H) / 36000)));
+      const count = countFor();
       const shuffled = EMOJIS.slice().sort(() => Math.random() - 0.5);
       const frag = document.createDocumentFragment();
-
       for (let i = 0; i < count; i++) {
         const r = Math.random();
         const layer = r < 0.4 ? LAYERS[0] : r < 0.75 ? LAYERS[1] : LAYERS[2];
@@ -1001,43 +1043,23 @@
         el.style.opacity = layer.opacity;
         el.style.filter = `blur(${layer.blur}px)`;
         frag.appendChild(el);
-
+        const baseRot = rand(-18, 18);
         items.push({
-          el,
-          layer,
-          size,
-          x: rand(0, W),
-          y: rand(0, H),
-          vx: rand(-0.12, 0.12),
-          vy: -rand(0.5, 1) * layer.drift,
-          ox: 0,
-          oy: 0,
-          vox: 0,
-          voy: 0,
-          baseRot: rand(-18, 18),
-          rot: 0,
-          vrot: 0,
-          scale: 1,
-          phase: rand(0, Math.PI * 2),
-          bob: rand(5, 14),
-          bobSpeed: rand(0.0004, 0.0009),
+          el, layer, size,
+          x: rand(0, W), y: rand(0, H),
+          vx: rand(-0.12, 0.12), vy: -rand(0.5, 1) * layer.drift,
+          ox: 0, oy: 0, vox: 0, voy: 0,
+          baseRot, rot: baseRot, vrot: 0, scale: 1,
+          phase: rand(0, Math.PI * 2), bob: rand(5, 14), bobSpeed: rand(0.0004, 0.0009),
         });
       }
-      items.forEach((it) => (it.rot = it.baseRot));
       field.appendChild(frag);
-      if (reduceMotion) renderStatic();
-    }
-
-    function renderStatic() {
-      items.forEach((it) => {
-        it.el.style.transform = `translate3d(${it.x}px, ${it.y}px, 0) rotate(${it.baseRot}deg)`;
-      });
+      if (reduceMotion) items.forEach((it) => (it.el.style.transform = `translate3d(${it.x}px, ${it.y}px, 0) rotate(${it.baseRot}deg)`));
     }
 
     function frame(now) {
       const dt = Math.min(3, lastT ? (now - lastT) / 16.67 : 1);
       lastT = now;
-
       parallax.x += (parallax.tx - parallax.x) * 0.05 * dt;
       parallax.y += (parallax.ty - parallax.y) * 0.05 * dt;
 
@@ -1045,7 +1067,6 @@
         const d = it.layer.depth;
         it.x += it.vx * dt;
         it.y += it.vy * dt;
-
         const pad = it.size * 2;
         if (it.y < -pad) {
           it.y = H + pad * 0.5;
@@ -1060,13 +1081,10 @@
         const bx = it.x + parallax.x * d * 28;
         const by = it.y + Math.sin(now * it.bobSpeed + it.phase) * it.bob + parallax.y * d * 28;
 
-        // cursor interaction
         let near = 0;
         if (pointer.active) {
-          const cx = bx + it.ox + it.size / 2;
-          const cy = by + it.oy + it.size / 2;
-          const dx = cx - pointer.x;
-          const dy = cy - pointer.y;
+          const dx = bx + it.ox + it.size / 2 - pointer.x;
+          const dy = by + it.oy + it.size / 2 - pointer.y;
           const dist = Math.hypot(dx, dy) || 1;
           const radius = 140 + 90 * d;
           if (dist < radius) {
@@ -1078,18 +1096,15 @@
           }
         }
 
-        // spring back home + damping
         it.vox += -it.ox * 0.018 * dt;
         it.voy += -it.oy * 0.018 * dt;
         it.vox *= Math.pow(0.9, dt);
         it.voy *= Math.pow(0.9, dt);
         it.ox += it.vox * dt;
         it.oy += it.voy * dt;
-
         it.vrot += (it.baseRot - it.rot) * 0.01 * dt;
         it.vrot *= Math.pow(0.92, dt);
         it.rot += it.vrot * dt;
-
         it.scale += (1 + near * 0.5 - it.scale) * 0.12 * dt;
 
         it.el.style.transform = `translate3d(${(bx + it.ox).toFixed(1)}px, ${(by + it.oy).toFixed(1)}px, 0) rotate(${it.rot.toFixed(1)}deg) scale(${it.scale.toFixed(3)})`;
@@ -1099,14 +1114,11 @@
 
     function burst(x, y) {
       for (const it of items) {
-        const cx = it.x + it.ox + it.size / 2;
-        const cy = it.y + it.oy + it.size / 2;
-        const dx = cx - x;
-        const dy = cy - y;
+        const dx = it.x + it.ox + it.size / 2 - x;
+        const dy = it.y + it.oy + it.size / 2 - y;
         const dist = Math.hypot(dx, dy) || 1;
-        const radius = 320;
-        if (dist < radius) {
-          const f = (1 - dist / radius) * 14 * (0.5 + it.layer.depth);
+        if (dist < 320) {
+          const f = (1 - dist / 320) * 14 * (0.5 + it.layer.depth);
           it.vox += (dx / dist) * f;
           it.voy += (dy / dist) * f;
           it.vrot += (Math.random() - 0.5) * 30;
@@ -1129,38 +1141,51 @@
     }
 
     window.addEventListener("pointermove", (e) => setPointer(e.clientX, e.clientY), { passive: true });
-    window.addEventListener("pointerdown", (e) => {
-      setPointer(e.clientX, e.clientY);
-      if (!e.target.closest("a, button, input, iframe, .modal")) burst(e.clientX, e.clientY);
-    }, { passive: true });
-    window.addEventListener("touchmove", (e) => {
-      const tch = e.touches[0];
-      if (tch) setPointer(tch.clientX, tch.clientY);
-    }, { passive: true });
+    window.addEventListener(
+      "pointerdown",
+      (e) => {
+        setPointer(e.clientX, e.clientY);
+        if (!e.target.closest("a, button, input, select, iframe, video, .modal")) burst(e.clientX, e.clientY);
+      },
+      { passive: true }
+    );
+    window.addEventListener(
+      "touchmove",
+      (e) => {
+        const tch = e.touches[0];
+        if (tch) setPointer(tch.clientX, tch.clientY);
+      },
+      { passive: true }
+    );
     window.addEventListener("touchend", () => setTimeout(() => (pointer.active = false), 300), { passive: true });
     document.addEventListener("pointerleave", () => (pointer.active = false));
     window.addEventListener("blur", () => (pointer.active = false));
 
-    // scroll parallax: nudge layers at different speeds
-    window.addEventListener("scroll", () => {
-      const dy = window.scrollY - lastScroll;
-      lastScroll = window.scrollY;
-      const clamped = Math.max(-80, Math.min(80, dy));
-      for (const it of items) it.y -= clamped * it.layer.depth * 0.25;
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        const dy = window.scrollY - lastScroll;
+        lastScroll = window.scrollY;
+        const clamped = Math.max(-80, Math.min(80, dy));
+        for (const it of items) it.y -= clamped * it.layer.depth * 0.25;
+      },
+      { passive: true }
+    );
 
-    window.addEventListener("resize", debounce(() => {
-      const oldW = W;
-      const oldH = H;
-      W = window.innerWidth;
-      H = window.innerHeight;
-      const target = Math.max(12, Math.min(48, Math.round((W * H) / 36000)));
-      if (Math.abs(target - items.length) > 6) return build();
-      items.forEach((it) => {
-        it.x = (it.x / oldW) * W;
-        it.y = (it.y / oldH) * H;
-      });
-    }, 200));
+    window.addEventListener(
+      "resize",
+      debounce(() => {
+        const oldW = W;
+        const oldH = H;
+        W = window.innerWidth;
+        H = window.innerHeight;
+        if (Math.abs(countFor() - items.length) > 6) return build();
+        items.forEach((it) => {
+          it.x = (it.x / oldW) * W;
+          it.y = (it.y / oldH) * H;
+        });
+      }, 200)
+    );
 
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
@@ -1175,19 +1200,13 @@
     rafId = requestAnimationFrame(frame);
   }
 
-  function debounce(fn, ms) {
-    let id;
-    return (...args) => {
-      clearTimeout(id);
-      id = setTimeout(() => fn(...args), ms);
-    };
-  }
-
   /* ------------------------------------------------------------------
-     11. Boot
+     15. Boot
      ------------------------------------------------------------------ */
+  if (page === "gallery") readFiltersFromUrl();
   applyLanguage(initialLanguage(), { persist: false });
   $("#lang-toggle").addEventListener("click", () => applyLanguage(lang === "ar" ? "en" : "ar"));
+  initGalleryControls();
   enhanceCards();
   observeReveal();
   initEmojiField();
