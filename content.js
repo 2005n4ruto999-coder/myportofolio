@@ -22,8 +22,12 @@
         ملف على الموقع: videos/my-clip.mp4   (أقل من 100MB — حدّ GitHub)
         أي رابط ثاني (لينكدإن، بيهانس...) بيفتح بتبويب جديد بدل ما يشتغل جوا الموقع
 
-   📐 format — "short" (قصير/عمودي) أو "long" (طويل/عرضي)
-        اختياري: شورتس وريلز وتيك توك بتنحسب "short" تلقائياً، والباقي "long"
+   📐 القصير والطويل بيتحددوا تلقائياً:
+        • يوتيوب: رابط shorts = عمودي (قصير)، رابط watch أو youtu.be = عرضي (طويل)
+          ← فإذا الفيديو عمودي على يوتيوب استعمل رابط الـ Shorts تبعه
+        • ريلز إنستغرام وتيك توك = عمودي
+        • درايف وملفات mp4: الموقع بيقيس أبعاد الفيديو بنفسه
+        • إذا بدك تجبره: format: "short" أو format: "long"
 
    🖼️ thumbnail — الصورة المصغّرة (اختياري)
         • يوتيوب: بتنجاب تلقائياً، ما بتحتاجها
@@ -61,7 +65,6 @@
       thumbnail: "images/thumbs/project.jpg",
       platform: "instagram",
       platformUrl: "https://www.instagram.com/reel/XXXX/",
-      format: "short",
       category: "promo",
       tagsEn: ["Reel", "Captions"],
       tagsAr: ["ريل", "كابشن"],
@@ -156,7 +159,6 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       video: "https://www.youtube.com/shorts/S4ELfEkozTE",
-      format: "long",
       titleEn: "3D Visual Masterpiece",
       titleAr: "تحفة بصرية ثلاثية الأبعاد",
       descEn: "Fusion 3D environment work that turns explanatory footage into a deeper visual story.",
@@ -168,8 +170,7 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       video: "https://www.linkedin.com/posts/ibrahim-omar-for-business_cubitteam-davinciresolve-motiondesign-activity-7457328974268960768-kV4d",
-      thumbnail: "images/Screenshot (541).png",
-      format: "long",
+      thumbnail: "images/opt/frame-541.webp",
       titleEn: "Timeline Architecture",
       titleAr: "هندسة التايملاين",
       descEn: "A project centered on keyframing precision, workflow structure, and the craft behind the timeline.",
@@ -181,8 +182,7 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       video: "https://www.linkedin.com/posts/ibrahim-omar-for-business_davinciresolve-motiongraphics-sounddesign-activity-7457014470494638080-I5Qx",
-      thumbnail: "images/Screenshot (854).png",
-      format: "long",
+      thumbnail: "images/opt/frame-854.webp",
       titleEn: "Motion Graphics and Sound Design",
       titleAr: "موشن جرافيك وتصميم صوت",
       descEn: "A Cubit Team project built around motion graphics, sound design, and a tighter audiovisual finish.",
@@ -195,25 +195,30 @@ window.PORTFOLIO_CONTENT = {
   ],
 
   /* 🖼️ صور من الشغل (لقطات شاشة من DaVinci وغيره)
-     بتظهر في قسم "كواليس المونتاج" بالصفحتين */
+     بتظهر في قسم "كواليس المونتاج" بالصفحتين
+     src = الصورة الكاملة (بتنفتح لما تكبّرها) · thumb = نسخة خفيفة للعرض (اختياري) */
   frames: [
     {
       src: "images/Screenshot (30).png",
+      thumb: "images/opt/frame-30.webp",
       captionEn: "Color grading on the Color page",
       captionAr: "تلوين وتصحيح ألوان على صفحة Color",
     },
     {
       src: "images/Screenshot (541).png",
+      thumb: "images/opt/frame-541.webp",
       captionEn: "Multi-track timeline — Elden Ring project",
       captionAr: "تايملاين متعدد الطبقات — مشروع Elden Ring",
     },
     {
       src: "images/Screenshot (543).png",
+      thumb: "images/opt/frame-543.webp",
       captionEn: "3D composition built in Fusion",
       captionAr: "مشهد ثلاثي الأبعاد مبني داخل Fusion",
     },
     {
       src: "images/Screenshot (848).png",
+      thumb: "images/opt/frame-848.webp",
       captionEn: "Motion graphics for the showreel in Fusion",
       captionAr: "موشن جرافيك للشوريل داخل Fusion",
     },

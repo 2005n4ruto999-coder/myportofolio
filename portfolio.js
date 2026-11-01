@@ -214,7 +214,11 @@
     const platform = resolvePlatform(item, media);
     const format = item.format === "short" || item.format === "long" ? item.format : media?.vertical ? "short" : "long";
     let category = CATEGORY_ICONS[item.category] ? item.category : format === "short" ? "shorts" : "other";
-    const thumbs = [item.thumbnail, ...(media?.thumbs || [])].filter(Boolean);
+    let auto = media?.thumbs || [];
+    // cards: 640px "sd" thumbnail is plenty and ~5x lighter than maxres (the showreel keeps maxres)
+    if (media?.kind === "youtube" && !media.vertical && index !== "showreel")
+      auto = [`https://i.ytimg.com/vi/${media.id}/sddefault.jpg`, `https://i.ytimg.com/vi/${media.id}/hqdefault.jpg`];
+    const thumbs = [item.thumbnail, ...auto].filter(Boolean);
     const playable = !!media && media.kind !== "link";
     const externalUrl = item.platformUrl || (media && media.kind !== "file" ? media.watchUrl : "");
     // the "View on …" button names wherever that link actually goes
@@ -268,6 +272,78 @@
         else if (img.naturalWidth <= 120) next();
       }
     });
+  }
+
+
+  /* ------------------------------------------------------------------
+     3b. Automatic orientation: Drive / mp4 / link thumbnails get measured
+         in the browser, and the card moves to the short or long section.
+     ------------------------------------------------------------------ */
+  const ORIENT_KEY = "leb-orient-v1";
+  let orientCache = {};
+  try {
+    orientCache = JSON.parse(sessionStorage.getItem(ORIENT_KEY) || "{}");
+  } catch (_) {}
+
+  function measure(p) {
+    const m = p.media;
+    return new Promise((resolve) => {
+      const done = (w, h) => resolve(w && h ? h > w : null);
+      setTimeout(() => resolve(null), 8000);
+      if (m.kind === "file") {
+        const v = document.createElement("video");
+        v.preload = "metadata";
+        v.muted = true;
+        v.onloadedmetadata = () => done(v.videoWidth, v.videoHeight);
+        v.onerror = () => resolve(null);
+        v.src = m.embed;
+        return;
+      }
+      const src = m.kind === "drive" ? m.thumbs[0] : p.item.thumbnail;
+      if (!src) return resolve(null);
+      const img = new Image();
+      img.onload = () => done(img.naturalWidth, img.naturalHeight);
+      img.onerror = () => resolve(null);
+      img.src = safeUrl(src);
+    });
+  }
+
+  function applyOrientation(p, vertical) {
+    if (vertical === null || vertical === undefined) return false;
+    const fmt = vertical ? "short" : "long";
+    if (p.format === fmt && !!p.media.vertical === vertical) return false;
+    p.media.vertical = vertical;
+    p.format = fmt;
+    if (!CATEGORY_ICONS[p.item.category]) p.category = fmt === "short" ? "shorts" : "other";
+    return true;
+  }
+
+  function autoOrient() {
+    const todo = projects.filter(
+      (p) => p.media && !p.item.format && p.item.vertical === undefined && ["drive", "file", "link"].includes(p.media.kind)
+    );
+    let changed = false;
+    todo.forEach((p) => (changed = applyOrientation(p, orientCache[p.media.id]) || changed));
+    if (changed) rerenderProjects();
+    Promise.all(
+      todo.map((p) =>
+        measure(p).then((v) => {
+          if (v !== null) orientCache[p.media.id] = v;
+          return applyOrientation(p, v);
+        })
+      )
+    ).then((results) => {
+      try {
+        sessionStorage.setItem(ORIENT_KEY, JSON.stringify(orientCache));
+      } catch (_) {}
+      if (results.some(Boolean)) rerenderProjects();
+    });
+  }
+
+  function rerenderProjects() {
+    renderHomeWork();
+    renderGalleryControls();
+    renderGalleryGrids();
   }
 
   /* ------------------------------------------------------------------
@@ -555,7 +631,7 @@
         const caption = pick(f, "caption");
         return `
         <button class="media-photo reveal" type="button" data-frame="${i}" aria-label="${esc(caption || t("frames.imageAltFallback"))}">
-          <img src="${esc(safeUrl(f.src))}" alt="" loading="lazy" decoding="async" />
+          <img src="${esc(safeUrl(f.thumb || f.src))}" alt="" loading="lazy" decoding="async" />
           <span class="media-photo-caption"><span>${esc(caption)}</span>${icon("i-zoom")}</span>
         </button>`;
       })
@@ -707,7 +783,7 @@
         revealObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
+    { threshold: 0, rootMargin: "0px 0px 20% 0px" }
   );
 
   function observeReveal(root = document) {
@@ -830,6 +906,12 @@
     if (!p) return;
     if (!p.playable) {
       if (p.externalUrl) window.open(p.externalUrl, "_blank", "noopener");
+      return;
+    }
+    // YouTube refuses embeds on pages opened straight from disk (Error 153)
+    if (location.protocol === "file:" && p.media.kind === "youtube") {
+      window.open(p.media.watchUrl, "_blank", "noopener");
+      toast(t("toast.localYoutube"));
       return;
     }
     currentProject = p;
@@ -1022,7 +1104,7 @@
     let rafId = 0;
     let lastT = 0;
     const rand = (a, b) => a + Math.random() * (b - a);
-    const countFor = () => Math.max(12, Math.min(48, Math.round((W * H) / 36000)));
+    const countFor = () => (W < 760 ? 14 : Math.max(12, Math.min(48, Math.round((W * H) / 36000))));
 
     function build() {
       W = window.innerWidth;
@@ -1161,9 +1243,24 @@
     document.addEventListener("pointerleave", () => (pointer.active = false));
     window.addEventListener("blur", () => (pointer.active = false));
 
+    const coarse = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    let scrollIdle;
     window.addEventListener(
       "scroll",
       () => {
+        if (coarse && rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
+        if (coarse) {
+          clearTimeout(scrollIdle);
+          scrollIdle = setTimeout(() => {
+            if (!rafId && !document.hidden) {
+              lastT = 0;
+              rafId = requestAnimationFrame(frame);
+            }
+          }, 160);
+        }
         const dy = window.scrollY - lastScroll;
         lastScroll = window.scrollY;
         const clamped = Math.max(-80, Math.min(80, dy));
@@ -1207,6 +1304,7 @@
   applyLanguage(initialLanguage(), { persist: false });
   $("#lang-toggle").addEventListener("click", () => applyLanguage(lang === "ar" ? "en" : "ar"));
   initGalleryControls();
+  autoOrient();
   enhanceCards();
   observeReveal();
   initEmojiField();

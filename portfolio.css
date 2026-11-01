@@ -3416,3 +3416,94 @@ video.modal-frame {
     font-size: 0.78rem;
   }
 }
+
+/* =====================================================================
+   PERFORMANCE — same look, much less work for phones
+   ===================================================================== */
+
+/* brand mark: keep "LEB" inside its tile */
+.brand-mark {
+  font-size: 0.8rem;
+  letter-spacing: -0.02em;
+}
+.brand-mark-sm {
+  font-size: 0.7rem;
+}
+
+/* cards stay flat (no GPU layer each) until the pointer actually tilts them */
+.card {
+  transform: translateY(var(--lift, 0));
+}
+.card.is-tilting {
+  transform: perspective(1000px) translateY(var(--lift, 0)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+
+/* stat backgrounds are pre-blurred images now — no live blur filter */
+.stat-card::before {
+  filter: none;
+  transform: scale(1.04);
+}
+.stat-card:hover::before {
+  filter: none;
+  transform: scale(1.12);
+}
+.stat-card::after {
+  transition: opacity 0.5s;
+}
+.stat-card:hover::after {
+  opacity: 0.75;
+}
+
+/* touch devices: drop the effects that cost the most and show the least */
+@media (hover: none), (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+  }
+  body::before,
+  body::after {
+    animation: none;
+    filter: blur(28px);
+  }
+  .thumb-tag,
+  .platform-badge,
+  .showreel-badge,
+  .play-button,
+  .video-trigger,
+  .media-photo-caption .ic,
+  .footer-inner,
+  .mobile-menu {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .thumb-tag,
+  .platform-badge,
+  .showreel-badge {
+    background: rgba(6, 16, 29, 0.86);
+  }
+  .play-button {
+    background: rgba(10, 24, 40, 0.62);
+  }
+  .video-trigger {
+    background: rgba(28, 64, 104, 0.9);
+  }
+  .topbar-inner,
+  .gallery-toolbar,
+  .modal {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  /* the pulsing ring stays on the showreel only */
+  .video-card .play-button::before {
+    animation: none;
+    opacity: 0.5;
+  }
+  .js .reveal {
+    translate: 0 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-meta {
+    grid-template-columns: 1fr;
+  }
+}
